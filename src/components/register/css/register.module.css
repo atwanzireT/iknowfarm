@@ -1,0 +1,20 @@
+.loginCardPadding{
+    padding: 10px;
+    margin-top: -40px;
+}
+.margTop{
+    margin-top: 200px;
+}
+.reg_card{
+    width:30%;
+    height:250px;
+    margin: auto;
+    background-color: white;
+}
+
+.logincard{
+    width:80%;
+    height:100px;
+    margin: auto;
+    background-color: white;
+}
