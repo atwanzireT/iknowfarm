@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/atwanzireT/iknowfarm.git/static/css/main.743a7901.css",
+    "main.js": "/atwanzireT/iknowfarm.git/static/js/main.a65990de.js",
+    "static/js/787.6a541d2d.chunk.js": "/atwanzireT/iknowfarm.git/static/js/787.6a541d2d.chunk.js",
+    "static/media/loginbg.jpg": "/atwanzireT/iknowfarm.git/static/media/loginbg.9d3a07e8904d7f0f3af4.jpg",
+    "index.html": "/atwanzireT/iknowfarm.git/index.html",
+    "main.743a7901.css.map": "/atwanzireT/iknowfarm.git/static/css/main.743a7901.css.map",
+    "main.a65990de.js.map": "/atwanzireT/iknowfarm.git/static/js/main.a65990de.js.map",
+    "787.6a541d2d.chunk.js.map": "/atwanzireT/iknowfarm.git/static/js/787.6a541d2d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.743a7901.css",
+    "static/js/main.a65990de.js"
+  ]
+}
