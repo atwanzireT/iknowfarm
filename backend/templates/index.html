@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock header %}
+
+{% block content %}
+<div class="left-col left-bg">
+    <div class="logo">
+        <img src="{% static '/icon/iknowfarm.png' %}" alt="" srcset="">
+        <h3>IKNOWFARM</h3>
+        <hr style="width: 80%;">
+    </div>
+    <div>
+        <img src="" alt="">
+        <h5>View Profile</h5>
+        <hr style="width: 80%;">
+    </div>
+    <div>
+        <h5>CROPS</h5>
+    </div>
+    <div>
+        <h5>LIVESTOCK</h5>
+    </div>
+    <div>
+        <h5>FARMERS</h5>
+    </div>
+    <div>
+        <h5>TRANSLATIONS</h5>
+    </div>
+    <div>
+        <h5>UTILITIES</h5>
+    </div>
+    <div>
+        <h5>UPLOADS</h5>
+    </div>
+    <div>
+        <h5>Profile</h5>
+    </div>
+</div>
+<div class="right-col">
+    <div class="card">
+        <div class="card">
+            <i class="fas fa-cloud-upload"></i>
+            <i class='fas fa-arrow-left' style='font-size:24px'></i>
+        </div>
+        <h5>App Installations</h5>
+        <p>71,000</p>
+    </div>
+</div>
+{% endblock content %}
