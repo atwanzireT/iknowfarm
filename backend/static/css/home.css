@@ -26,10 +26,10 @@
 }
 .icondiv{
     margin: auto;
-    width: 50px;
+    width: 40px;
 }
 .logo .icon{
-    width: 50px;
+    width: 40px;
 }
 
 .icon-card-div{
@@ -71,4 +71,13 @@ margin: auto;
 
 .card-text{
     float: right;
+}
+
+.m-5{
+    /* margin-top: 5px; */
+    margin-left: 5px;
+}
+.m-2{
+    /* margin-top: auto; */
+    margin-left: 5px;
 }
