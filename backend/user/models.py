@@ -6,11 +6,18 @@ class User(models.Model):
         ('M', "Male"),
         ('F', "Female")
     ]
+
+    APP_USERS = [
+        ('T', 'True'),
+        ('F', 'False')
+    ]
     fullname = models.CharField(max_length=50)
     email = models.EmailField()
     nationality = models.CharField(max_length=45)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     physical_address = models.CharField(max_length=45)
+    app_user = models.CharField(choices=APP_USERS, max_length=10)
+    
 
     def __str__(self) -> str:
         return self.fullname
