@@ -1,7 +1,28 @@
 {% load static %}
+
+<style>
+    .side_title{
+        margin-top: 30px;
+        margin-left: 5px;
+        font-size: 14px;
+
+    }
+    ._bar_title{
+        margin: 5px;
+        font-size: 14px;
+    }
+
+    .logo_div{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .side_title:hover{
+        cursor: pointer;
+    }
+</style>
 <div class="left-col left-bg">
     <div class="container">
-        <div class="container-fluid">
+        <div class="container-fluid logo_div">
             <div class="logo ">
                 <div class="icondiv  d-inline float-start mx-2">
                     <img class="icon" src="{% static '/icons/iknowfarm.png' %}" alt="" srcset="">
@@ -11,76 +32,88 @@
                 </div>
             </div>
         </div>
-        
-        <div class="mt-2">
+
+        <div class="m-2">
             <img src="" alt="">
-            <h6>View Profile</h6>
+            <h6><i class="fas fa-user"></i><span>View Profile</span></h6>
             <hr style="width: 80%;">
         </div>
 
-        <div class="mx-5">
-            <div id="dashboard">
-                <h6>DASHBOARDS</h6>
+        <!-- Left Nav -->
+        <div class="mx-2">
+            <div>
+                <div class="side_title" id="dashboard">
+                    <h6><i class="fas fa-th-large"></i><span class="_bar_title">DASHBOARDS</span> </h6>
+                </div>
             </div>
-        </div>
-        <div class="m-5">
-            <div id="crops">
-                <h6>CROPS</h6>
+            <div>
+                <div id="crops" class="side_title">
+                    <h6><i class="fas fa-seedling"></i> <span class="_bar_title"> CROPS </span><i id="drop_icon"
+                            class="fas fa-caret-down"></i>
+                    </h6>
+                    <div id="all-crops" style="display: none;" class="mx-2">
+                        <p>All Crops</p>
+                    </div>
+                </div>
             </div>
-            <div class="m-2" id="all-crops" style="display: none;">
-                <p>All Crops</p>
+            <div>
+                <div id="livestock" class="side_title">
+                    <h6><i class="fas fa-paw"></i> <span class="_bar_title">LIVESTOCK</span> <i id="drop_icon"
+                            class="fas fa-caret-down"></i>
+                    </h6>
+                    <div style="display: none;" id="all-livestock" class="mx-2">
+                        <p>All Livestock</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="m-5">
-            <div id="livestock">
-                <h6>LIVESTOCK</h6>
+            <div>
+                <div id="farmers" class="side_title">
+                    <h5><i class="fas fa-users"></i><span class="_bar_title">FARMERS</span><i id="drop_icon" class="fas fa-caret-down"></i>
+                    </h5>
+                    <div id="all-farmers" style="display: none;" class="mx-2">
+                        <p>Individual Farmers</p>
+                        <p>Group Farmers</p>
+                        <p>Account Mangement</p>
+                    </div>
+                </div>
+
             </div>
-            <div class="m-2" style="display: none;" id="all-livestock">
-                <p>all livestock</p>
+            <div>
+                <div id="translations" class="side_title">
+                    <h5><i class="fas fa-quote-left"></i><span class="_bar_title">TRANSLATIONS</span><i id="drop_icon"
+                            class="fas fa-caret-down"></i> </h5>
+                    <div class="m-2" id="all-translations" style="display: none;" class="mx-2">
+                        <p>Crop Translations</p>
+                        <p>Crop Manuals</p>
+                        <p>Livestock Translations</p>
+                        <p>Livestock Manuals</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="m-5">
-            <div id="farmers">
-                <h5>FARMERS</h5>
+            <div>
+                <div id="utilities" class="side_title">
+                    <h5><i class="fas fa-tools"></i><span class="_bar_title">UTILITIES</span><i id="drop_icon"
+                            class="fas fa-caret-down"></i></h5>
+                    <div class="m-2" id="district" style="display: none;" class="mx-2">
+                        <p>Districts</p>
+                    </div>
+                </div>
             </div>
-            <div class="m-2" id="all-farmers" style="display: none;">
-                <p>Individual Farmers</p>
-                <p>Group Farmers</p>
-                <p>Account Mangement</p>
+            <div>
+                <div id="upload" class="side_title">
+                    <h5><i class="fas fa-file-upload"></i><span class="_bar_title">UPLOADS</span><i id="drop_icon"
+                            class="fas fa-caret-down"></i></h5>
+                    <div id="all-uploads" style="display: none;" class="mx-2">
+                        <p>Farmer Data Upload</p>
+                        <p>Crop Videos</p>
+                        <p>Livestock Videos</p>
+                        <p>General Videos</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="m-5">
-            <div id="translations">
-                <h5>TRANSLATIONS</h5>
+            <div class="side_title">
+                <h5><i class="fas fa-user"></i><span class="_bar_title">PROFILE</span></h5>
             </div>
-            <div class="m-2" id="all-translations" style="display: none;">
-                <p>Crop Translations</p>
-                <p>Crop Manuals</p>
-                <p>Livestock Translations</p>
-                <p>Livestock Manuals</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="utilities">
-                <h5>UTILITIES</h5>
-            </div>
-            <div class="m-2" id="district" style="display: none;">
-                <p>Districts</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="upload">
-                <h5>UPLOADS</h5>
-            </div>
-            <div class="m-2" id="all-uploads" style="display: none;">
-                <p>Farmer Data Upload</p>
-                <p>Crop Videos</p>
-                <p>Livestock Videos</p>
-                <p>General Videos</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <h5>Profile</h5>
         </div>
     </div>
 </div>

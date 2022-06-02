@@ -34,3 +34,9 @@ $(document).ready(function(){
       $("#all-uploads").slideToggle("slow");
     });
 });
+
+$(document).ready(function(){
+  $("#profile").click(function(){
+    $("#user-mgt").slideToggle("slow");
+  });
+});
