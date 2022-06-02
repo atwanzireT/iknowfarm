@@ -6,93 +6,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% endblock header %}
 
-{% block content %}q
-<div class="left-col left-bg">
-    <div class="container">
-        <div class="container-fluid">
-            <div class="logo ">
-                <div class="icondiv  d-inline float-start mx-2">
-                    <img class="icon" src="{% static '/icons/iknowfarm.png' %}" alt="" srcset="">
-                </div>
-                <div class="logo-text  d-inline ">
-                    <h5>IKNOWFARM</h5>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mt-2">
-            <img src="" alt="">
-            <h6>View Profile</h6>
-            <hr style="width: 80%;">
-        </div>
-
-        <div class="mx-5">
-            <div id="dashboard">
-                <h6>DASHBOARDS</h6>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="crops">
-                <h6>CROPS</h6>
-            </div>
-            <div class="m-2" id="all-crops" style="display: none;">
-                <p>All Crops</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="livestock">
-                <h6>LIVESTOCK</h6>
-            </div>
-            <div class="m-2" style="display: none;" id="all-livestock">
-                <p>all livestock</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="farmers">
-                <h5>FARMERS</h5>
-            </div>
-            <div class="m-2" id="all-farmers" style="display: none;">
-                <p>Individual Farmers</p>
-                <p>Group Farmers</p>
-                <p>Account Mangement</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="translations">
-                <h5>TRANSLATIONS</h5>
-            </div>
-            <div class="m-2" id="all-translations" style="display: none;">
-                <p>Crop Translations</p>
-                <p>Crop Manuals</p>
-                <p>Livestock Translations</p>
-                <p>Livestock Manuals</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="utilities">
-                <h5>UTILITIES</h5>
-            </div>
-            <div class="m-2" id="district" style="display: none;">
-                <p>Districts</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <div id="upload">
-                <h5>UPLOADS</h5>
-            </div>
-            <div class="m-2" id="all-uploads" style="display: none;">
-                <p>Farmer Data Upload</p>
-                <p>Crop Videos</p>
-                <p>Livestock Videos</p>
-                <p>General Videos</p>
-            </div>
-        </div>
-        <div class="m-5">
-            <h5>Profile</h5>
-        </div>
-    </div>
-</div>
+{% block content %}
+{% include 'leftbar.html' %}
 <div class="right-container" style="margin: auto;">
+    {% include 'topbar.html' %}
     <div class="right-col">
         <div class="card">
             <div class="icon-card-div text-center"
@@ -119,7 +36,7 @@
                 </div>
             </div>
             <h5>Unregistered Users</h5>
-            <p>1,160</p>
+            <p>{{unregistered_users}}</p>
         </div>
     </div>
 
@@ -134,7 +51,7 @@
             </div>
             <div class="card-text">
                 <h6>App Users</h6>
-                <p>14,000</p>
+                <p>{{app_users}}</p>
             </div>
         </div>
     </div>
@@ -151,7 +68,7 @@
             </div>
             <div class="card-text">
                 <h6>Male Farmers</h6>
-                <p>35,000</p>
+                <p>{{male_farmers}}</p>
             </div>
         </div>
     </div>
@@ -166,7 +83,7 @@
                 </div>
             </div>
             <h6>Female Farmers</h6>
-            <p>36,000</p>
+            <p>{{female_farmers}}</p>
         </div>
     </div>
 
@@ -180,7 +97,7 @@
                 </div>
             </div>
             <h5>Total Farmers</h5>
-            <p>71,000</p>
+            <p>{{farmers}}</p>
         </div>
     </div>
 </div>

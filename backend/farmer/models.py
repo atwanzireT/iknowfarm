@@ -21,14 +21,20 @@ class FarmerGroup(MPTTModel):
 
 class SingleFarmer(models.Model):
     STATUS_CHOICES = [
-        ('Active', 'Active'),
-        ('Inactive', 'Inactive'),
+        ('A', 'Active'),
+        ('I', 'Inactive'),
+    ]
+
+    GENDER_CHOICES = [
+        ('M', "Male"),
+        ('F', "Female")
     ]
     name = models.CharField(max_length=50)
     farmer_code = models.UUIDField(default=uuid.uuid4, editable=False)
     registration_date = models.DateField(auto_now_add=True)
     expiry = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='A')
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
 
     def __str__(self):
         return self.name
