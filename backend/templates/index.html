@@ -11,97 +11,114 @@
 {% include 'leftbar.html' %}
 <div class="right-container" style="margin: auto;">
     {% include 'topbar.html' %}
-    <div class="right-col">
-        <div class="card">
-            <div class="icon-card-div text-center"
-                style="background: linear-gradient(60deg, #26c6da, #00acc1);
+    <div class="home-cards">
+        <div class="right-col">
+            <div class="card">
+                <div class="icon-card-div text-center"
+                    style="background: linear-gradient(60deg, #26c6da, #00acc1);
             box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(0 188 212 / 20%);">
-                <div class="card-icon">
-                    <img class="icon" src="{% static '/icons/cloud-computing.png' %}" alt="" srcset="">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/cloud-computing.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    <h5>App Installations</h5>
+                    <p>71,000</p>
                 </div>
             </div>
-            <div class="card-text">
-                <h5>App Installations</h5>
-                <p>71,000</p>
-            </div>
         </div>
-    </div>
 
-    <div class="right-col">
-        <div class="card">
-            <div class="icon-card-div text-center"
-                style="background: linear-gradient(60deg, #ab47bc, #8e24aa);
+        <div class="right-col">
+            <div class="card">
+                <div class="icon-card-div text-center"
+                    style="background: linear-gradient(60deg, #ab47bc, #8e24aa);
             box-shadow: 0 12px 20px -10px rgb(156 39 176 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(156 39 176 / 20%);">
-                <div class="card-icon">
-                    <img class="icon" src="{% static '/icons/left-arrow.png' %}" alt="" srcset="">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/left-arrow.png' %}" alt="" srcset="">
+                    </div>
                 </div>
+                <h5>Unregistered Users</h5>
+                <p>{{unregistered_users}}</p>
             </div>
-            <h5>Unregistered Users</h5>
-            <p>{{unregistered_users}}</p>
         </div>
-    </div>
 
-    <div class="right-col">
-        <div class="card">
-            <div class="icon-card-div text-center"
-                style="background: linear-gradient(60deg, #ffa726, #fb8c00);
+        <div class="right-col">
+            <div class="card">
+                <div class="icon-card-div text-center"
+                    style="background: linear-gradient(60deg, #ffa726, #fb8c00);
             box-shadow: 0 12px 20px -10px rgb(255 152 0 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(255 152 0 / 20%);">
-                <div class="card-icon">
-                    <img class="icon" src="{% static '/icons/clock.png' %}" alt="" srcset="">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/clock.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    <h6>App Users</h6>
+                    <p>{{app_users}}</p>
                 </div>
             </div>
-            <div class="card-text">
-                <h6>App Users</h6>
-                <p>{{app_users}}</p>
-            </div>
         </div>
-    </div>
 
-    <div class="right-col">
-        <div class="card">
-            <div class="icon-card-div text-center" style="
+        <div class="right-col">
+            <div class="card">
+                <div class="icon-card-div text-center" style="
                 background: linear-gradient(60deg, #ec407a, #d81b60);
                 box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(233 30 99 / 40%);
             ">
-                <div class="card-icon">
-                    <img class="icon" src="{% static '/icons/standing-up-man-.png' %}" alt="" srcset="">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/standing-up-man-.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="card-text">
+                    <h6>Male Farmers</h6>
+                    <p>{{male_farmers}}</p>
                 </div>
             </div>
-            <div class="card-text">
-                <h6>Male Farmers</h6>
-                <p>{{male_farmers}}</p>
-            </div>
         </div>
-    </div>
 
-    <div class="right-col">
-        <div class="card">
-            <div class="icon-card-div text-center"
-                style="background: linear-gradient(60deg, #ef5350, #e53935);
+        <div class="right-col">
+            <div class="card">
+                <div class="icon-card-div text-center"
+                    style="background: linear-gradient(60deg, #ef5350, #e53935);
             box-shadow: 0 12px 20px -10px rgb(244 67 54 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(244 67 54 / 20%);">
-                <div class="card-icon">
-                    <img class="icon" src="{% static '/icons/girl.png' %}" alt="" srcset="">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/girl.png' %}" alt="" srcset="">
+                    </div>
                 </div>
+                <h6>Female Farmers</h6>
+                <p>{{female_farmers}}</p>
             </div>
-            <h6>Female Farmers</h6>
-            <p>{{female_farmers}}</p>
+        </div>
+
+        <div class="right-col">
+            <div class="card">
+                <div class="icon-card-div text-center"
+                    style="background: linear-gradient(60deg, #66bb6a, #43a047);
+            box-shadow: 0 12px 20px -10px rgb(76 175 80 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(76 175 80 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/farmer.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <h5>Total Farmers</h5>
+                <p>{{farmers}}</p>
+            </div>
         </div>
     </div>
 
-    <div class="right-col">
-        <div class="card">
-            <div class="icon-card-div text-center"
-                style="background: linear-gradient(60deg, #66bb6a, #43a047);
-            box-shadow: 0 12px 20px -10px rgb(76 175 80 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(76 175 80 / 20%);">
-                <div class="card-icon">
-                    <img class="icon" src="{% static '/icons/farmer.png' %}" alt="" srcset="">
-                </div>
+</div>
+<div class="chart_card" id="gender_chart" style="float: right; margin: 50px;">
+    <div class="row">
+        <div class="col">
+            <div class="mt-10 card">
+                {% include 'visualize/genderBarChart.html' %}
             </div>
-            <h5>Total Farmers</h5>
-            <p>{{farmers}}</p>
+        </div>
+        <div class="col">
+            <div class="mt-10 card">
+                {% include 'visualize/genderPieChart.html' %}
+            </div>
         </div>
     </div>
-    {% include 'chart.html' %}
+
 </div>
 <script src="{% static '/js/jquery.js' %}"></script>
 {% endblock content %}

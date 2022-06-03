@@ -83,3 +83,8 @@ margin: auto;
     flex-direction: column;
     order: 1; 
 }
+
+.chart_card{
+    float: right;
+    margin: auto;
+}
