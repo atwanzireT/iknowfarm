@@ -1,6 +1,10 @@
+from django import views
 from django.urls import path
-from . import views
+from .views import *
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', index, name='home'),
+    path('crops/', CropsListView.as_view(), name="crops"),
+    path('livestock/', LiveStockListView.as_view(), name="livestock"),
+
 ]
