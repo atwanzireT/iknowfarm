@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from .models import Crop, Livestock
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
