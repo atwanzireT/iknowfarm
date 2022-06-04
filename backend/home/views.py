@@ -53,7 +53,7 @@ class UpdateCropView(generic.UpdateView):
 
 class AddCropView(generic.CreateView):
     model = Crop
-    template_name = 'editCrop.html'
+    template_name = 'addCrop.html'
     form_class = CropForm
 
     def get_context_data(self, **kwargs):
