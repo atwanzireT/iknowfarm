@@ -25,7 +25,7 @@
         </div>
         <!-- Headings -->
         <div class="row">
-            <div class="col-9">
+            <div class="col-8">
                 <div class="card m-2" style="height: auto;">
                     <div class="title-card">
                         <div class="row mt-5">
@@ -72,15 +72,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-auto" style="width: 30%;">
                 <div class="card m-2">
                     <div class="text-center">
                         <h5>Add Crop</h5>
                     </div>
-                    <form action="" method="post">
+                    <form action="" method="post" style="width: 30%;margin-bottom: 10px;">
                         {% csrf_token %}
                         {{form.media}} {{form.as_p}}
-                        <button class="btn btn-style btn-outline-primary">Submit</button>
+                        <button class="btn btn-style btn-outline-success">Submit</button>
                     </form>
                 </div>
             </div>

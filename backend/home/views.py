@@ -39,10 +39,11 @@ class LiveStockListView(LoginRequiredMixin, generic.ListView):
     context_object_name= 'livestock'
     login_url = '/profile/login/'
 
-class UpdateCropView(generic.UpdateView):
+class UpdateCropView(LoginRequiredMixin, generic.UpdateView):
     model = Crop
     template_name = 'editCrop.html'
     form_class = CropForm
+    login_url = '/profile/login/'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -51,10 +52,11 @@ class UpdateCropView(generic.UpdateView):
         context['crops'] = Crop.objects.all()
         return context
 
-class AddCropView(generic.CreateView):
+class AddCropView(LoginRequiredMixin, generic.CreateView):
     model = Crop
     template_name = 'addCrop.html'
     form_class = CropForm
+    login_url = '/profile/login/'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
