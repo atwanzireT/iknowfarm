@@ -1,0 +1,24 @@
+input{
+    text-align: center;
+    width: 80%;
+    background-color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgb(77, 77, 77);
+}
+
+label{
+    display: block;
+}
+
+input[type="file"] {
+    border: 1px solid rgb(77, 77, 77);
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+#id_image{
+    color: red;
+}

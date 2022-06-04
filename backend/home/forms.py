@@ -11,7 +11,7 @@ class CropForm(forms.ModelForm):
         fields = ('name','arabic', 'lugbar', 'image')
 
     widgets = {
-        'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Crop Name'}),
+        'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Name'}),
         'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
         'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
     }
