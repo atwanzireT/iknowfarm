@@ -17,3 +17,6 @@ admin.site.register(
 )
 
 admin.site.register(SingleFarmer)
+admin.site.register(Country)
+admin.site.register(District)
+admin.site.register(Village)
