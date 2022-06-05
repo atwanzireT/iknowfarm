@@ -6,7 +6,8 @@ from django.views import generic
 from .models import Crop, Livestock
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
-from .forms import CropForm
+from .forms import CropForm, LivestockForm
+from django.urls import reverse
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
@@ -68,7 +69,7 @@ class AddCropView(LoginRequiredMixin, generic.CreateView):
 class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
     model = Crop
     template_name = 'editLivestock.html'
-    form_class = CropForm
+    form_class = LivestockForm
     login_url = '/profile/login/'
 
     def get_context_data(self, **kwargs):
@@ -77,10 +78,14 @@ class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
         # Add in a QuerySet of all the books
         context['crops'] = Livestock.objects.all()
         return context
+
+    def get_success_url(self):
+        return reverse('addLiveStock')
+
 class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
     model = Livestock
     template_name = 'addlivestock.html'
-    form_class = CropForm
+    form_class = LivestockForm
     login_url = '/profile/login/'
 
     def get_context_data(self, **kwargs):
@@ -89,3 +94,6 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
         # Add in a QuerySet of all the books
         context['crops'] = Livestock.objects.all()
         return context
+
+    def get_success_url(self):
+        return reverse('addLiveStock')

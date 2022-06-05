@@ -78,7 +78,7 @@
                     <div class="text-center">
                         <h5>Add Crop</h5>
                     </div>
-                    <form action="" method="post">
+                    <form action="" method="post"  enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form.media}} {{form.as_p}}
                         <button class="btn btn-style btn-outline-success m-2">Submit</button>

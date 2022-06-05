@@ -8,4 +8,6 @@ urlpatterns = [
     path('livestock/', LiveStockListView.as_view(), name="livestock"),
     path('updatecrop/<int:pk>/', UpdateCropView.as_view(), name="updateCrops"),
     path('addcrop/', AddCropView.as_view(), name="addCrops"),
+    path('updatelivestock/<int:pk>/', UpdateLiveStockView.as_view(), name="updateLivestock"),
+    path('addlivestock/', AddLiveStockView.as_view(), name="addLiveStock"),
 ]
