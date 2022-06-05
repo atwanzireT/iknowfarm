@@ -64,3 +64,28 @@ class AddCropView(LoginRequiredMixin, generic.CreateView):
         # Add in a QuerySet of all the books
         context['crops'] = Crop.objects.all()
         return context
+
+class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
+    model = Crop
+    template_name = 'editLivestock.html'
+    form_class = CropForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['crops'] = Livestock.objects.all()
+        return context
+class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
+    model = Livestock
+    template_name = 'addlivestock.html'
+    form_class = CropForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['crops'] = Livestock.objects.all()
+        return context

@@ -10,6 +10,8 @@ input{
 
 label{
     display: block;
+    font-size: 13px;
+    font-weight: 900;
 }
 
 input[type="file"] {
@@ -22,3 +24,18 @@ input[type="file"] {
 #id_image{
     color: red;
 }
+
+input[type=file]::file-selector-button {
+    border: 2px solid #198754;
+    padding: .2em .4em;
+    border-radius: .2em;
+    background-color: #198754;
+    transition: 1s;
+    color: white;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color: #198754;
+    border: 2px solid #198754;
+    color: white;
+  }

@@ -16,6 +16,16 @@ class CropForm(forms.ModelForm):
         'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
     }
 
+class LivestockForm(forms.ModelForm):
+    class Meta:
+        model = Livestock
+        fields = ('name','arabic', 'lugbar', 'image')
+
+    widgets = {
+        'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Name'}),
+        'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
+        'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
+    }
 # class SignupForm(UserCreationForm):
 #     GENDER_CHOICES = [
 #         ('M', "Male"),
