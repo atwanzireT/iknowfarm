@@ -101,7 +101,7 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
 
 class CropsTranslationListView(LoginRequiredMixin, generic.ListView):
     model = Crop
-    template_name = "crop_list.html"
+    template_name = "cropTransTrans_list.html"
     context_object_name= 'crops'
     login_url = '/profile/login/'
 
