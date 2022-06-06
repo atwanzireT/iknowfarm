@@ -9,3 +9,6 @@ def login(request):
 def logout_func(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def Profile(request):
+    return render(request, 'profile.html', {})

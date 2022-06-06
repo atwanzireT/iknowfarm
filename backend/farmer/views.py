@@ -21,10 +21,10 @@ class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['farmer'] = SingleFarmer.objects.all()
+        context['farmers'] = SingleFarmer.objects.all()
         return context
 
-class AddCropView(LoginRequiredMixin, generic.CreateView):
+class AddFarmerView(LoginRequiredMixin, generic.CreateView):
     model = SingleFarmer
     template_name = 'addFarmer.html'
     form_class = FarmerForm
@@ -34,5 +34,5 @@ class AddCropView(LoginRequiredMixin, generic.CreateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['farmer'] = SingleFarmer.objects.all()
+        context['farmers'] = SingleFarmer.objects.all()
         return context

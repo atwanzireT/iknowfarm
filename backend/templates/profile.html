@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{% endblock header %}
+
+{% block content %}
+{% include 'leftbar.html' %}
+<div class="right-container" style="margin: auto;">
+    {% include 'topbar.html' %}
+    <div class="home-cards">
+        <div class="row">
+            <div class="col-8">
+                <div class="card m-2">
+                    <h3>Admin Profile</h3>
+                    <div class="row m-2">
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Nationality</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nationality">
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Telephone</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Telephone">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Gender</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Gender">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Physical Address</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Physical Address">
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-success float-end m-2">Update Profile</button>
+                    </div>
+                </div>
+
+                <div class="card m-2">
+                    <h3>Admin Password Reset</h3>
+                    <div class="row m-2">
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Current Password</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Current Password">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">New Password</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="New Password">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-success float-end m-2">Update Password</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card m-2">
+                    <div class="m-3">
+                        <label for="formFileMultiple" class="form-label">Upload</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="{% static '/js/jquery.js' %}"></script>
+{% endblock content %}
