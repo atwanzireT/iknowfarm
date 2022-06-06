@@ -1,3 +1,4 @@
+import re
 from unicodedata import name
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
@@ -70,5 +71,7 @@ class SingleFarmer(models.Model):
     @property
     def age(self):
         today = date.today()
-        days =   self.Date_of_Birth
-        return days
+        days = today - (self.Date_of_Birth)
+        year = days.days // 365
+        return f"{year} years"
+        
