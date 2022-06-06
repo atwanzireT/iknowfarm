@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
+from .forms import *
 
 # Create your views here.
 class FarmersListView(LoginRequiredMixin, generic.ListView):
@@ -9,3 +10,29 @@ class FarmersListView(LoginRequiredMixin, generic.ListView):
     template_name = "farmer_list.html"
     context_object_name= 'farmers'
     login_url = '/profile/login/'
+
+class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
+    model = SingleFarmer
+    template_name = 'editFarmer.html'
+    form_class = FarmerForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['farmer'] = SingleFarmer.objects.all()
+        return context
+
+class AddCropView(LoginRequiredMixin, generic.CreateView):
+    model = SingleFarmer
+    template_name = 'addFarmer.html'
+    form_class = FarmerForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['farmer'] = SingleFarmer.objects.all()
+        return context
