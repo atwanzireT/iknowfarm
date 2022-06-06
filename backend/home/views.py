@@ -97,3 +97,16 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse('addLiveStock')
+
+
+class CropsTranslationListView(LoginRequiredMixin, generic.ListView):
+    model = Crop
+    template_name = "crop_list.html"
+    context_object_name= 'crops'
+    login_url = '/profile/login/'
+
+class LiveStockTranslationListView(LoginRequiredMixin, generic.ListView):
+    model = Livestock
+    template_name = "livestock_list.html"
+    context_object_name= 'livestock'
+    login_url = '/profile/login/'
