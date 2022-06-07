@@ -46,12 +46,12 @@
                                 <h6>Image</h6>
                             </div>
                             <div class="col">
-                                <h6>Action (Edit / Delete) </h6>
+                                <h6>Action</h6>
                             </div>
                         </div>
                     </div>
                     <hr style="width: 90%; margin: auto;">
-                    {% include 'crop_items.html' %}
+                    {% include 'cropTrans_items.html' %}
                     <div class="container">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination m-3 float-end">
@@ -76,7 +76,7 @@
             <div class="col-auto" style="width: 30%;">
                 <div class="card m-2">
                     <div class="text-center">
-                        <h5>Add Crop</h5>
+                        <h5>Edit Translation</h5>
                     </div>
                     <form action="" method="post"  enctype="multipart/form-data">
                         {% csrf_token %}
