@@ -4,6 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .form import AddVideoForm
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+
 
 # Create your views here.
 @login_required(login_url='/profile/login/')

@@ -113,7 +113,7 @@ class LiveStockTranslationListView(LoginRequiredMixin, generic.ListView):
     login_url = '/profile/login/'
 
 class UpdateLiveStockTranslationView(LoginRequiredMixin, generic.UpdateView):
-    model = Crop
+    model = Livestock
     template_name = 'editLivestockTranslation.html'
     form_class = LivestockTranslationForm
     login_url = '/profile/login/'

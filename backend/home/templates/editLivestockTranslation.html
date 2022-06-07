@@ -46,7 +46,7 @@
                                 <h6>Image</h6>
                             </div>
                             <div class="col">
-                                <h6>Action (Edit / Delete) </h6>
+                                <h6>Action </h6>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <form action="" method="post"  enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form.media}} {{form.as_p}}
-                        <button class="btn btn-style btn-outline-success">Submit</button>
+                        <button class="btn btn-style btn-outline-success mb-2">Submit</button>
                     </form>
                 </div>
             </div>
