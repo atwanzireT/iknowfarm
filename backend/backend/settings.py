@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'farmer',
     'mptt',
     'home',
+    'feedback',
+    'upload',
 ]
 
 MIDDLEWARE = [

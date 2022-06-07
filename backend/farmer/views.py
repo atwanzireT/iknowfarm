@@ -36,3 +36,4 @@ class AddFarmerView(LoginRequiredMixin, generic.CreateView):
         # Add in a QuerySet of all the books
         context['farmers'] = SingleFarmer.objects.all()
         return context
+
