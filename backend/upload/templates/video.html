@@ -15,16 +15,19 @@
     <div class="home-cards">
         <div class="row m-2">
             <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <video src="video.mp4"></video>
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                  </div
-            </div>
-        </div>
-    </div>
 
+{% for rs in crop_videos %}
+<div class="card" style="width: 18rem;">
+    <video src="{{rs.english_video.url}}"></video>
+    <div class="card-body">
+        <h5 class="card-title">{{rs.title}}</h5>
+    </div </div>
 </div>
+{% endfor %}
+    
+            </div>
 
-<script src="{% static '/js/jquery.js' %}"></script>
-{% endblock content %}
+        </div>
+
+        <script src="{% static '/js/jquery.js' %}"></script>
+        {% endblock content %}
