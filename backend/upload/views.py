@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import VideoUpload
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
-from .forms import VideoUploadForm
+from .form import AddVideoForm
 
 # Create your views here.
 def CSVupload(request):
@@ -17,10 +17,10 @@ def VideoUploads(request):
         'livestock_videos': livestock_videos,
         'videos': videos
     }
-    return render(request, "cropVideo.html", dic)
+    return render(request, "video.html", dic)
 
 class AddVideoView(LoginRequiredMixin, generic.CreateView):
     model = VideoUploads
     template_name = 'addVideo.html'
-    form_class = VideoUploadForm
+    form_class = AddVideoForm
     login_url = '/profile/login/'

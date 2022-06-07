@@ -3,7 +3,7 @@
 
 {% block header %}
 <link rel="stylesheet" href="{% static '/css/home.css' %}">
-<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<link rel="stylesheet" href="{% static '/css/video.css' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 {% endblock header %}
@@ -15,17 +15,16 @@
     <div class="home-cards">
         {% include 'sortCrops.html' %}
         <div class="row m-2">
+            {% for rs in crop_videos %}
             <div class="col">
-                {% for rs in crop_videos %}
                 <div class="card" style="width: 18rem;">
                     <video src="{{rs.english_video.url}}"></video>
                     <div class="card-body">
                         <h5 class="card-title">{{rs.title}}</h5>
                     </div </div>
                 </div>
-                {% endfor %}
             </div>
-
+            {% endfor %}
         </div>
 
         <script src="{% static '/js/jquery.js' %}"></script>
