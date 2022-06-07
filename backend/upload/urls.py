@@ -1,9 +1,10 @@
 from django import views
-from farmer.views import CSVupload
+from farmer.views import CSVupload, VideoUploads
 from .models import *
 from django.urls import path
 
 
 urlpatterns = [
-    path('upload/data/', CSVupload, name="uploadCsv"),
+    path('data/', CSVupload, name="uploadCsv"),
+    path('video/', VideoUploads, name="uploadVideo"),
 ]

@@ -23,5 +23,5 @@ class Feedback(models.Model):
 
 class FeedbackForm(ModelForm):
     class Meta:
-        model = Comment
+        model = Feedback
         fields = ['subject', 'comment', 'rate']

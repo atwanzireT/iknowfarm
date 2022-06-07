@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{% endblock header %}
+
+{% block content %}
+{% include 'leftbar.html' %}
+<div class="right-container" style="margin: auto;">
+    {% include 'topbar.html' %}
+    <div class="home-cards">
+        <div class="row m-2">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <video src="video.mp4"></video>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                  </div
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="{% static '/js/jquery.js' %}"></script>
+{% endblock content %}
