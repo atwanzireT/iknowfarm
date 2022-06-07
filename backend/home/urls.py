@@ -12,4 +12,6 @@ urlpatterns = [
     path('addcrop/', AddCropView.as_view(), name="addCrops"),
     path('updatelivestock/<int:pk>/', UpdateLiveStockView.as_view(), name="updateLivestock"),
     path('addlivestock/', AddLiveStockView.as_view(), name="addLiveStock"),
+    path('updatecropTrans/<int:pk>/', UpdateCropTranslationView.as_view(), name="updateCropsTrans"),
+    path('updatelivestockTrans/<int:pk>/', UpdateLiveStockTranslationView.as_view(), name="updateLivestockTrans"),
 ]

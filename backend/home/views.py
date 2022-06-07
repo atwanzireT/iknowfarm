@@ -6,7 +6,7 @@ from django.views import generic
 from .models import Crop, Livestock
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
-from .forms import CropForm, LivestockForm
+from .forms import CropForm, CropTranslationForm, LivestockForm, LivestockTranslationForm
 from django.urls import reverse
 
 # Create your views here.
@@ -67,7 +67,7 @@ class AddCropView(LoginRequiredMixin, generic.CreateView):
         return context
 
 class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
-    model = Crop
+    model = Livestock
     template_name = 'editLivestock.html'
     form_class = LivestockForm
     login_url = '/profile/login/'
@@ -76,7 +76,7 @@ class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['crops'] = Livestock.objects.all()
+        context['livestock'] = Livestock.objects.all()
         return context
 
     def get_success_url(self):
@@ -99,14 +99,44 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
         return reverse('addLiveStock')
 
 
+# Translations Views
 class CropsTranslationListView(LoginRequiredMixin, generic.ListView):
     model = Crop
-    template_name = "cropTransTrans_list.html"
+    template_name = "cropTrans_list.html"
     context_object_name= 'crops'
     login_url = '/profile/login/'
 
 class LiveStockTranslationListView(LoginRequiredMixin, generic.ListView):
     model = Livestock
-    template_name = "livestock_list.html"
+    template_name = "livestockTrans_list.html"
     context_object_name= 'livestock'
     login_url = '/profile/login/'
+
+class UpdateLiveStockTranslationView(LoginRequiredMixin, generic.UpdateView):
+    model = Crop
+    template_name = 'editLivestockTranslation.html'
+    form_class = LivestockTranslationForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['livestock'] = Livestock.objects.all()
+        return context
+
+    def get_success_url(self):
+        return reverse('addLiveStock')
+
+class UpdateCropTranslationView(LoginRequiredMixin, generic.UpdateView):
+    model = Crop
+    template_name = 'editCropTranslation.html'
+    form_class = CropTranslationForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['crops'] = Crop.objects.all()
+        return context

@@ -1,42 +1,38 @@
 <style>
-    #edit_link{
+    #edit_link {
         color: blueviolet;
         font-size: 14px;
     }
-    #manuel_link{
+
+    #manuel_link {
         color: cornflowerblue;
         font-size: 14px;
     }
 </style>
 {% for rs in livestock %}
 <div class="title-card">
- <div class="row mt-5">
-     <div class="col-2">
-         <p>{{rs.id}}</p>
-     </div>
-     <div class="col">
-         <p>{{rs.name}}</p>
-     </div>
-     <div class="col">
-         <p>{{rs.arabic}}</p>
-     </div>
-     <div class="col">
-         <p>{{rs.lugbar}}</p>
-     </div>
-     <div class="col ">
-         <img style="width: 100px; margin-top: -40px; margin-bottom: 2px;" src="{{rs.image}}" alt="" srcset="">
-     </div>
-     <div class="col">
-        <div class="row">
-            <div class="col-auto">
-                <a id="edit_link" href="/updatelivestock/{{rs.id}}">Edit</a>
-            </div>
-            <div class="col-auto">
-                <a id="manuel_link" href="#">Manuel</a>
+    <div class="row mt-5">
+        <div class="col-2">
+            <p>{{rs.id}}</p>
+        </div>
+        <div class="col">
+            <p>{{rs.name}}</p>
+        </div>
+        <div class="col">
+            <p>{{rs.arabic}}</p>
+        </div>
+        <div class="col">
+            <p>{{rs.lugbar}}</p>
+        </div>
+        <div class="col ">
+            <img style="width: 100px; margin-top: -40px; margin-bottom: 2px;" src="{{rs.image}}" alt="" srcset="">
+        </div>
+        <div class="col">
+            <div>
+                <a id="edit_link" href="#"><i class="fas fa-pen mx-2"></i><span>Translate</span></a>
             </div>
         </div>
-     </div>
- </div>
+    </div>
 </div>
 <hr style="width: 90%; margin: auto;">
 {% endfor %}

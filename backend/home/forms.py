@@ -26,6 +26,27 @@ class LivestockForm(forms.ModelForm):
         'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
         'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
     }
+
+class CropTranslationForm(forms.ModelForm):
+    class Meta:
+        model = Crop
+        fields = ('arabic', 'lugbar')
+
+    widgets = {
+        'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
+        'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
+    }
+
+class LivestockTranslationForm(forms.ModelForm):
+    class Meta:
+        model = Livestock
+        fields = ('arabic', 'lugbar')
+
+    widgets = {
+        'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
+        'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
+    }
+
 # class SignupForm(UserCreationForm):
 #     GENDER_CHOICES = [
 #         ('M', "Male"),

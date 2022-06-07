@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/form.css' %}">
+{% endblock header %}
+
+
+{% block content %}
+
+{% include 'leftbar.html' %}
+<div class="container crop-container" style="margin: auto;">
+    {% include 'topbar.html' %}
+    <div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6>All LiveStock</h6>
+            </div>
+            <div class="col-5"></div>
+            <div class="col">
+                <a href="/addlivestock/" class="btn btn-small btn-success">Add LiveStock</a>
+            </div>
+        </div>
+        <!-- Headings -->
+        <div class="row">
+            <div class="col-8">
+                <div class="card m-2" style="height: auto;">
+                    <div class="title-card">
+                        <div class="row mt-5">
+                            <div class="col-2">
+                                <h6>#</h6>
+                            </div>
+                            <div class="col">
+                                <h6>Name</h6>
+                            </div>
+                            <div class="col">
+                                <h6>Arabic</h6>
+                            </div>
+                            <div class="col">
+                                <h6>Lugbar</h6>
+                            </div>
+                            <div class="col">
+                                <h6>Image</h6>
+                            </div>
+                            <div class="col">
+                                <h6>Action (Edit / Delete) </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="width: 90%; margin: auto;">
+                    {% include 'cropTrans_items.html' %}
+                    <div class="container">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination m-3 float-end">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto" style="width: 30%;">
+                <div class="card m-2">
+                    <div class="text-center">
+                        <h5>Edit LiveStock</h5>
+                    </div>
+                    <form action="" method="post"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.media}} {{form.as_p}}
+                        <button class="btn btn-style btn-outline-success">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static '/js/jquery.js' %}"></script>
+
+
+{% endblock content %}
