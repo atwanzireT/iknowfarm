@@ -14,4 +14,4 @@ def VideoUploads(request):
         'livestock_videos': livestock_videos,
         'videos': videos
     }
-    return render(request, "video.html", dic)
+    return render(request, "cropVideo.html", dic)

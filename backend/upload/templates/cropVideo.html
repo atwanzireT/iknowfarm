@@ -13,18 +13,17 @@
 <div class="right-container" style="margin: auto;">
     {% include 'topbar.html' %}
     <div class="home-cards">
+        {% include 'sortCrops.html' %}
         <div class="row m-2">
             <div class="col">
-
-{% for rs in crop_videos %}
-<div class="card" style="width: 18rem;">
-    <video src="{{rs.english_video.url}}"></video>
-    <div class="card-body">
-        <h5 class="card-title">{{rs.title}}</h5>
-    </div </div>
-</div>
-{% endfor %}
-    
+                {% for rs in crop_videos %}
+                <div class="card" style="width: 18rem;">
+                    <video src="{{rs.english_video.url}}"></video>
+                    <div class="card-body">
+                        <h5 class="card-title">{{rs.title}}</h5>
+                    </div </div>
+                </div>
+                {% endfor %}
             </div>
 
         </div>
