@@ -12,18 +12,18 @@ from django.urls import reverse
 # Create your views here.
 @login_required(login_url='/profile/login/')
 def index(request):
-    # app_users = UserProfile.objects.filter(app_user = 'T').count()
-    male_farmers = Farmers.objects.filter(malefarmers__isnull=False).count()
-    female_farmers = Farmers.objects.filter(femalefarmers__isnull=False).count()
-    farmers = Farmers.objects.filter(registrationtype = 0).count()
-    # unregistered_users = UserProfile.objects.filter(registered = 'T').count()
+    app_users = Users.objects.all().count()
+    male_farmers = Farmers.objects.filter(gender = 'male').count()
+    female_farmers = Farmers.objects.filter(gender = 'female').count()
+    farmers = Farmers.objects.filter(registrationtype = 1).count()
+    unregistered_users = UnregistredUsers.objects.all().count()
 
     dic = {
-        # 'app_users':app_users,
+        'app_users':app_users,
         'male_farmers':male_farmers,
         'female_farmers':female_farmers,
         'farmers':farmers,
-        # 'unregistered_users':unregistered_users,
+        'unregistered_users':unregistered_users,
     }
     return render(request, 'index.html', dic)
 
