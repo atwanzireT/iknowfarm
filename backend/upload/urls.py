@@ -1,5 +1,5 @@
 from django import views
-from .views import CSVupload, CropVideoUploads, AddVideoView, LivestockVideoUploads, VideoUploads
+from .views import  CropVideoUploads, AddVideoView, LivestockVideoUploads, VideoUploads, CSVupload
 from .models import *
 from django.urls import path
 

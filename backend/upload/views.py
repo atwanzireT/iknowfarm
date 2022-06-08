@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import VideoUpload
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
-from .form import AddVideoForm
+from .form import AddCsvForm, AddVideoForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
@@ -10,7 +10,12 @@ from django.urls import reverse
 # Create your views here.
 @login_required(login_url='/profile/login/')
 def CSVupload(request):
-    return render(request, 'farmercsv.html', {})
+    form = AddCsvForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return render(request, 'farmercsv.html', {'form': form})
+    form = AddCsvForm()
+    return render(request, 'farmercsv.html', {'form': form})
 
 @login_required(login_url='/profile/login/')
 def CropVideoUploads(request):
