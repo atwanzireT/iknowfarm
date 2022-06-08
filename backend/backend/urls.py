@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('farmers/', include('farmer.urls')),
     path('uploads/', include('upload.urls')),
+    path('translation/', include('translation.urls')),
     # path('feedback/', include('feedback.urls')),
 
 

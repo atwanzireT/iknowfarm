@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock header %}
+
+{% block content %}
+{% include 'leftbar.html' %}
+<div class="right-container" style="margin: auto;">
+    {% include 'topbar.html' %}
+    <div class="home-cards">
+        <div class="card">
+            <div>
+                <h6>
+                    ALL MANUAL TRANSLATIONS
+                </h6>
+                <!-- <div class="row">
+                    <div class="col">
+                        Crops
+                    </div>
+                    <div class="col">
+                        
+                    </div>
+                </div> -->
+                <div>
+                    <h5>Manuel</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="p-2">
+
+                {% for rs in tomato %}
+                <p>
+                    <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        {{rs.english}}
+                    </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col">
+                                <a class="text-success" href="#">View English Version</a>
+                            </div>
+                            <div class="col">
+                                <a class="text-success" href="#">View Lughara Version</a>
+                            </div>
+                            <div class="col">
+                                <a class="text-success" href="#">View English Version</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

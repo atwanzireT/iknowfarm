@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home',
     # 'feedback',
     'upload',
+    'translation',
 ]
 
 MIDDLEWARE = [
