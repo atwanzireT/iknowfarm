@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 # from user.models import UserProfile
 from django.contrib.auth.decorators import login_required
 from django.views import generic
@@ -25,19 +26,22 @@ from django.urls import reverse
 #         # 'unregistered_users':unregistered_users,
 #     }
 #     return render(request, 'index.html', dic)
+@login_required(login_url='/profile/login/')
+def crops(request):
+    crop_translations = Translations.objects.filter(type = 'Crop')
+    dic = {
+        'crop_translations':crop_translations,
+    }
+    return render(request, 'crop_list.html', dic)
 
-# @login_required(login_url='/profile/login/')
-class CropsListView(LoginRequiredMixin, generic.ListView):
-    model = Crops
-    template_name = "crop_list.html"
-    context_object_name= 'crops'
-    login_url = '/profile/login/'
+@login_required(login_url='/profile/login/')
+def livestock(request):
+    livestock_translations = Translations.objects.filter(type = 'liv')
+    dic = {
+        'livestock_translations':livestock_translations,
+    }
+    return render(request, 'livestock_list.html', dic)
 
-class LiveStockListView(LoginRequiredMixin, generic.ListView):
-    model = Livestock
-    template_name = "livestock_list.html"
-    context_object_name= 'livestock'
-    login_url = '/profile/login/'
 
 # class UpdateCropView(LoginRequiredMixin, generic.UpdateView):
 #     model = Crop
