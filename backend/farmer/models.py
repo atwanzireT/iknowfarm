@@ -26,22 +26,21 @@ class Village(models.Model):
     def __str__(self) -> str:
         return self.village
 
-class FarmerGroup(MPTTModel):
+class FarmerGroup(models.Model):
     STATUS_CHOICES = [
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
     ]
 
     name = models.CharField(max_length=50, unique=True)
-    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     registration_date = models.DateField(auto_now_add=True)
     expiry = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='A')
     recommender = models.CharField(max_length=45, blank=True, null=True)
     Village = models.ForeignKey(Village, on_delete=models.CASCADE, blank=True, null=True)
 
-    class MPTTMeta:
-        order_insertion_by = ['name']
+    def __str__(self) -> str:
+        return self.name
 
 class SingleFarmer(models.Model):
     STATUS_CHOICES = [
@@ -63,6 +62,7 @@ class SingleFarmer(models.Model):
     recommender = models.CharField(max_length=45, blank=True, null=True)
     phone = models.CharField(max_length=45, blank=True, null=True)
     Village = models.ForeignKey(Village, on_delete=models.CASCADE, blank=True, null=True)
+    FarmerGroup = models.ForeignKey(FarmerGroup, on_delete=models.CASCADE, blank=True, null=True)
 
 
     def __str__(self):

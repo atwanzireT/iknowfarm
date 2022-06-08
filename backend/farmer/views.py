@@ -5,6 +5,9 @@ from django.views import generic
 from .forms import *
 
 # Create your views here.
+def farmer_groups(request):
+    dic = {}
+    return render(request, 'farmergroups.html', dic)
 class FarmersListView(LoginRequiredMixin, generic.ListView):
     model = SingleFarmer
     template_name = "farmer_list.html"
