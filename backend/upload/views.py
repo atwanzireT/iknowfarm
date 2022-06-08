@@ -1,25 +1,16 @@
 from django.shortcuts import render
-from .models import VideoUpload
+from .models import Videos
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
-from .form import AddCsvForm, AddVideoForm
+from .form import *
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
-def CSVupload(request):
-    form = AddCsvForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-        return render(request, 'farmercsv.html', {'form': form})
-    form = AddCsvForm()
-    return render(request, 'farmercsv.html', {'form': form})
-
-@login_required(login_url='/profile/login/')
 def CropVideoUploads(request):
-    crop_videos = VideoUpload.objects.filter(crop_id__isnull=False)
+    crop_videos = Videos.objects.filter(cropid__isnull=False)
 
     dic = {
         'crop_videos': crop_videos,	
@@ -28,7 +19,7 @@ def CropVideoUploads(request):
 
 @login_required(login_url='/profile/login/')
 def LivestockVideoUploads(request):
-    livestock_videos = VideoUpload.objects.filter(Livestock_id__isnull=False)
+    livestock_videos = Videos.objects.filter(livestockid__isnull=False)
     dic = {
         'livestock_videos': livestock_videos,
     }
@@ -36,17 +27,17 @@ def LivestockVideoUploads(request):
 
 @login_required(login_url='/profile/login/')
 def VideoUploads(request):
-    videos = VideoUpload.objects.all()
+    videos = Videos.objects.all()
     dic = {
         'videos': videos,
     }
     return render(request, "video.html", dic)
     
-class AddVideoView(LoginRequiredMixin, generic.CreateView):
-    model = VideoUpload
-    template_name = 'addVideo.html'
-    form_class = AddVideoForm
-    login_url = '/profile/login/'
+# class AddVideoView(LoginRequiredMixin, generic.CreateView):
+#     model = Videos
+#     template_name = 'addVideo.html'
+#     form_class = AddVideoForm
+#     login_url = '/profile/login/'
 
-    def get_success_url(self):
-        return reverse('addLiveStock')
+#     def get_success_url(self):
+#         return reverse('addLiveStock')

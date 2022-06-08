@@ -1,6 +1,4 @@
-from distutils.command.upload import upload
 from django.db import models
-
 # Create your models here.
 class Crops(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)

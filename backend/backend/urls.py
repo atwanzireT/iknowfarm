@@ -24,7 +24,7 @@ urlpatterns = [
     path('profile/', include('user.urls')),
     path('', include('home.urls')),
     path('farmers/', include('farmer.urls')),
-    # path('uploads/', include('upload.urls')),
+    path('uploads/', include('upload.urls')),
     # path('feedback/', include('feedback.urls')),
 
 

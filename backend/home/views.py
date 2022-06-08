@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-# from user.models import UserProfile
+from farmer.models import Farmers
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from .models import Crops, Livestock
@@ -10,22 +10,23 @@ from django.http import JsonResponse
 from django.urls import reverse
 
 # Create your views here.
-# @login_required(login_url='/profile/login/')
-# def index(request):
-#     # app_users = UserProfile.objects.filter(app_user = 'T').count()
-#     male_farmers = SingleFarmer.objects.filter(gender = 'M').count()
-#     female_farmers = SingleFarmer.objects.filter(gender = 'F').count()
-#     farmers = SingleFarmer.objects.all().count()
-#     # unregistered_users = UserProfile.objects.filter(registered = 'T').count()
+@login_required(login_url='/profile/login/')
+def index(request):
+    # app_users = UserProfile.objects.filter(app_user = 'T').count()
+    male_farmers = Farmers.objects.filter(malefarmers__isnull=False).count()
+    female_farmers = Farmers.objects.filter(femalefarmers__isnull=False).count()
+    farmers = Farmers.objects.filter(registrationtype = 0).count()
+    # unregistered_users = UserProfile.objects.filter(registered = 'T').count()
 
-#     dic = {
-#         # 'app_users':app_users,
-#         'male_farmers':male_farmers,
-#         'female_farmers':female_farmers,
-#         'farmers':farmers,
-#         # 'unregistered_users':unregistered_users,
-#     }
-#     return render(request, 'index.html', dic)
+    dic = {
+        # 'app_users':app_users,
+        'male_farmers':male_farmers,
+        'female_farmers':female_farmers,
+        'farmers':farmers,
+        # 'unregistered_users':unregistered_users,
+    }
+    return render(request, 'index.html', dic)
+
 @login_required(login_url='/profile/login/')
 def crops(request):
     crop_translations = Translations.objects.filter(type = 'Crop')
