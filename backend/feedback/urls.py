@@ -5,4 +5,5 @@ from django.urls import path
 
 urlpatterns = [
     path('feedback/', feedback, name="feedback"),
+    path('feed/', feed, name="feed"),
 ]

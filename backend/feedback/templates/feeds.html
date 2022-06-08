@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock header %}
+
+{% block content %}
+{% include 'leftbar.html' %}
+<div class="right-container" style="margin: auto;">
+    {% include 'topbar.html' %}
+    <div class="home-cards">
+        <div class="card">
+            <div>
+                <h6>
+                    Farmer's FeedBack
+                </h6>
+                <div>
+                    <h5>Manuel</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="p-2">
+                <div class="row">
+                    <div class="col">
+                        <h6>Farmers</h6>
+                    </div>
+                    <div class="col">
+                        <h6>FeedBack</h6>
+                    </div>
+                    <div class="col">
+                        <h6>Status</h6>
+                    </div>
+                    <div class="col">
+                        <h6>Action</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2">
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

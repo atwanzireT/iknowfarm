@@ -5,23 +5,14 @@ from django.forms import ModelForm
 
 # Create your models here.
 class Feedback(models.Model):
-    STATUS = (
-        ('New', 'New'),
-        ('Relied', 'Relied'),
-    )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rate = models.IntegerField(default=1)
-    subject = models.CharField(max_length=50, blank=True)
-    comment = models.CharField(max_length=250,blank=True)
-    ip = models.CharField(max_length=20, blank=True)
-    status=models.CharField(max_length=10,choices=STATUS, default='True')
-    create_at=models.DateTimeField(auto_now_add=True)
-    update_at=models.DateTimeField(auto_now=True)
+    rating = models.CharField(max_length=255, blank=True, null=True)
+    ratingtitle = models.CharField(max_length=255, blank=True, null=True)
+    comment = models.CharField(max_length=255, blank=True, null=True)
+    audiofile = models.CharField(max_length=255, blank=True, null=True)
+    createdby = models.CharField(max_length=255)
+    createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
 
-    def __str__(self):
-        return self.subject
-
-class FeedbackForm(ModelForm):
     class Meta:
-        model = Feedback
-        fields = ['subject', 'comment', 'rate']
+        managed = False
+        db_table = 'feedback'

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'user',
     'farmer',
     'home',
-    # 'feedback',
+    'feedback',
     'upload',
     'translation',
 ]
