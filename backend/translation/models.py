@@ -1,5 +1,7 @@
 from django.db import models
 from home.models import Crops
+from ckeditor.fields import RichTextField
+
 
 # Create your models here.
 class Manual(models.Model):
@@ -29,9 +31,9 @@ class CropManuals(models.Model):
 class Translations(models.Model):
     type = models.CharField(max_length=255)
     key = models.CharField(max_length=255)
-    english = models.TextField(blank=True, null=True)
-    arabic = models.TextField(blank=True, null=True)
-    lugbara = models.TextField(blank=True, null=True)
+    english = RichTextField(blank=True, null=True)
+    arabic = RichTextField(blank=True, null=True)
+    lugbara = RichTextField(blank=True, null=True)
     cropid = models.IntegerField(blank=True, null=True)
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
