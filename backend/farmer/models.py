@@ -3,6 +3,27 @@ from django.db import models
 from datetime import date
 
 # Create your models here.
+class Districts(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
+
+    def __str__(self) -> str:
+        return self.name
+        
+    class Meta:
+        managed = False
+        db_table = 'districts'
+
+class Villages(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
+    districtid = models.ForeignKey(Districts, on_delete=models.CASCADE, db_column='districtId', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'villages'
 class Farmers(models.Model):
     name = models.CharField(max_length=255)
     age = models.IntegerField(blank=True, null=True)

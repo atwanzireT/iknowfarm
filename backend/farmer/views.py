@@ -4,6 +4,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 
 # Create your views here.
+def district(request):
+    villages = Villages.objects.all()
+    dic = {
+        'villages':villages,
+    }
+    return render(request, 'districts.html', dic)
+
+
 def farmer_groups(request):
     farmer_groups = Farmers.objects.filter(registrationtype=2)
     dic = {

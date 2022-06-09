@@ -4,6 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, reques
 from django.contrib import messages
   
 # Create your views here.
-def feed(request):
+def feedback(request):
     dic= {}
     return render(request, 'feeds.html', dic)
