@@ -12,6 +12,6 @@ class Videos(models.Model):
     cropid = models.ForeignKey(Crops, models.DO_NOTHING, db_column='cropId', blank=True, null=True)  # Field name made lowercase.
     livestockid = models.ForeignKey(Livestock, models.DO_NOTHING, db_column='livestockId', blank=True, null=True)  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'videos'
+    # class Meta:
+    #     managed = False
+    #     db_table = 'videos'

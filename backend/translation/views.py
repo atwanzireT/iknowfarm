@@ -4,7 +4,8 @@ from .models import *
 
 # Create your views here.
 def crop_manual(request):
-    tomato = Translations.objects.filter(key = "xJKsWphSjigu")
+    # tomato = CropManuals.objects.all()
+    tomato = Translations.objects.filter(type='MAN')
     dic= {
         'tomato':tomato,
     }
