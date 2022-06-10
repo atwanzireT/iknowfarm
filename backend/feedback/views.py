@@ -5,5 +5,8 @@ from django.contrib import messages
   
 # Create your views here.
 def feedback(request):
-    dic= {}
+    feedback = Feedback.objects.all()
+    dic= {
+        'feedback': feedback,
+    }
     return render(request, 'feeds.html', dic)
