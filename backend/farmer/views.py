@@ -5,7 +5,7 @@ from django.views import generic
 
 # Create your views here.
 def district(request):
-    villages = Villages.objects.all()
+    villages = Village.objects.all()
     dic = {
         'villages':villages,
     }
@@ -13,13 +13,13 @@ def district(request):
 
 
 def farmer_groups(request):
-    farmer_groups = Farmers.objects.filter(registrationtype=2)
+    farmer_groups = Farmer.objects.filter(registrationtype=2)
     dic = {
         'farmer_groups':farmer_groups,
     }
     return render(request, 'farmergroups.html', dic)
 class FarmersListView(LoginRequiredMixin, generic.ListView):
-    model = Farmers
+    model = Farmer
     template_name = "farmer_list.html"
     context_object_name= 'farmers'
     login_url = '/profile/login/'

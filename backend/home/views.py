@@ -1,26 +1,23 @@
 from django.shortcuts import render
-from .models import *
-from farmer.models import Farmers
+from .models import Crop, Livestock, UnregistredUser
+from farmer.models import Farmer
 from django.contrib.auth.decorators import login_required
 from django.views import generic
-from .models import Crops, Livestock
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 # from .forms import CropForm, CropTranslationForm, LivestockForm, LivestockTranslationForm
 from django.urls import reverse
-from translation.models import *
+# from translation.models import *
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
 def index(request):
-    app_users = Users.objects.all().count()
-    male_farmers = Farmers.objects.filter(gender = 'male').count()
-    female_farmers = Farmers.objects.filter(gender = 'female').count()
-    farmers = Farmers.objects.filter(registrationtype = 1).count()
-    unregistered_users = UnregistredUsers.objects.all().count()
+    male_farmers = Farmer.objects.filter(gender = 'male').count()
+    female_farmers = Farmer.objects.filter(gender = 'female').count()
+    farmers = Farmer.objects.filter(registrationtype = 1).count()
+    unregistered_users = UnregistredUser.objects.all().count()
 
     dic = {
-        'app_users':app_users,
         'male_farmers':male_farmers,
         'female_farmers':female_farmers,
         'farmers':farmers,
@@ -30,17 +27,17 @@ def index(request):
 
 @login_required(login_url='/profile/login/')
 def crops(request):
-    crop_translations = Translations.objects.filter(type = 'Crop')
+    crop = Crop.objects.all()
     dic = {
-        'crop_translations':crop_translations,
+        'crop':crop,
     }
     return render(request, 'crop_list.html', dic)
 
 @login_required(login_url='/profile/login/')
 def livestock(request):
-    livestock_translations = Translations.objects.filter(type = 'liv')
+    livestock = Livestock.objects.all()
     dic = {
-        'livestock_translations':livestock_translations,
+        'livestock':livestock,
     }
     return render(request, 'livestock_list.html', dic)
 

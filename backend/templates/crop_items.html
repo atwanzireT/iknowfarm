@@ -9,7 +9,7 @@
         font-size: 14px;
     }
 </style>
-{% for rs in crop_translations %}
+{% for rs in crop %}
 <div class="title-card">
     <div class="row mt-5">
         <div class="col-2">
@@ -25,7 +25,7 @@
             <p>{{rs.lugbara}}</p>
         </div>
         <div class="col ">
-            <img style="width: 100px; margin-top: -40px; margin-bottom: 2px;" src="{{rs.cropid.image.url}}" alt="" srcset="">
+            <img style="width: 100px; margin-top: -40px; margin-bottom: 2px;" src="{{rs.image.url}}" alt="" srcset="">
         </div>
         <div class="col">
             <div class="col">

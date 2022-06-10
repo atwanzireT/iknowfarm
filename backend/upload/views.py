@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Videos
+from .models import Video
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .form import *
@@ -10,7 +10,7 @@ from django.urls import reverse
 # Create your views here.
 @login_required(login_url='/profile/login/')
 def CropVideoUploads(request):
-    crop_videos = Videos.objects.filter(cropid__isnull=False)
+    crop_videos = Video.objects.filter(cropid__isnull=False)
 
     dic = {
         'crop_videos': crop_videos,	
@@ -19,7 +19,7 @@ def CropVideoUploads(request):
 
 @login_required(login_url='/profile/login/')
 def LivestockVideoUploads(request):
-    livestock_videos = Videos.objects.filter(livestockid__isnull=False)
+    livestock_videos = Video.objects.filter(livestockid__isnull=False)
     dic = {
         'livestock_videos': livestock_videos,
     }
@@ -27,7 +27,7 @@ def LivestockVideoUploads(request):
 
 @login_required(login_url='/profile/login/')
 def VideoUploads(request):
-    videos = Videos.objects.all()
+    videos = Video.objects.all()
     dic = {
         'videos': videos,
     }

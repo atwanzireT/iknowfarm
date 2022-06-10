@@ -10,10 +10,6 @@ class Feedback(models.Model):
     ratingtitle = models.CharField(max_length=255, blank=True, null=True)
     comment = models.CharField(max_length=255, blank=True, null=True)
     audiofile = models.CharField(max_length=255, blank=True, null=True)
-    createdby = models.ForeignKey(Farmers, on_delete=models.CASCADE, db_column='createdby')
+    createdby = models.ForeignKey(Farmer, on_delete=models.CASCADE, db_column='createdby')
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'feedback'
