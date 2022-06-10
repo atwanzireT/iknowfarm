@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class FarmerForm(forms.ModelForm):
     class Meta:
         model = Farmer
-        fields = ('name','Date_of_Birth', 'expiry', 'status', 'gender',  'recommender', 'phone',  'Village')
+        fields = ('name','date_of_birth', 'expiry', 'status', 'gender',  'recommender', 'phonenumber',  'villages')
 
     widgets = {
         'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Name'}),
