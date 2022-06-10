@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CropForm, CropTranslationForm, LivestockForm, LivestockTranslationForm
 from django.urls import reverse
 from translation.models import *
+from django.core.paginator import Paginator
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
@@ -37,6 +38,12 @@ def districts(request):
 @login_required(login_url='/profile/login/')
 def crops(request):
     crop = Crop.objects.all()
+
+    # crop Pagnition
+    paginator = Paginator(crop, 5)
+    page = request.GET.get('page')
+    crop = paginator.get_page(page)
+
     dic = {
         'crop':crop,
     }
@@ -110,7 +117,7 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['crops'] = Livestock.objects.all()
+        context['livestock'] = Livestock.objects.all()
         return context
 
     def get_success_url(self):
