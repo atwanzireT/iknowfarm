@@ -1,13 +1,13 @@
 from tokenize import group
 from django.shortcuts import render
 from .models import Crop, Livestock, UnregistredUser
-from farmer.models import Farmer
+from farmer.models import Farmer, Village
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CropForm, CropTranslationForm, LivestockForm, LivestockTranslationForm
 from django.urls import reverse
-# from translation.models import *
+from translation.models import *
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
@@ -25,6 +25,15 @@ def index(request):
     }
     return render(request, 'index.html', dic)
 
+@login_required(login_url='/profile/login/')
+def districts(request):
+    districts = Village.objects.all()
+    dic = {
+        'districts':districts,
+    }
+    return render(request, "district.html", dic)
+
+    
 @login_required(login_url='/profile/login/')
 def crops(request):
     crop = Crop.objects.all()
@@ -55,6 +64,9 @@ class UpdateCropView(LoginRequiredMixin, generic.UpdateView):
         context['crop'] = Crop.objects.all()
         return context
 
+    def get_success_url(self):
+        return reverse('crops')
+
 class AddCropView(LoginRequiredMixin, generic.CreateView):
     model = Crop
     template_name = 'addCrop.html'
@@ -69,7 +81,7 @@ class AddCropView(LoginRequiredMixin, generic.CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('addCrops')
+        return reverse('crops')
 
 
 class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
@@ -86,7 +98,7 @@ class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('addLiveStock')
+        return reverse('liveStock')
 
 class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
     model = Livestock
@@ -102,7 +114,7 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('addLiveStock')
+        return reverse('liveStock')
 
 
 # Translations Views
@@ -111,6 +123,9 @@ class CropsTranslationListView(LoginRequiredMixin, generic.ListView):
     template_name = "cropTrans_list.html"
     context_object_name= 'crops'
     login_url = '/profile/login/'
+
+    def get_success_url(self):
+        return reverse('crops_translations')
 
 class LiveStockTranslationListView(LoginRequiredMixin, generic.ListView):
     model = Livestock
@@ -132,7 +147,7 @@ class UpdateLiveStockTranslationView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('liveStock')
+        return reverse('livestock_translations')
 
 class UpdateCropTranslationView(LoginRequiredMixin, generic.UpdateView):
     model = Crop
@@ -146,3 +161,6 @@ class UpdateCropTranslationView(LoginRequiredMixin, generic.UpdateView):
         # Add in a QuerySet of all the books
         context['crops'] = Crop.objects.all()
         return context
+
+    def get_success_url(self):
+        return reverse('crops_translations')

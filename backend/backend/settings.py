@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'feedback',
     'upload',
     'translation',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -155,6 +156,6 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
         'height': 300,
-        'width': '80%',
+        'width': '100%',
     },
 }

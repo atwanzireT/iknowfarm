@@ -1,9 +1,11 @@
 from django.db import models
 from home.models import Crop, Livestock
 from ckeditor.fields import RichTextField
+from django.urls import reverse
+
 
 # Create your models here.
-class Translation(models.Model):
+class Manual(models.Model):
     title = models.CharField(max_length=255)
     english = RichTextField(blank=True, null=True)
     arabic = RichTextField(blank=True, null=True)
@@ -14,4 +16,7 @@ class Translation(models.Model):
     updatedat = models.DateTimeField(auto_now=True) 
 
     def __str__(self):
-        return f"{self.id} {self.english[:50]}"
+        return f"{self.id} {self.title[:50]}"
+
+    def get_absolute_url(self):
+        return f"/translation/crop_manual{self.id}"

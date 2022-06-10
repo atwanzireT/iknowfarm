@@ -44,20 +44,20 @@
                     <div class="card card-body m-2">
                         <p>
                             <a class="btn btn-light">
-                                {{rs.english}}
+                                {{rs.title}}
                             </a>
                         </p>
                         <div>
 
                             <div class="row">
                                 <div class="col">
-                                    <a class="text-success" href="#">View English Version</a>
+                                    <a href = "/translation/manual/{{rs.id}}" class="text-success" href="#">View English Version</a>
                                 </div>
                                 <div class="col">
-                                    <a class="text-success" href="#">View Lughara Version</a>
+                                    <a href = "/translation/lugbara_manual/{{rs.id}}" class="text-success" href="#">View Lughara Version</a>
                                 </div>
                                 <div class="col">
-                                    <a class="text-success" href="#">View English Version</a>
+                                    <a href = "/translation/arabic_manual/{{rs.id}}" class="text-success" href="#">View English Version</a>
                                 </div>
                             </div>
                         </div>
