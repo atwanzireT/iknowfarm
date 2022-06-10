@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class CropForm(forms.ModelForm):
     class Meta:
         model = Crop
-        fields = ('name','arabic', 'lugbar', 'image')
+        fields = ('english','arabic', 'lugbara', 'image')
 
     widgets = {
         'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Name'}),
@@ -19,7 +19,7 @@ class CropForm(forms.ModelForm):
 class LivestockForm(forms.ModelForm):
     class Meta:
         model = Livestock
-        fields = ('name','arabic', 'lugbar', 'image')
+        fields = ('english','arabic', 'lugbara', 'image')
 
     widgets = {
         'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Name'}),
@@ -30,7 +30,7 @@ class LivestockForm(forms.ModelForm):
 class CropTranslationForm(forms.ModelForm):
     class Meta:
         model = Crop
-        fields = ('arabic', 'lugbar')
+        fields = ('arabic', 'lugbara')
 
     widgets = {
         'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
@@ -40,7 +40,7 @@ class CropTranslationForm(forms.ModelForm):
 class LivestockTranslationForm(forms.ModelForm):
     class Meta:
         model = Livestock
-        fields = ('arabic', 'lugbar')
+        fields = ('arabic', 'lugbara')
 
     widgets = {
         'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),

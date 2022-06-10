@@ -17,6 +17,8 @@ class Village(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     districtid = models.ForeignKey(District, on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.name
 
 class Recomender(models.Model):
     name = models.CharField(max_length=255)
@@ -26,9 +28,9 @@ class Recomender(models.Model):
     phonenumber = models.CharField(unique=True, max_length=255, blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
-
-    def ___str__(self):
-        return name
+    
+    def __str__(self) -> str:
+        return self.name
 
 class FarmerGroup(models.Model):
     name = models.CharField(max_length=255)
@@ -60,4 +62,8 @@ class Farmer(models.Model):
 
     def age(self):
         from  datetime import date
-        return date.today() - self.date_of_birth
+        age_years = (date.today() - self.date_of_birth)
+        return  int((age_years).days/365.25)
+
+    def __str__(self) -> str:
+        return self.name

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class FarmerForm(forms.ModelForm):
     class Meta:
-        model = Farmers
+        model = Farmer
         fields = ('name','Date_of_Birth', 'expiry', 'status', 'gender',  'recommender', 'phone',  'Village')
 
     widgets = {
