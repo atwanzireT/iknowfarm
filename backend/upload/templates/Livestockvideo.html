@@ -13,7 +13,7 @@
 <div class="right-container" style="margin: auto;">
     {% include 'topbar.html' %}
     <div class="home-cards">
-        {% include 'sortCrops.html' %}
+        {% include 'sortLivestock.html' %}
         <div class="row m-2">
             {% for rs in livestock_videos %}
             <div class="col">
@@ -27,5 +27,4 @@
             {% endfor %}
         </div>
 
-        <script src="{% static '/js/jquery.js' %}"></script>
         {% endblock content %}

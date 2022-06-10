@@ -33,11 +33,11 @@ def VideoUploads(request):
     }
     return render(request, "video.html", dic)
     
-# class AddVideoView(LoginRequiredMixin, generic.CreateView):
-#     model = Videos
-#     template_name = 'addVideo.html'
-#     form_class = AddVideoForm
-#     login_url = '/profile/login/'
+class AddVideoView(LoginRequiredMixin, generic.CreateView):
+    model = Video
+    template_name = 'addVideo.html'
+    form_class = AddVideoForm
+    login_url = '/profile/login/'
 
-#     def get_success_url(self):
-#         return reverse('addLiveStock')
+    def get_success_url(self):
+        return reverse('videos')
