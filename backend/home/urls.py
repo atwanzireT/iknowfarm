@@ -4,6 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='home'),
+    path('districts/', districts, name='districts'),
     path('crops/', crops, name="crops"),
     path('livestock/', livestock, name="livestock"),
     path('translation/crops/', CropsTranslationListView.as_view(), name="crops_translations"),

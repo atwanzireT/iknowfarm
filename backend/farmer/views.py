@@ -19,6 +19,7 @@ def farmer_groups(request):
         'farmer_groups':farmer_groups,
     }
     return render(request, 'farmergroups.html', dic)
+    
 class FarmersListView(LoginRequiredMixin, generic.ListView):
     model = Farmer
     template_name = "farmer_list.html"
