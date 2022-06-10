@@ -1,8 +1,9 @@
+from distutils.command.upload import upload
 from django.db import models
 # Create your models here.
 class Crops(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    image = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to="crops" ,blank=True, null=True)
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
 
@@ -14,7 +15,7 @@ class Crops(models.Model):
 
 class Livestock(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    image = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to="livestock" ,blank=True, null=True)
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
 
