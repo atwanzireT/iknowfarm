@@ -16,12 +16,9 @@
     <div>
         <div class="row mt-5">
             <div class="col">
-                <h6>All Crops</h6>
+                <h6>All Crops Translations</h6>
             </div>
             <div class="col-5"></div>
-            <div class="col">
-                <a href="/addcrop/" class="btn btn-small btn-success">Add Crop</a>
-            </div>
         </div>
         <!-- Headings -->
         <div class="card m-2" style="height: auto;">
@@ -50,23 +47,30 @@
             <hr style="width: 90%; margin: auto;">
             {% include 'cropTrans_items.html' %}
             <div class="container">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination m-3 float-end">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="row">
+                    <div class="col-md-3 offset-md-4">
+                        <ul class="pagination justify-content-center">
+                            {% if crops.has_previous %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{crops.previous_page_number}}">Previous</a>
+                            </li>
+                            {% endif %}
+                            <li class="page-item active">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{crops.number}}">Current</a>
+                            </li>
+    
+                            {% if crops.has_next %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{crops.next_page_number}}">Next</a>
+                            </li>
+                            {% endif %}
+    
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
