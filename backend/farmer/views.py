@@ -3,6 +3,8 @@ from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .forms import *
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 def district(request):
@@ -19,12 +21,17 @@ def farmer_groups(request):
         'farmer_groups':farmer_groups,
     }
     return render(request, 'farmergroups.html', dic)
-    
-class FarmersListView(LoginRequiredMixin, generic.ListView):
-    model = Farmer
-    template_name = "farmer_list.html"
-    context_object_name= 'farmers'
-    login_url = '/profile/login/'
+
+def farmer(request):
+    farmers = Farmer.objects.all()
+
+    paginator = Paginator(farmers, 5)
+    page = request.GET.get('page')
+    farmers = paginator.get_page(page)
+    dic = {
+        'farmers':farmers,
+    }
+    return render(request, 'farmer_list.html', dic)
 
 class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
     model = Farmer

@@ -125,20 +125,29 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
 
 
 # Translations Views
-class CropsTranslationListView(LoginRequiredMixin, generic.ListView):
-    model = Crop
-    template_name = "cropTrans_list.html"
-    context_object_name= 'crops'
-    login_url = '/profile/login/'
+def cropTranslation(request):
+    crops = Crop.objects.all()
 
-    def get_success_url(self):
-        return reverse('crops_translations')
+    # crop Pagnition
+    paginator = Paginator(crops, 5)
+    page = request.GET.get('page')
+    crops = paginator.get_page(page)
+    dic = {
+        'crops': crops,
+    }
+    return render(request, 'cropTrans_list.html', dic)
 
-class LiveStockTranslationListView(LoginRequiredMixin, generic.ListView):
-    model = Livestock
-    template_name = "livestockTrans_list.html"
-    context_object_name= 'livestock'
-    login_url = '/profile/login/'
+def livestockTranslation(request):
+    livestock = Livestock.objects.all()
+
+    # crop Pagnition
+    paginator = Paginator(livestock, 5)
+    page = request.GET.get('page')
+    livestock = paginator.get_page(page)
+    dic = {
+        'livestock': livestock,
+    }
+    return render(request, 'livestockTrans_list.html', dic)
 
 class UpdateLiveStockTranslationView(LoginRequiredMixin, generic.UpdateView):
     model = Livestock

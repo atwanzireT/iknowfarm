@@ -44,26 +44,34 @@ class FarmerGroup(models.Model):
 
 class Farmer(models.Model):
     STATUS_CODE = [
-        ('married', 'married')
+        ('married', 'married'),
+        ('single', 'single'),
+    ]
+
+    GENDER_CODE = [
+        ('male', 'male'),
+        ('female', 'female'),
     ]
     name = models.CharField(max_length=255)
-    date_of_birth = models.DateField()
-    gender = models.CharField(max_length=255, blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
+    gender = models.CharField(max_length=255,choices=GENDER_CODE, blank=True, null=True)
     villages = models.ForeignKey(Village, on_delete=models.CASCADE ,blank=True, null=True)
     phonenumber = models.CharField(unique=True, max_length=255, blank=True, null=True)
     pin = models.CharField(max_length=255)
     codesent = models.IntegerField(blank=True, null=True)
-    status = models.CharField(max_length=20, choices=STATUS_CODE)
-    expiry = models.DateTimeField()
-    recommender = models.ForeignKey(Recomender, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, choices=STATUS_CODE, blank=True, null=True)
+    expiry = models.DateTimeField( blank=True, null=True)
+    recommender = models.ForeignKey(Recomender, on_delete=models.CASCADE, blank=True, null=True)
     group = models.ForeignKey(FarmerGroup, on_delete=models.CASCADE, blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
 
-    def age(self):
-        from  datetime import date
-        age_years = (date.today() - self.date_of_birth)
-        return  int((age_years).days/365.25)
+    # def age(self):
+        # from  datetime import date
+        # if self.date_of_birth:
+        #     age_years = (date.today() - self.date_of_birth)
+        #     return  int((age_years).days/365.25)
+        # return f"NO DOB"
 
     def __str__(self) -> str:
         return self.name
