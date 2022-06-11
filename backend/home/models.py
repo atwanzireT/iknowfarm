@@ -27,4 +27,3 @@ class UnregistredUser(models.Model):
     deviceid = models.CharField(max_length=255)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
-

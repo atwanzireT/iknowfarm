@@ -35,25 +35,53 @@
                     </h6>
                 </div>
                 <div class="row my-2">
-                    <div class="col">
-                        <h6 class="text-success">District</h6>
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="text-success">District</h6>
+                        </div>
+                        <div class="col">
+                            <h6  style="text-align: left;" class="text-success">Village</h6>
+                        </div>
                     </div>
-                    <div class="col">
-                        <h6 class="text-success">Village</h6>
-                    </div>
-                </div>
-                <div class="row my-2">
-                    {% for rs in districts %}
+                </div <div class="row my-2">
+                {% for rs in districts %}
+                <div class="row">
                     <div class="col">
                         <h6>{{rs.districtid}}</h6>
                     </div>
                     <div class="col">
-                        <h6>{{rs.name}}</h6>
+                        <h6  style="text-align: left;">{{rs.name}}</h6>
                     </div>
-                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-md-3 offset-md-4">
+                    <ul class="pagination justify-content-center">
+                        {% if districts.has_previous %}
+                        <li class="page-item">
+                            <br>
+                            <a class="btn btn-outline-success mx-1" href="?page={{districts.previous_page_number}}">Previous</a>
+                        </li>
+                        {% endif %}
+                        <li class="page-item active">
+                            <br>
+                            <a class="btn btn-outline-success mx-1" href="?page={{districts.number}}">Current</a>
+                        </li>
+
+                        {% if districts.has_next %}
+                        <li class="page-item">
+                            <br>
+                            <a class="btn btn-outline-success mx-1" href="?page={{districts.next_page_number}}">Next</a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
                 </div>
             </div>
         </div>
+        </div>
     </div>
+</div>
 </div>
 {% endblock content %}

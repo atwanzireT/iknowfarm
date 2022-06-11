@@ -4,8 +4,8 @@ from datetime import date
 # Create your models here.
 class District(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
-    updatedat = models.DateTimeField(auto_now=True) 
+    createdat = models.DateTimeField(auto_now_add=True, blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(auto_now=True, blank=True, null=True) 
 
     def __str__(self) -> str:
         return self.name
@@ -14,6 +14,8 @@ class District(models.Model):
 class Village(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     districtid = models.ForeignKey(District, on_delete=models.CASCADE)
+    createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(auto_now=True) 
 
     def __str__(self) -> str:
         return self.name

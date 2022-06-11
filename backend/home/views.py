@@ -29,6 +29,10 @@ def index(request):
 @login_required(login_url='/profile/login/')
 def districts(request):
     districts = Village.objects.all()
+
+    paginator = Paginator(districts, 20)
+    page = request.GET.get('page')
+    districts = paginator.get_page(page)
     dic = {
         'districts':districts,
     }
