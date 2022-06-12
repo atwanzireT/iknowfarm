@@ -11,69 +11,69 @@
 {% block content %}
 
 {% include 'leftbar.html' %}
-<div class="container crop-container" style="margin: auto;">
-    {% include 'topbar.html' %}
-    <div>
-        <div class="row mt-5">
-            <div class="col">
-                <h6>All Livestock Translations</h6>
+<div class="container-div">
+    <div class="container crop-container" style="margin: auto;">
+        {% include 'topbar.html' %}
+        <div>
+            <div class="row mt-5">
+                <div class="col">
+                    <h6>All Livestock Translations</h6>
+                </div>
+                <div class="col-5"></div>
             </div>
-            <div class="col-5"></div>
-        </div>
-        <!-- Headings -->
-        <div class="card m-2" style="height: auto;">
-            <div class="title-card">
-                <div class="row mt-5">
-                    <div class="col-2">
-                        <h6>#</h6>
-                    </div>
-                    <div class="col">
-                        <h6>Name</h6>
-                    </div>
-                    <div class="col">
-                        <h6>Arabic</h6>
-                    </div>
-                    <div class="col">
-                        <h6>Lugbar</h6>
-                    </div>
-                    <div class="col">
-                        <h6>Image</h6>
-                    </div>
-                    <div class="col">
-                        <h6>Action </h6>
+            <!-- Headings -->
+            <div class="card m-2" style="height: auto;">
+                <div class="title-card">
+                    <div class="row mt-5">
+                        <div class="col-2">
+                            <h6>#</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Name</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Arabic</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Lugbar</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Image</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Action </h6>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <hr style="width: 90%; margin: auto;">
-            {% include 'livestockTrans_items.html' %}
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 offset-md-4">
-                        <ul class="pagination justify-content-center">
-                            {% if livestock.has_previous %}
-                            <li class="page-item">
-                                <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{livestock.previous_page_number}}">Previous</a>
-                            </li>
-                            {% endif %}
-                            <li class="page-item active">
-                                <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{livestock.number}}">Current</a>
-                            </li>
-    
-                            {% if livestock.has_next %}
-                            <li class="page-item">
-                                <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{livestock.next_page_number}}">Next</a>
-                            </li>
-                            {% endif %}
-    
-                        </ul>
-                    </div>
+                <hr style="width: 90%; margin: auto;">
+                {% include 'livestockTrans_items.html' %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 offset-md-4">
+                            <ul class="pagination justify-content-center">
+                                {% if livestock.has_previous %}
+                                <li class="page-item">
+                                    <br>
+                                    <a class="btn btn-outline-success mx-1" href="?page={{livestock.previous_page_number}}">Previous</a>
+                                </li>
+                                {% endif %}
+                                <li class="page-item active">
+                                    <br>
+                                    <a class="btn btn-outline-success mx-1" href="?page={{livestock.number}}">Current</a>
+                                </li>
+        
+                                {% if livestock.has_next %}
+                                <li class="page-item">
+                                    <br>
+                                    <a class="btn btn-outline-success mx-1" href="?page={{livestock.next_page_number}}">Next</a>
+                                </li>
+                                {% endif %}
+        
+                            </ul>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
 {% endblock content %}

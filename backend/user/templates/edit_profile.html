@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<form action="" method="post" class="signin-form">
+    {% csrf_token %}
+    {{form.as_p}}
+    <div class="text-center">
+        <br>
+        <button class="btn btn-style btn-outline-success">Update Profile</button>
+    </div>
+</form>
+{% endblock content %}
