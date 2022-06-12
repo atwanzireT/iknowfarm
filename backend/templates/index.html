@@ -10,7 +10,7 @@
 {% block content %}
 {% include 'leftbar.html' %}
 <!-- <div class="right-container" style="margin: auto;"> -->
-<div style="margin-right: 50px; margin-left: -40px; margin-bottom: 50px; float: right;">
+<div class="home-cards">
     <div class="right-col">
         <div class="card p-2">
             <div class="row">
@@ -122,15 +122,15 @@ box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 1
 </div>
 
 </div>
-<div class="chart_card" id="gender_chart" style="margin-left: -40px; float: right; margin: 50px;">
-    <div class="row">
+<div class="chart_card" id="gender_chart">
+    <div class="row ">
         <div class="col">
-            <div class="mt-10 card">
+            <div class="chart p-2 card">
                 {% include 'visualize/genderBarChart.html' %}
             </div>
         </div>
         <div class="col">
-            <div class="mt-10 card">
+            <div class="chart p-2 card">
                 {% include 'visualize/genderPieChart.html' %}
             </div>
         </div>

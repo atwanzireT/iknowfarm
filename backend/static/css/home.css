@@ -1,9 +1,10 @@
 .right-col{
     float: right;
-    width: 80%;
+    width: 30%;
     height: 200px;
-    /* margin: auto; */
-    /* padding: 20px; */
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
 }
 .icondiv{
     margin: auto;
@@ -39,8 +40,8 @@ margin: auto;
     width: 100%;
     text-align: center;
     float: right;
-    flex-direction: column;
-    order: 1;
+    display: flex;
+    flex-direction: row;
 }
 
 .card-text{
@@ -58,7 +59,52 @@ margin: auto;
 }
 
 .chart_card{
+    margin-top: 20px;
+    margin-right: 70px;
+    margin-left: 50px;
     float: right;
-    margin: auto;
 }
 
+.home-cards{
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    /* float: right; */
+}
+
+.chart{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+    .right-col{
+        float: right;
+        width: 95%;
+        height: 200px;
+        margin-left: 25px;
+        margin-right: 0px;
+        padding: 5px;
+    }
+
+    .right-col card:hover{
+        float: right;
+        width: 95%;
+        height: 200px;
+        margin-left: 25px;
+        margin-right: 0px;
+        padding: 5px;
+        background-color: rgb(24, 168, 24);
+    }
+    .home-cards{
+        margin-top: 50px;
+        margin-right: 50px;
+        margin-left: 50px;
+        /* float: right; */
+    }
+
+    .chart{
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+  }
