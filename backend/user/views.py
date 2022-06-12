@@ -17,7 +17,7 @@ def logout_func(request):
 def Profile(request):
     return render(request, 'profile.html', {})
 
-class UserEditView(generic.CreateView):
+class UserEditView(generic.UpdateView):
 	form_class = EditUserForm
 	template_name = 'edit_profile.html'
 	success_url = reverse_lazy('home')

@@ -1,14 +1,73 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock header %}
 
-
+<style>
+    /* .home_cards p {
+        color: red;
+        font-size: 1.2em;
+    } */
+</style>
 {% block content %}
-<form action="" method="post" class="signin-form">
-    {% csrf_token %}
-    {{form.as_p}}
-    <div class="text-center">
-        <br>
-        <button class="btn btn-style btn-outline-success">Update Profile</button>
+{% include 'leftbar.html' %}
+
+
+{% if user.is_authenticated %}    
+<div class="right-container" style="margin: auto;">
+    <!-- {% include 'topbar.html' %} -->
+    <div class="home-cards">
+        <div class="row">
+            <div class="col-8">
+                <div class="card m-2">
+                    <h3>Admin Profile</h3>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{form.media}} {{form.as_p}}
+                        <div>
+                            <button class="btn btn-success float-end m-2">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card m-2">
+                    <h3>Admin Password Reset</h3>
+                    <div class="row m-2">
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Current Password</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Current Password">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">New Password</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="New Password">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-success float-end m-2">Update Password</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card m-2">
+                    <div class="m-3">
+                        <label for="formFileMultiple" class="form-label">Upload</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                      </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+
+</div>
+{% endif %}
+
+
 {% endblock content %}
