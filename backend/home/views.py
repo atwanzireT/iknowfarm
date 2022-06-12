@@ -9,6 +9,8 @@ from .forms import CropForm, CropTranslationForm, LivestockForm, LivestockTransl
 from django.urls import reverse
 from translation.models import *
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
@@ -17,12 +19,16 @@ def index(request):
     female_farmers = Farmer.objects.filter(gender = 'female').count()
     farmers = Farmer.objects.filter(group__isnull = True).count()
     unregistered_users = UnregistredUser.objects.all().count()
+    app_users = User.objects.all().count()
+    app_installations = farmers + unregistered_users + app_users
 
     dic = {
         'male_farmers':male_farmers,
         'female_farmers':female_farmers,
         'farmers':farmers,
         'unregistered_users':unregistered_users,
+        'app_users':app_users,
+        'app_installations':app_installations,
     }
     return render(request, 'index.html', dic)
 

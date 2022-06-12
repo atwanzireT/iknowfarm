@@ -1,25 +1,6 @@
-.left-bg{
-    background-image: url('./bg/loginbg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-}
-
-.left-col{
-    width: 20%;
-    float: left;
-    height: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
 .right-col{
     float: right;
-    width: 80%;
+    /* width: 80%; */
     height: 100%;
     margin: auto;
     padding: 20px;
@@ -47,6 +28,7 @@
     width: 30%;
     height: 100px;
     margin-top: 100px;
+    padding: auto;
     
 }
 
@@ -61,8 +43,7 @@ margin: auto;
 }
 
 .right-container{
-    width: 90%;
-    margin: 50px;
+    width: 100%;
     text-align: center;
     float: right;
     flex-direction: column;
@@ -70,21 +51,25 @@ margin: auto;
 }
 
 .card-text{
-    float: right;
+    font-size: 16px;
+    color: red;
+    
 }
 
 .crop-container{
-    width: 80%;
-    margin-top: 50px;
-    margin-left: 70px;
-    margin-right: 20px;
     text-align: center;
-    float: right;
+    width: 100%;
+    /* float: right; */
     flex-direction: column;
     order: 1; 
 }
 
 .chart_card{
     float: right;
+    margin: auto;
+}
+
+.home-cards{
+    width: 100%;
     margin: auto;
 }

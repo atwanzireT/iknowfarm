@@ -1,158 +1,141 @@
 {% load static %}
-
-<style>
-    .side_title {
-        margin-top: 30px;
-        margin-left: 5px;
-        font-size: 14px;
-
-    }
-
-    ._bar_title {
-        margin: 5px;
-        font-size: 14px;
-    }
-
-    .logo_div {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .side_title:hover {
-        cursor: pointer;
-    }
-
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    a:hover {
-        font-size: 16px;
-        color: white;
-    }
-</style>
-<div class="left-col left-bg">
-    <div class="container">
-        <div class="container-fluid logo_div">
-            <div class="logo ">
-                <div class="icondiv  d-inline float-start mx-2">
-                    <img class="icon" src="{% static '/icons/iknowfarm.png' %}" alt="" srcset="">
+<div class="area"></div>
+<nav class="main-menu">
+    <ul>
+        <li style=" margin-top: 50px;">
+            <a href="#">
+                <div>
+                    <img style="width: 50px; margin-right: 10px;" src="{% static '/icons/iknowfarm.png' %}" alt="" srcset="">
                 </div>
-                <div class="logo-text  d-inline ">
-                    <h5>IKNOWFARM</h5>
-                </div>
+                <span class="nav-text">
+                    <h5>IKnowFarm</h5>
+                </span>
+            </a>
+        </li>
+        <li>
+            <h5>
+                <i class="fa fa-home fa-2x"></i>
+                <span class="nav-text">
+                    <a href="/">Dashboard</a>
+                </span>
+            </h5>
+
+        </li>
+        <li class="has-subnav">
+            <h5 id="crops">
+                <i class="fa fa-pagelines fa-2x"></i>
+                <span class="nav-text">
+                    Crops
+                </span>
+            </h5>
+            <div class="nested" id="all-crops">
+                <a href="/crops/">All Crops</a>
             </div>
-        </div>
-
-        <div class="m-2">
-            <img src="" alt="">
-            <a href="/profile/profile"><i class="fas fa-user"></i><span>View Profile</span></a>
-            <hr style="width: 80%;">
-        </div>
-
-        <!-- Left Nav -->
-        <div class="mx-2">
-            <div>
-                <div class="side_title" id="dashboard">
-                    <a href="/"><i class="fas fa-th-large"></i><span class="_bar_title">DASHBOARDS</span> </a>
-                </div>
+        </li>
+        <li class="has-subnav">
+            <h5>
+                <i class="fa fa-paw fa-2x"></i>
+                <span class="nav-text" id="livestock">
+                    Livestock
+                </span>
+            </h5>
+            <div class="nested" id="all-livestock">
+                <a href="/livestock/">All Livestock</a>
             </div>
-            <div>
-                <div id="crops" class="side_title">
-                    <h6><i class="fas fa-seedling"></i> <span class="_bar_title"> CROPS </span><i id="drop_icon"
-                            class="fas fa-caret-down"></i>
-                    </h6>
-                    <div id="all-crops" style="display: none;" class="mx-2">
-                        <a href="/crops/">All Crops</a>
-                    </div>
+        </li>
+        <li class="has-subnav">
+            <h5>
+                <i class="fa fa-users fa-2x"></i>
+                <span class="nav-text" id="farmers">
+                    Farmers
+                </span>
+            </h5>
+            <div class="nested" id="all-farmers">
+                <div>
+                    <a href="/farmers/">Individual Farmers</a>
+                </div>
+                <div>
+                    <a href="/farmers/groups/">Group Farmers</a>
+                </div>
+                <div>
+                    <a href="/feedback/feedback">FeedBack</a>
                 </div>
             </div>
-            <div>
-                <div id="livestock" class="side_title">
-                    <h6><i class="fas fa-paw"></i> <span class="_bar_title">LIVESTOCK</span> <i id="drop_icon"
-                            class="fas fa-caret-down"></i>
-                    </h6>
-                    <div style="display: none;" id="all-livestock" class="mx-2">
-                        <a href="/livestock/">All Livestock</a>
-                    </div>
+        </li>
+        <li>
+            <h5>
+                <i class="fa fa-quote-left fa-2x"></i>
+                <span class="nav-text" id="translations">
+                    Translations
+                </span>
+            </h5>
+            <div class="nested" id="all-translations">
+                <div>
+                    <a href="/translation/crops">Crop Translations</a>
+                </div>
+                <div>
+                    <a href="/translation/crop_manual">Crop Manuals</a>
+                </div>
+                <div>
+                    <a href="/translation/livestock">Livestock Translations</a>
+                </div>
+                <div>
+                    <a href="/translation/livestock_manual">Livestock Manuals</a>
                 </div>
             </div>
-            <div>
-                <div id="farmers" class="side_title">
-                    <h5><i class="fas fa-users"></i><span class="_bar_title">FARMERS</span><i id="drop_icon"
-                            class="fas fa-caret-down"></i>
-                    </h5>
-                    <div id="all-farmers" style="display: none;" class="mx-2">
-                        <div>
-                            <a href="/farmers/">Individual Farmers</a>
-                        </div>
-                        <div>
-                            <a href="/farmers/groups/">Group Farmers</a>
-                        </div>
-                        <!-- <div>
-                            <a href="#">Account Mangement</a>
-                        </div> -->
-                        <div>
-                            <a href="/feedback/feedback">FeedBack</a>
-                        </div>
-                    </div>
+        </li>
+        <li>
+            <h5>
+                <i class="fa fa-cloud-download fa-2x"></i>
+                <span class="nav-text" id="upload">
+                    File Uploads
+                </span>
+            </h5>
+            <div class="nested" id="all-uploads">
+                <div>
+                    <a href="/uploads/data">Farmer Data Upload</a>
                 </div>
+                <div>
+                    <a href="/uploads/crop_videos">Crop Videos</a>
+                </div>
+                <div>
+                    <a href="/uploads/livestock_videos">Livestock Videos</a>
+                </div>
+                <div>
+                    <a href="/uploads/videos">General Videos</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <h5>
+                <i class="fa fa-cogs fa-2x"></i>
+                <span class="nav-text" id="utilities">
+                    Utilities
+                </span>
+            </h5>
+            <div class="nested">
+                <a href="/districts/" id="district">Districts</a>
+            </div>
+        </li>
+        <li>
+            <h5>
+                <i class="fa fa-user fa-2x"></i>
+                <span class="nav-text">
+                    Profile
+                </span>
+            </h5>
+        </li>
+    </ul>
 
-            </div>
-            <div>
-                <div id="translations" class="side_title">
-                    <h5><i class="fas fa-quote-left"></i><span class="_bar_title">TRANSLATIONS</span><i id="drop_icon"
-                            class="fas fa-caret-down"></i> </h5>
-                    <div class="m-2" id="all-translations" style="display: none;" class="mx-2">
-                        <div>
-                            <a href="/translation/crops">Crop Translations</a>
-                        </div>
-                        <div>
-                            <a href="/translation/crop_manual">Crop Manuals</a>
-                        </div>
-                        <div>
-                            <a href="/translation/livestock">Livestock Translations</a>
-                        </div>
-                        <div>
-                            <a href="/translation/livestock_manual">Livestock Manuals</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div id="utilities" class="side_title">
-                    <h5><i class="fas fa-tools"></i><span class="_bar_title">UTILITIES</span><i id="drop_icon"
-                            class="fas fa-caret-down"></i></h5>
-                    <div class="m-2" id="district" style="display: none;" class="mx-2">
-                        <a href="/districts/">Districts</a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div id="upload" class="side_title">
-                    <h5><i class="fas fa-file-upload"></i><span class="_bar_title">UPLOADS</span><i id="drop_icon"
-                            class="fas fa-caret-down"></i></h5>
-                    <div id="all-uploads" style="display: none;" class="mx-2">
-                        <div>
-                            <a href="/uploads/data">Farmer Data Upload</a>
-                        </div>
-                        <div>
-                            <a href="/uploads/crop_videos">Crop Videos</a>
-                        </div>
-                        <div>
-                            <a href="/uploads/livestock_videos">Livestock Videos</a>
-                        </div>
-                        <div>
-                            <a href="/uploads/videos">General Videos</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="side_title">
-                <a href="/profile/profile"><i class="fas fa-user"></i><span class="_bar_title">PROFILE</span></a>
-            </div>
-        </div>
-    </div>
-</div>
+    <ul class="logout">
+        <li>
+            <a href="#">
+                <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                    Logout
+                </span>
+            </a>
+        </li>
+    </ul>
+</nav>
 <script src="{% static '/js/jquery.js' %}"></script>

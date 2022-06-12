@@ -1,4 +1,4 @@
-input{
+input:hover{
     text-align: center;
     width: 80%;
     background-color: white;
@@ -6,6 +6,16 @@ input{
     border-right: none;
     border-left: none;
     border-bottom: 1px solid rgb(77, 77, 77);
+}
+
+input{
+    text-align: center;
+    width: 80%;
+    background-color: white;
+    border-bottom: 1px solid rgb(77, 77, 77);
+    border-top: none;
+    border-right: none;
+    border-left: none;
 }
 
 label{
@@ -19,7 +29,20 @@ input[type="file"] {
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+    background-color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgb(77, 77, 77);
 }
+
+input[type=text] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
 
 #id_image{
     color: black;
