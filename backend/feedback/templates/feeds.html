@@ -1,30 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block header %}
 <link rel="stylesheet" href="{% static '/css/home.css' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="{% static '/css/profile.css' %}">
 {% endblock header %}
 
+
 {% block content %}
+
 {% include 'leftbar.html' %}
-<div class="right-container" style="margin: auto;">
-    {% include 'topbar.html' %}
-    <div class="home-cards">
-        <div class="card">
-            <div>
-                <h6>
-                    Farmer's FeedBack
-                </h6>
-                <div>
-                    <h5>FeedBacks</h5>
-                </div>
+<div class="container crop-container" style="margin: auto;">
+    <div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6>All Farmers FeedBack</h6>
+            </div>
+            <div class="col-5"></div>
+            <div class="col">
+                <h6>All Farmers FeedBack</h6>
             </div>
         </div>
-        <div class="card mt-2">
-            <div class="p-2">
-                <div class="row">
+        <!-- Headings -->
+        <div class="card m-2" style="height: auto;">
+            <div class="title-card">
+                <div class="row mt-5">
                     <div class="col-2">
                         <h6>Farmers</h6>
                     </div>
@@ -39,61 +40,37 @@
                     </div>
                 </div>
             </div>
-            <div class="p-2">
-                
-                {% for rs in feedback reversed %}
-                <div class="p-2">
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="text-success">{{rs.createdby.name}}</h5>
-                            <h6>Age: {{rs.createdby.age}} || {{rs.createdby.gender}}</h6>
-                            <p>{{rs.createdby.phonenumber}}}</p>
-                            <p>Located: {{rs.createdby.district}} | {{rs.createdby.village}}</p>
-                        </div>
-                        <div class="col-6 mx-2">
-                            <p>Rating: {{rs.rating}}</p>
-                            <p>Comment: {{rs.comment}}</p>
-                            <p>Created: {{rs.DateTImeField}}</p>
-                        </div>
-                        <div class="col">
-                            <h6 class="text-secondary">Pending</h6>
-                        </div>
-                        <div class="col">
-                            <!-- <button class="btn btn-danger">Reply</button> -->
-                        </div>
+            <hr style="width: 90%; margin: auto;">
+            {% include 'farmer_feeds.html' %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 offset-md-4">
+                        <ul class="pagination justify-content-center">
+                            {% if feedback.has_previous %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{feedback.previous_page_number}}">Previous</a>
+                            </li>
+                            {% endif %}
+                            <li class="page-item active">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{feedback.number}}">Current</a>
+                            </li>
+    
+                            {% if feedback.has_next %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{feedback.next_page_number}}">Next</a>
+                            </li>
+                            {% endif %}
+    
+                        </ul>
                     </div>
-                    <hr style="width: 90%; text-align: center;">
-                </div>
-                {% endfor %}      
-            </div>
-            <!-- Pagination -->
-            <div class="row">
-                <div class="col-md-3 offset-md-4">
-                    <ul class="pagination justify-content-center">
-                        {% if feedback.has_previous %}
-                        <li class="page-item">
-                            <br>
-                            <a class="btn btn-outline-success mx-1" href="?page={{feedback.previous_page_number}}">Previous</a>
-                        </li>
-                        {% endif %}
-                        <li class="page-item active">
-                            <br>
-                            <a class="btn btn-outline-success mx-1" href="?page={{feedback.number}}">Current</a>
-                        </li>
-
-                        {% if feedback.has_next %}
-                        <li class="page-item">
-                            <br>
-                            <a class="btn btn-outline-success mx-1" href="?page={{feedback.next_page_number}}">Next</a>
-                        </li>
-                        {% endif %}
-
-                    </ul>
                 </div>
             </div>
-        </div>
-
         </div>
     </div>
 </div>
+
+
 {% endblock content %}

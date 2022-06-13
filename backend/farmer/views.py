@@ -22,7 +22,7 @@ def district(request):
 
 
 def farmer_groups(request):
-    farmer_groups = Farmer.objects.filter(registrationtype=2)
+    farmer_groups = FarmerGroup.objects.all()
     dic = {
         'farmer_groups':farmer_groups,
     }

@@ -36,3 +36,93 @@
     </div>
 </div>
 {% endblock content %}
+
+
+
+
+<div class="right-container crop-container" style="margin: auto;">
+    <div class="home-cards">
+        <div class="card">
+            <div>
+                <h6>
+                    Farmer's FeedBack
+                </h6>
+                <div>
+                    <h5>FeedBacks</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="p-2">
+                <div class="row">
+                    <div class="col-2">
+                        <h6>Farmers</h6>
+                    </div>
+                    <div class="col-6 mx-2">
+                        <h6>FeedBack</h6>
+                    </div>
+                    <div class="col">
+                        <h6>Status</h6>
+                    </div>
+                    <div class="col">
+                        <h6>Action</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2">
+                
+                {% for rs in feedback reversed %}
+                <div class="p-2">
+                    <div class="row">
+                        <div class="col-2">
+                            <h5 class="text-success">{{rs.createdby.name}}</h5>
+                            <h6>Age: {{rs.createdby.age}} || {{rs.createdby.gender}}</h6>
+                            <p>{{rs.createdby.phonenumber}}}</p>
+                            <p>Located: {{rs.createdby.district}} | {{rs.createdby.village}}</p>
+                        </div>
+                        <div class="col-6 mx-2">
+                            <p>Rating: {{rs.rating}}</p>
+                            <p>Comment: {{rs.comment}}</p>
+                            <p>Created: {{rs.DateTImeField}}</p>
+                        </div>
+                        <div class="col">
+                            <h6 class="text-secondary">Pending</h6>
+                        </div>
+                        <div class="col">
+                            <!-- <button class="btn btn-danger">Reply</button> -->
+                        </div>
+                    </div>
+                    <hr style="width: 90%; text-align: center;">
+                </div>
+                {% endfor %}      
+            </div>
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-md-3 offset-md-4">
+                    <ul class="pagination justify-content-center">
+                        {% if feedback.has_previous %}
+                        <li class="page-item">
+                            <br>
+                            <a class="btn btn-outline-success mx-1" href="?page={{feedback.previous_page_number}}">Previous</a>
+                        </li>
+                        {% endif %}
+                        <li class="page-item active">
+                            <br>
+                            <a class="btn btn-outline-success mx-1" href="?page={{feedback.number}}">Current</a>
+                        </li>
+
+                        {% if feedback.has_next %}
+                        <li class="page-item">
+                            <br>
+                            <a class="btn btn-outline-success mx-1" href="?page={{feedback.next_page_number}}">Next</a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
