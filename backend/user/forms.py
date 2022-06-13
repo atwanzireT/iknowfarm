@@ -5,6 +5,7 @@ from django import forms
 
 
 GENDER_CHOICE = (
+    ("", "Select Gender"),
     ("male", "male"),
     ("female", "female"),
 )

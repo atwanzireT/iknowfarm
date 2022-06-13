@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate,login, logout, update_session_auth_hash
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from .models import User
 from django.urls import reverse_lazy
 from .forms import EditUserForm
 
@@ -15,7 +14,7 @@ def logout_func(request):
     return HttpResponseRedirect('/')
 
 def Profile(request):
-    return render(request, 'profile.html', {})
+	return render(request, 'profile.html')
 
 class UserEditView(generic.UpdateView):
 	form_class = EditUserForm
