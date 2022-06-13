@@ -10,16 +10,35 @@
     }
 </style>
 
-{{}}
 {% for rs in farmer_groups %}
 <div class="title-card">
     <div class="row mt-5">
         <div class="col-2">
-            <p>{{rs.id}}</p>
+            <p>{{ forloop.counter0|add:farmer_groups.start_index }}</p>
         </div>
         <div class="col" >
             <div >
                 <p style="text-align: left;">{{rs.name}}</p>
+            </div>
+        </div>
+        <div class="col" >
+            <div >
+                <p style="text-align: left;">{{rs.female_farmers}}</p>
+            </div>
+        </div>
+        <div class="col" >
+            <div >
+                <p style="text-align: left;">{{rs.male_farmers}}</p>
+            </div>
+        </div>
+        <div class="col" >
+            <div >
+                <p style="text-align: left;">{{rs.phonenumber}}</p>
+            </div>
+        </div>
+        <div class="col" >
+            <div >
+                <p style="text-align: left;">{{rs.village}}</p>
             </div>
         </div>
     </div>

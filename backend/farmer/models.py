@@ -6,6 +6,8 @@ from datetime import date
 class FarmerFile(models.Model):
     title = models.CharField(max_length=255)
     file = models.FileField(upload_to='farmer/files/')
+    createdat = models.DateTimeField(auto_now_add=True, blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(auto_now=True, blank=True, null=True) 
 
     def __str__(self):
         return self.title
@@ -31,7 +33,7 @@ class Recomender(models.Model):
     name = models.CharField(max_length=255)
     age = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=255, blank=True, null=True)
-    villages = models.ForeignKey(Village, on_delete= models.CASCADE ,blank=True, null=True)
+    village = models.ForeignKey(Village, on_delete= models.CASCADE ,blank=True, null=True)
     phonenumber = models.CharField(unique=True, max_length=255, blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
@@ -45,7 +47,10 @@ class FarmerGroup(models.Model):
     group_type = models.CharField(max_length=20)
     female_farmers = models.IntegerField(default=0)
     male_farmers = models.IntegerField(default=0)
-    villages = models.ForeignKey(Village, on_delete= models.CASCADE, blank=True, null=True)
+    village = models.ForeignKey(Village, on_delete= models.CASCADE, blank=True, null=True)
+    phonenumber = models.CharField(unique=True, max_length=255, blank=True, null=True)
+    recommender = models.ForeignKey(Recomender, on_delete=models.CASCADE, blank=True, null=True)
+    expiry = models.DateTimeField( blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
 
@@ -66,7 +71,7 @@ class Farmer(models.Model):
     name = models.CharField(max_length=255)
     age = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=255,choices=GENDER_CODE, blank=True, null=True)
-    villages = models.ForeignKey(Village, on_delete=models.CASCADE ,blank=True, null=True)
+    village = models.ForeignKey(Village, on_delete=models.CASCADE ,blank=True, null=True)
     phonenumber = models.CharField(unique=True, max_length=255, blank=True, null=True)
     pin = models.CharField(max_length=255)
     codesent = models.IntegerField(blank=True, null=True)
@@ -74,6 +79,7 @@ class Farmer(models.Model):
     expiry = models.DateTimeField( blank=True, null=True)
     recommender = models.ForeignKey(Recomender, on_delete=models.CASCADE, blank=True, null=True)
     group = models.ForeignKey(FarmerGroup, on_delete=models.CASCADE, blank=True, null=True)
+    farmer_type = models.CharField(max_length=255, blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
 

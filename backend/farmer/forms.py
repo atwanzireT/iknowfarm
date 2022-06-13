@@ -6,5 +6,14 @@ from django.contrib.auth.models import User
 
 class FarmerForm(forms.ModelForm):
     class Meta:
+        model = FarmerFile
+        fields = ('title','file')
+class FarmerForm(forms.ModelForm):
+    class Meta:
         model = Farmer
-        fields = ('name','age', 'expiry', 'status', 'gender',  'recommender', 'phonenumber',  'villages')
+        fields = ('name','age', 'expiry', 'status', 'gender',  'recommender', 'phonenumber',  'village', 'pin')
+
+class FarmerGroupForm(forms.ModelForm):
+    class Meta:
+        model = FarmerGroup
+        fields = ('name', 'group_type', 'male_farmers', 'female_farmers',  'recommender', 'phonenumber',  'village', 'pin')
