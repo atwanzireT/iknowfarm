@@ -10,7 +10,7 @@ class Crop(models.Model):
     updatedat = models.DateTimeField(auto_now=True) 
 
     def __str__(self):
-        return f"{self.image}"
+        return f"{self.name}"
 
 class Livestock(models.Model):
     english = models.CharField(max_length=255, blank=True, null=True)
@@ -21,7 +21,7 @@ class Livestock(models.Model):
     updatedat = models.DateTimeField(auto_now=True) 
 
     def __str__(self):
-        return f"{self.image}"
+        return f"{self.name}"
 
 class UnregistredUser(models.Model):
     deviceid = models.CharField(max_length=255)

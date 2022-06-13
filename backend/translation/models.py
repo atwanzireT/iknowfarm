@@ -6,6 +6,7 @@ from django.urls import reverse
 
 # Create your models here.
 class Manual(models.Model):
+    type = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255)
     english = RichTextField(blank=True, null=True)
     arabic = RichTextField(blank=True, null=True)

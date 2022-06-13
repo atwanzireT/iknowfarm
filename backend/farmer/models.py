@@ -2,6 +2,13 @@ from django.db import models
 from datetime import date
 
 # Create your models here.
+
+class FarmerFile(models.Model):
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to='farmer/files/')
+
+    def __str__(self):
+        return self.title
 class District(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True, blank=True, null=True)  # Field name made lowercase.
