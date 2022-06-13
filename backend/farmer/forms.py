@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User 
 
 
-class FarmerForm(forms.ModelForm):
+class FarmerFileForm(forms.ModelForm):
     class Meta:
         model = FarmerFile
         fields = ('title','file')

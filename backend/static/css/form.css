@@ -1,65 +1,78 @@
-input:hover{
-    text-align: center;
-    width: 80%;
-    background-color: white;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 1px solid rgb(77, 77, 77);
-}
-
-input{
-    text-align: center;
-    width: 80%;
-    background-color: white;
-    border-bottom: 1px solid rgb(77, 77, 77);
-    border-top: none;
-    border-right: none;
-    border-left: none;
-}
-
-label{
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
     display: block;
-    font-size: 13px;
-    opacity: 0.7;
 }
 
-input[type="file"] {
-    border: 1px solid rgb(77, 77, 77);
+label {
+    padding: 12px 12px 12px 0;
     display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    background-color: white;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 1px solid rgb(77, 77, 77);
 }
 
-input[type=text] {
-    width: 90%;
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
     padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
 }
 
-
-#id_image{
-    color: black;
-    opacity: 0.7;
+input[type=submit]:hover {
+    background-color: #45a049;
 }
 
-input[type=file]::file-selector-button {
-    border: 2px solid #198754;
-    padding: .2em .4em;
-    border-radius: .2em;
-    background-color: #198754;
-    transition: 1s;
-    color: white;
-  }
-  
-  input[type=file]::file-selector-button:hover {
-    background-color: #198754;
-    border: 2px solid #198754;
-    color: white;
-  }
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+
+    .col-25,
+    .col-75,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+ul li {
+    list-style: none;
+    text-align: left;
+}
+
+select {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}

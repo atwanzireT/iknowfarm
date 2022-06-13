@@ -41,3 +41,4 @@ class AddVideoView(LoginRequiredMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse('videos')
+

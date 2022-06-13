@@ -10,4 +10,6 @@ urlpatterns = [
     path("districts/", district, name = "district"),
     path('updatefarmer/<int:pk>/', UpdateFarmerView.as_view(), name="updateFarmer"),
     path('addfarmer/', AddFarmerView.as_view(), name="addFarmer"),
+    path('addfile/', AddFileView.as_view(), name="addFile"),
+
 ]

@@ -72,3 +72,12 @@ class AddFarmerView(LoginRequiredMixin, generic.CreateView):
 def farmer_csv(request):
     # return HttpResponse()
     pass
+
+class AddFileView(LoginRequiredMixin, generic.CreateView):
+    model = FarmerFile
+    template_name = 'addfile.html'
+    form_class = FarmerFileForm
+    login_url = '/profile/login/'
+
+    def get_success_url(self):
+        return reverse('videos')
