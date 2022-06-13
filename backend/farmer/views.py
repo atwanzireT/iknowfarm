@@ -1,12 +1,11 @@
 import imp
 from django.shortcuts import render
-from pyparsing import line
 from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .forms import *
 from django.core.paginator import Paginator
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponse
 import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
@@ -66,27 +65,6 @@ class AddFarmerView(LoginRequiredMixin, generic.CreateView):
         context['farmers'] = Farmer.objects.all()
         return context
 
-def farmer_pdf(request):
-    # Create a file-like buffer to receive PDF data.
-    buffer = io.BytesIO()
-
-    # Create the PDF object, using the buffer as its "file."
-    p = canvas.Canvas(buffer)
-
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    farmers = Farmer.objects.all()
-    lines = []
-    for farmer in farmers:
-        lines.append(farmer.id)
-
-    p.drawString(100, 100, lines)
-
-    # Close the PDF object cleanly, and we're done.
-    p.showPage()
-    p.save()
-
-    # FileResponse sets the Content-Disposition header so that browsers
-    # present the option to save the file.
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename='farmer.pdf')
+def farmer_csv(request):
+    # return HttpResponse()
+    pass

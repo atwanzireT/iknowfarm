@@ -5,7 +5,7 @@ from django.urls import path
 
 urlpatterns = [
     path("", farmer, name = "farmers"),
-    path("pdf/", farmer_pdf, name = "farmers_pdf"),
+    path("csv/", farmer_csv, name = "farmers_csv"),
     path("groups/", farmer_groups, name = "farmer_groups"),
     path("districts/", district, name = "district"),
     path('updatefarmer/<int:pk>/', UpdateFarmerView.as_view(), name="updateFarmer"),
