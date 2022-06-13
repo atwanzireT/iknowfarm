@@ -34,6 +34,10 @@ class Recomender(models.Model):
 
 class FarmerGroup(models.Model):
     name = models.CharField(max_length=255)
+    pin = models.CharField(max_length=10)
+    group_type = models.CharField(max_length=20)
+    female_farmers = models.IntegerField(default=0)
+    male_farmers = models.IntegerField(default=0)
     villages = models.ForeignKey(Village, on_delete= models.CASCADE, blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 

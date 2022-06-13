@@ -10,34 +10,16 @@
     }
 </style>
 
+{{}}
 {% for rs in farmer_groups %}
 <div class="title-card">
     <div class="row mt-5">
         <div class="col-2">
             <p>{{rs.id}}</p>
         </div>
-        <div class="col">
-            <p>{{rs.name}}</p>
-        </div>
-        <div class="col">
-            <p>{{rs.age}}</p>
-        </div>
-        <div class="col">
-            <p>{{rs.Village}}</p>
-        </div>
-        <div class="col ">
-            <p>{{rs.Recomender}}</p>
-        </div>
-        <div class="col">
-            <div class="col">
-                <div class="row">
-                    <div class="col-auto">
-                        <a id="edit_link" href="/farmers/updatefarmer/{{rs.id}}">Edit</a>
-                    </div>
-                    <div class="col-auto">
-                        <a id="manuel_link" href="#">Manuel</a>
-                    </div>
-                </div>
+        <div class="col" >
+            <div >
+                <p style="text-align: left;">{{rs.name}}</p>
             </div>
         </div>
     </div>

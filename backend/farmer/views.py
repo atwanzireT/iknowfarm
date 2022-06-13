@@ -23,6 +23,10 @@ def district(request):
 
 def farmer_groups(request):
     farmer_groups = FarmerGroup.objects.all()
+
+    paginator = Paginator(farmer_groups, 5)
+    page = request.GET.get('page')
+    farmer_groups = paginator.get_page(page)
     dic = {
         'farmer_groups':farmer_groups,
     }
