@@ -5,7 +5,6 @@
     }
 
     #manuel_link {
-        color: cornflowerblue;
         font-size: 14px;
     }
 </style>
@@ -31,7 +30,7 @@
                         <a id="edit_link"  href="/farmers/updatefarmer/{{rs.id}}">Edit</a>
                     </div>
                     <div class="col-auto">
-                        <a id="manuel_link" href="#">Manuel</a>
+                        <a id="manuel_link" class="text-danger" href="/farmers/deletefarmer/{{rs.id}}/'">Delete</a>
                     </div>
                 </div>
             </div>

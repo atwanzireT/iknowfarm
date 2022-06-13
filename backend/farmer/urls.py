@@ -11,5 +11,6 @@ urlpatterns = [
     path('updatefarmer/<int:pk>/', UpdateFarmerView.as_view(), name="updateFarmer"),
     path('addfarmer/', AddFarmerView.as_view(), name="addFarmer"),
     path('addfile/', AddFileView.as_view(), name="addFile"),
+    path('deletefarmer/<int:pk>/', FarmerDeleteView.as_view(), name="DeleteFarmer"),
 
 ]

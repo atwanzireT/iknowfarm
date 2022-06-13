@@ -78,7 +78,7 @@ class UpdateCropView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['crop'] = Crop.objects.all()
+        context['crop'] = Crop.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
@@ -94,7 +94,7 @@ class AddCropView(LoginRequiredMixin, generic.CreateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['crop'] = Crop.objects.all()
+        context['crop'] = Crop.objects.all()[:10]
         return context
 
     def get_success_url(self):
@@ -111,7 +111,7 @@ class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['livestock'] = Livestock.objects.all()
+        context['livestock'] = Livestock.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
@@ -127,7 +127,7 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['livestock'] = Livestock.objects.all()
+        context['livestock'] = Livestock.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
@@ -135,6 +135,7 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
 
 
 # Translations Views
+@login_required(login_url='/profile/login/')
 def cropTranslation(request):
     crops = Crop.objects.all()
 
@@ -147,6 +148,7 @@ def cropTranslation(request):
     }
     return render(request, 'cropTrans_list.html', dic)
 
+@login_required(login_url='/profile/login/')
 def livestockTranslation(request):
     livestock = Livestock.objects.all()
 
@@ -169,7 +171,7 @@ class UpdateLiveStockTranslationView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['livestock'] = Livestock.objects.all()
+        context['livestock'] = Livestock.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
@@ -185,7 +187,7 @@ class UpdateCropTranslationView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['crops'] = Crop.objects.all()
+        context['crops'] = Crop.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):

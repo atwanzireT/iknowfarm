@@ -10,9 +10,14 @@ import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import A4, landscape
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse, reverse_lazy
+
+
 
 
 # Create your views here.
+@login_required(login_url='/profile/login/')
 def district(request):
     villages = Village.objects.all()
     dic = {
@@ -21,6 +26,7 @@ def district(request):
     return render(request, 'districts.html', dic)
 
 
+@login_required(login_url='/profile/login/')
 def farmer_groups(request):
     farmer_groups = FarmerGroup.objects.all()
 
@@ -32,6 +38,7 @@ def farmer_groups(request):
     }
     return render(request, 'farmergroups.html', dic)
 
+@login_required(login_url='/profile/login/')
 def farmer(request):
     farmers = Farmer.objects.all()
 
@@ -53,7 +60,7 @@ class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['farmers'] = Farmer.objects.all()
+        context['farmers'] = Farmer.objects.all().order_by('?')[:10]
         return context
 
 class AddFarmerView(LoginRequiredMixin, generic.CreateView):
@@ -66,7 +73,7 @@ class AddFarmerView(LoginRequiredMixin, generic.CreateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['farmers'] = Farmer.objects.all()
+        context['farmers'] = Farmer.objects.all().order_by('?')[:10]
         return context
 
 def farmer_csv(request):
@@ -81,3 +88,7 @@ class AddFileView(LoginRequiredMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse('videos')
+
+class FarmerDeleteView(generic.DeleteView):
+    model = Farmer
+    success_url = reverse_lazy('/farmer/')
