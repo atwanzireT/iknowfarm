@@ -104,3 +104,15 @@ class AddFileView(LoginRequiredMixin, generic.CreateView):
 class FarmerDeleteView(generic.DeleteView):
     model = Farmer
     success_url = reverse_lazy('/farmer/')
+
+
+def exension_workers(request):
+    ex_workers = ExGroupWorkers.objects.all()
+
+    paginator = Paginator(ex_workers, 5)
+    page = request.GET.get('page')
+    ex_workers = paginator.get_page(page)
+    dic = {
+        'ex_workers':ex_workers,
+    }
+    return render(request, 'ex_workers.html', dic)

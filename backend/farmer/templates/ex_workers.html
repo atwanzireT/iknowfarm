@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock header %}
+
+
+{% block content %}
+
+{% include 'leftbar.html' %}
+<div class="container crop-container" style="margin: auto;">
+    {% include 'topbar.html' %}
+    <div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6>All Farmers</h6>
+            </div>
+            <div class="col-5"></div>
+            <div class="col">
+                <a href="/farmers/addfarmer/" class="btn btn-small btn-success">Add Extension Worker</a>
+            </div>
+        </div>
+        <!-- Headings -->
+        <div class="card m-2" style="height: auto;">
+            <div class="title-card">
+                <div class="row mt-5" style="margin-left: 10px;">
+                    <div class="col-3" style="text-align: left;">
+                        <h6>Extension Worker</h6>
+                    </div>
+                    <div class="col-2" style="text-align: left;">
+                        <h6>Designation</h6>
+                    </div>
+                    <div class="col-3" style="text-align: left;">
+                        <h6>Operation Area</h6>
+                    </div>
+                    <div class="col-2" style="text-align: left;">
+                        <h6>Focus</h6>
+                    </div>
+                    <div class="col-3" style="text-align: left;">
+                        <h6>Extension Group</h6>
+                    </div>
+                    <div class="col-2">
+                        <h6>Action</h6>
+                    </div>
+                </div>
+            </div>
+            <hr style="width: 90%; margin: auto;">
+            {% include 'extension_worker.html' %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 offset-md-4">
+                        <ul class="pagination justify-content-center">
+                            {% if ex_workers.has_previous %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{ex_workers.previous_page_number}}">Previous</a>
+                            </li>
+                            {% endif %}
+                            <li class="page-item active">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{ex_workers.number}}">Current</a>
+                            </li>
+
+                            {% if ex_workers.has_next %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{ex_workers.next_page_number}}">Next</a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -9,7 +9,7 @@ admin.site.register(Recomender)
 admin.site.register(FarmerGroup)
 admin.site.register(FarmerFile)
 admin.site.register(ExGroups)
-admin.site.register(ExGroupMembers)
+admin.site.register(ExGroupWorkers)
 
 
 

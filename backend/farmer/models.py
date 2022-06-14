@@ -99,8 +99,9 @@ class ExGroups(models.Model):
 
     def __str__(self) -> str:
         return self.title
-
-
+    class Meta:
+        managed = True
+        db_table = 'ex_groups'
 
 class ExGroupWorkers(models.Model):
     group = models.ForeignKey(ExGroups, on_delete=models.CASCADE)
@@ -112,5 +113,8 @@ class ExGroupWorkers(models.Model):
     operation_area = models.CharField(max_length=100)
     module = models.CharField(max_length=9)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
+    class Meta:
+        managed = True
+        db_table = 'ex_group_workers'
