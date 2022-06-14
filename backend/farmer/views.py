@@ -15,15 +15,6 @@ import csv
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
-def district(request):
-    villages = Village.objects.all()
-    dic = {
-        'villages':villages,
-    }
-    return render(request, 'districts.html', dic)
-
-
-@login_required(login_url='/profile/login/')
 def farmer_groups(request):
     farmer_groups = FarmerGroup.objects.all()
 

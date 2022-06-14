@@ -98,19 +98,27 @@
             <div>
                 <!-- Headings -->
                 <div class="container-div">
-                    <div class="card m-2" style="height: auto;">
-                        <div>
-                            <h6>Add Farmer CSV File</h6>
+                    <div class="row mt-2">
+                        <div class="card mt-2">
+                            <h5 class="p-2">
+                                Register farmers or Farmer groups by Uploading a CSV file with bio data
+                            </h5>
                         </div>
-                        <form action="" method="post">
-                            <div style="width: 80%; margin: auto;">
-                                {% csrf_token %}
-                                {{form.media}} {{form.as_p}}
-                                <div class="m-3 p-2">
-                                    <button class="btn btn-success float-end m-2">Upload File</button>
+                        <div class="card m-2">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <!-- <div class="m-3">
+                                    <label for="formFileMultiple" class="form-label">Upload CSV</label>
+                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                </div> -->
+                                <div class="m-3">
+                                    {% csrf_token %}
+                                    {{form.media}} {{form.as_p}}
                                 </div>
-                            </div>
-                        </form>
+                                <div>
+                                    <button class="btn btn-success float-end m-2">Add CSV File</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
