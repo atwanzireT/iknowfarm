@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CropForm, CropTranslationForm, LivestockForm, LivestockTranslationForm
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from translation.models import *
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
@@ -82,7 +82,7 @@ class UpdateCropView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('crops')
+        return reverse_lazy('crops')
 
 class AddCropView(LoginRequiredMixin, generic.CreateView):
     model = Crop
@@ -98,7 +98,7 @@ class AddCropView(LoginRequiredMixin, generic.CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('crops')
+        return reverse_lazy('crops')
 
 
 class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
@@ -115,7 +115,7 @@ class UpdateLiveStockView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('liveStock')
+        return reverse_lazy('livestock')
 
 class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
     model = Livestock
@@ -131,7 +131,7 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('liveStock')
+        return reverse_lazy('livestock')
 
 
 # Translations Views
@@ -175,7 +175,7 @@ class UpdateLiveStockTranslationView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('livestock_translations')
+        return reverse_lazy('livestock_translations')
 
 class UpdateCropTranslationView(LoginRequiredMixin, generic.UpdateView):
     model = Crop
@@ -191,4 +191,4 @@ class UpdateCropTranslationView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('crops_translations')
+        return reverse_lazy('crops_translations')

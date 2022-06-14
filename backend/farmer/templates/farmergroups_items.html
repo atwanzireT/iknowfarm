@@ -12,30 +12,55 @@
 
 {% for rs in farmer_groups %}
 <div class="title-card">
-    <div class="row mt-5">
-        <div class="col" >
+    <div class="row mt-5" style="margin-left: 10px;">
+        <div class="col-2" >
             <div >
-                <p style="text-align: left;">{{rs.name}}</p>
+                <p style="text-align: left; font-size: 14px;">{{rs.name}}</p>
             </div>
         </div>
-        <div class="col" >
+        <div class="col-sm-1" >
             <div >
-                <p style="text-align: left;">{{rs.female_farmers}}</p>
+                <p style="text-align: left; font-size: 14px;">{{rs.female_farmers}}</p>
             </div>
         </div>
-        <div class="col" >
+        <div class="col-sm-1" >
             <div >
-                <p style="text-align: left;">{{rs.male_farmers}}</p>
+                <p style="text-align: left; font-size: 14px;">{{rs.male_farmers}}</p>
             </div>
         </div>
-        <div class="col" >
+        <div class="col-1" >
             <div >
-                <p style="text-align: left;">{{rs.phonenumber}}</p>
+                <p style="text-align: left; font-size: 14px;">{{rs.phonenumber}}</p>
             </div>
         </div>
-        <div class="col" >
+        <div class="col-1" >
             <div >
-                <p style="text-align: left;">{{rs.village}}</p>
+                <p style="text-align: left; font-size: 14px;">{{rs.village}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.village.districtid}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left;">{{rs.group_type}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.createdat}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.expiry}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.recommender}}</p>
             </div>
         </div>
     </div>

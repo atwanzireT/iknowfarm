@@ -92,3 +92,25 @@ class Farmer(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class ExGroups(models.Model):
+    title = models.CharField(max_length=200)
+
+    def __str__(self) -> str:
+        return self.title
+
+
+
+class ExGroupWorkers(models.Model):
+    group = models.ForeignKey(ExGroups, on_delete=models.CASCADE)
+    district = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    gender = models.CharField(max_length=1)
+    designation = models.CharField(max_length=255)
+    telephone_number = models.CharField(max_length=100)
+    operation_area = models.CharField(max_length=100)
+    module = models.CharField(max_length=9)
+
+    def __str__(self):
+        return self.name
