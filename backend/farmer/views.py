@@ -42,9 +42,15 @@ def farmer_groups(request):
 def farmer(request):
     farmers = Farmer.objects.all()
 
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        farmers = Farmer.objects.filter(name__icontains=search)[:20]
+        return render(request, "search.html", {'farmers':farmers})
+
     paginator = Paginator(farmers, 5)
     page = request.GET.get('page')
     farmers = paginator.get_page(page)
+
     dic = {
         'farmers':farmers,
     }
@@ -63,6 +69,9 @@ class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
         context['farmers'] = Farmer.objects.all().order_by('?')[:10]
         return context
 
+    def get_success_url(self):
+        return reverse('/farmers')
+
 class AddFarmerView(LoginRequiredMixin, generic.CreateView):
     model = Farmer
     template_name = 'addFarmer.html'
@@ -75,6 +84,9 @@ class AddFarmerView(LoginRequiredMixin, generic.CreateView):
         # Add in a QuerySet of all the books
         context['farmers'] = Farmer.objects.all().order_by('?')[:10]
         return context
+
+    def get_success_url(self):
+        return reverse('/farmers/')
 
 def farmer_csv(request):
     # return HttpResponse()

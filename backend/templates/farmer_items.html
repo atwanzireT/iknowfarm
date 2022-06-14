@@ -8,29 +8,44 @@
         font-size: 14px;
     }
 </style>
-{% for rs in farmers %}
+{% for rs in farmers reversed %}
 <div class="title-card">
-    <div class="row mt-5">  
-        <div class="col">
+    <div class="row mt-3" style="margin-left: 10px;">  
+        <div class="col-md-1">
             <p>{{rs.name}}</p>
         </div>
-        <div class="col">
+        <div class="col-sm-1">
             <p>{{rs.age}}</p>
         </div>
-        <div class="col">
-            <p>{{rs.phonenumber}}</p>
+        <div class="col-sm-1">
+            <p>{{rs.gender}}</p>
         </div>
-        <div class="col ">
-           <p>{{rs.village}}</p>
+        <div class="col-1 ">
+           <p>{{rs.phonenumber}}</p>
         </div>
-        <div class="col">
+        <div class="col-1">
+            <p>{{rs.village}}</p>
+        </div>
+        <div class="col-1">
+            <p>{{rs.village.districtid}}</p>
+        </div>
+        <div class="col-2">
+            <p>{{rs.createdat}}</p>
+        </div>
+        <div class="col-1 ">
+           <p>{{rs.expiry}}</p>
+        </div>
+        <div class="col-1 ">
+            <p>{{rs.recommender}}</p>
+         </div>
+        <div class="col-1">
             <div class="col">
                 <div class="row">
                     <div class="col-auto">
                         <a id="edit_link"  href="/farmers/updatefarmer/{{rs.id}}">Edit</a>
                     </div>
                     <div class="col-auto">
-                        <a id="manuel_link" class="text-danger" href="/farmers/deletefarmer/{{rs.id}}/'">Delete</a>
+                        <a id="manuel_link" class="text-danger" href="/farmers/deletefarmer/{{rs.id}}/">Delete</a>
                     </div>
                 </div>
             </div>
