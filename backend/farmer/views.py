@@ -98,7 +98,6 @@ def farmer_csv(request):
     # Add column headers to csv file
     writer.writerow(['name','age', 'gender', 'phonenumber', 'status',   'recommender',   'pin', 'expiry', 'farmer_type', 'createdat', 'updatedat', ])
 
-
     for farmer in farmers:
         writer.writerow([farmer.name, farmer.age, farmer.gender, farmer.phonenumber, farmer.status,  farmer.recommender,  farmer.pin, farmer.expiry, farmer.createdat, farmer.updatedat])
        

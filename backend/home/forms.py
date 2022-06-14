@@ -10,42 +10,23 @@ class CropForm(forms.ModelForm):
         model = Crop
         fields = ('english','arabic', 'lugbara', 'image')
 
-    widgets = {
-        'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Name'}),
-        'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
-        'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
-    }
 
 class LivestockForm(forms.ModelForm):
     class Meta:
         model = Livestock
         fields = ('english','arabic', 'lugbara', 'image')
 
-    widgets = {
-        'name': forms.TextInput(attrs={'class': 'form-control','placeholder':'Name'}),
-        'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
-        'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
-    }
 
 class CropTranslationForm(forms.ModelForm):
     class Meta:
         model = Crop
         fields = ('arabic', 'lugbara')
 
-    widgets = {
-        'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
-        'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
-    }
-
 class LivestockTranslationForm(forms.ModelForm):
     class Meta:
         model = Livestock
         fields = ('arabic', 'lugbara')
 
-    widgets = {
-        'arabic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Arabic'}),
-        'lugbar': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lugbar'}),
-    }
 
 # class SignupForm(UserCreationForm):
 #     GENDER_CHOICES = [

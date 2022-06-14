@@ -145,7 +145,7 @@ box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 1
 
     <div class="card m-5">
         <div style="margin: auto;" class="m-5">
-            <div>
+            <div style="margin: auto;">
                 <form class="form-inline my-2 my-lg-0" method="POST">
                     <div class="row">
                         <div class="col-4">
@@ -158,11 +158,9 @@ box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 1
                     </div>
                 </form>
             </div>
-            <div class="container">
-                <div class="row mt-4">
-                    <div class="col-md-10 offset-md-1">
-                        {{ m|safe }}
-                    </div>
+            <div class="container card mt-2">
+                <div class="mt-2">
+                    {{ m|safe }}
                 </div>
             </div>
         </div>

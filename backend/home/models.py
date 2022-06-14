@@ -5,7 +5,7 @@ class Crop(models.Model):
     english = models.CharField(max_length=255, blank=True, null=True)
     arabic = models.CharField(max_length=255, blank=True, null=True)
     lugbara = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField()
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
 
@@ -16,7 +16,7 @@ class Livestock(models.Model):
     english = models.CharField(max_length=255, blank=True, null=True)
     arabic = models.CharField(max_length=255, blank=True, null=True)
     lugbara = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField()
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
 

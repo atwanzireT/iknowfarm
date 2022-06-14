@@ -12,6 +12,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from farmer.forms import SearchForm
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 import folium
 import geocoder
 
@@ -34,8 +35,9 @@ def index(request):
     print(lat, lng, country)
     print(address)
     if lat == None or lng == None:
-        address.delete()
-        return HttpResponse('You address input is invalid')  
+        # address.delete()
+        # return HttpResponse('You address input is invalid') 
+        return redirect('/') 
 
     # Create Map Object
     m = folium.Map(location=[19, -12], zoom_start=2)
@@ -237,3 +239,16 @@ class UpdateCropTranslationView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('crops_translations')
+
+# Delete Views
+@login_required(login_url='/profile/login/')
+def delete_crop(request,id):
+    Crop.objects.filter(id=id).delete()
+    messages.success(request, "crop Deleted.")
+    return HttpResponseRedirect("/crops/")
+
+@login_required(login_url='/profile/login/')
+def delete_livestock(request,id):
+    Livestock.objects.filter(id=id).delete()
+    messages.success(request, "Livestock Deleted.")
+    return HttpResponseRedirect("/livestock/")
