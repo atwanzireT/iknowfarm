@@ -21,6 +21,9 @@ def index(request):
     unregistered_users = UnregistredUser.objects.all().count()
     app_users = User.objects.all().count()
     app_installations = farmers + unregistered_users + app_users
+    young_farmers = Farmer.objects.filter(age__lte = 35).count()
+    old_farmers = Farmer.objects.filter(age__gte = 35, age__lte = 60).count()
+    elder_farmers = Farmer.objects.filter(age__gte = 60).count()
 
     dic = {
         'male_farmers':male_farmers,
@@ -29,6 +32,10 @@ def index(request):
         'unregistered_users':unregistered_users,
         'app_users':app_users,
         'app_installations':app_installations,
+        'young_farmers':young_farmers,
+        'old_farmers':old_farmers,
+        'elder_farmers':elder_farmers,
+
     }
     return render(request, 'index.html', dic)
 

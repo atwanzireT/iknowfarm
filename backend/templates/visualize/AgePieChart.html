@@ -1,13 +1,13 @@
-<canvas id="myChart1" width="300" height="300"></canvas>
+<canvas id="myChart3" width="300" height="300"></canvas>
 <script>
-    var ctx = document.getElementById('myChart1').getContext('2d');
-    var myChart1 = new Chart(ctx, {
+    var ctx = document.getElementById('myChart3').getContext('2d');
+    var myChart3 = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['MALE', 'FEMALE'],
+            labels: ['Below 35', '35-60', 'Above 60'],
             datasets: [{
                 label: 'GENDER STATISTICS',
-                data: [{{male_farmers}}, {{female_farmers}}],
+                data: [{{young_farmers}}, {{old_farmers}}, {{elder_farmers}}],
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
