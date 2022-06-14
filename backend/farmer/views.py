@@ -1,5 +1,5 @@
 import imp
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
@@ -47,6 +47,7 @@ def farmer(request):
     paginator = Paginator(farmers, 5)
     page = request.GET.get('page')
     farmers = paginator.get_page(page)
+
 
     dic = {
         'farmers':farmers,

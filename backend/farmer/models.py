@@ -100,7 +100,7 @@ class ExGroups(models.Model):
     def __str__(self) -> str:
         return self.title
     class Meta:
-        managed = True
+        managed = False
         db_table = 'ex_groups'
 
 class ExGroupWorkers(models.Model):
@@ -116,5 +116,12 @@ class ExGroupWorkers(models.Model):
     def __str__(self) -> str:
         return self.name
     class Meta:
-        managed = True
+        managed = False
         db_table = 'ex_group_workers'
+
+class Search(models.Model):
+    address = models.CharField(max_length=200, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.address

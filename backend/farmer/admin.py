@@ -10,8 +10,5 @@ admin.site.register(FarmerGroup)
 admin.site.register(FarmerFile)
 admin.site.register(ExGroups)
 admin.site.register(ExGroupWorkers)
-
-
-
-
+admin.site.register(Search)
 

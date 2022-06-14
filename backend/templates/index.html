@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 
 {% block header %}
 <link rel="stylesheet" href="{% static '/css/home.css' %}">
@@ -141,5 +143,32 @@ box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 1
         </div>
     </div>
 
-    <!-- </div> -->
-    {% endblock content %}
+    <div class="card m-5">
+        <div style="margin: auto;" class="m-5">
+            <div>
+                <form class="form-inline my-2 my-lg-0" method="POST">
+                    <div class="row">
+                        <div class="col-4">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col-md-10 offset-md-1">
+                        {{ m|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- </div> -->
+{% endblock content %}

@@ -22,3 +22,10 @@ class ExtensionWorkerForm(forms.ModelForm):
     class Meta:
         model = ExGroupWorkers
         fields = ('group', 'district', 'name', 'gender',  'designation', 'telephone_number',  'operation_area', 'module')
+
+class SearchForm(forms.ModelForm):
+    address = forms.CharField(label='')
+
+    class Meta:
+        model = Search
+        fields = ['address', ]

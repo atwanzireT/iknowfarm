@@ -1,7 +1,7 @@
 from tokenize import group
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Crop, Livestock, UnregistredUser
-from farmer.models import Farmer, Village
+from farmer.models import Farmer, Village, Search
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,11 +10,41 @@ from django.urls import reverse, reverse_lazy
 from translation.models import *
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from farmer.forms import SearchForm
+from django.http import HttpResponse, HttpResponseRedirect
+import folium
+import geocoder
 
 
 # Create your views here.
 @login_required(login_url='/profile/login/')
 def index(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = SearchForm()
+    address = Search.objects.all().last()
+    location = geocoder.osm(address)
+    lat = location.lat
+    lng = location.lng
+    country = location.country
+    print(lat, lng, country)
+    print(address)
+    if lat == None or lng == None:
+        address.delete()
+        return HttpResponse('You address input is invalid')  
+
+    # Create Map Object
+    m = folium.Map(location=[19, -12], zoom_start=2)
+
+    folium.Marker([lat, lng], tooltip='Click for more',
+                  popup=country).add_to(m)
+    # Get HTML Representation of Map Object
+    m = m._repr_html_()
+
     male_farmers = Farmer.objects.filter(gender = 'male').count()
     female_farmers = Farmer.objects.filter(gender = 'female').count()
     farmers = Farmer.objects.filter(group__isnull = True).count()
@@ -24,6 +54,7 @@ def index(request):
     young_farmers = Farmer.objects.filter(age__lte = 35).count()
     old_farmers = Farmer.objects.filter(age__gte = 35, age__lte = 60).count()
     elder_farmers = Farmer.objects.filter(age__gte = 60).count()
+
 
     dic = {
         'male_farmers':male_farmers,
@@ -35,6 +66,8 @@ def index(request):
         'young_farmers':young_farmers,
         'old_farmers':old_farmers,
         'elder_farmers':elder_farmers,
+        'm': m,
+        'form': form,
 
     }
     return render(request, 'index.html', dic)
