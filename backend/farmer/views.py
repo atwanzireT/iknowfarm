@@ -12,6 +12,8 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import A4, landscape
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
+from django.contrib import messages
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 
@@ -88,6 +90,7 @@ class AddFarmerView(LoginRequiredMixin, generic.CreateView):
     def get_success_url(self):
         return reverse('/farmers/')
 
+@login_required(login_url='/profile/login/')
 def farmer_csv(request):
     # return HttpResponse()
     pass
@@ -101,13 +104,22 @@ class AddFileView(LoginRequiredMixin, generic.CreateView):
     def get_success_url(self):
         return reverse('videos')
 
-class FarmerDeleteView(generic.DeleteView):
-    model = Farmer
-    success_url = reverse_lazy('/farmer/')
+@login_required(login_url='/profile/login/')
+def delete_farmer(request,id):
+    Farmer.objects.filter(id=id).delete()
+    messages.success(request, "Farmer Deleted.")
+    return HttpResponseRedirect("/farmers/")
 
+@login_required(login_url='/profile/login/')
+def delete_farmer_group(request,id):
+    FarmerGroup.objects.filter(id=id).delete()
+    messages.success(request, "Farmer Group Deleted.")
+    return HttpResponseRedirect("/farmers/groups/")
 
+# Extension workers views 
+@login_required(login_url='/profile/login/')
 def exension_workers(request):
-    ex_workers = ExGroupWorkers.objects.all()
+    ex_workers = ExGroupWorkers.objects.all().order_by('name')
 
     paginator = Paginator(ex_workers, 5)
     page = request.GET.get('page')
@@ -116,3 +128,34 @@ def exension_workers(request):
         'ex_workers':ex_workers,
     }
     return render(request, 'ex_workers.html', dic)
+
+class AddExtensionWorkerView(LoginRequiredMixin, generic.CreateView):
+    model = ExGroupWorkers
+    template_name = 'addextensionWorker.html'
+    form_class = ExtensionWorkerForm
+    login_url = '/profile/login/'
+
+    def get_success_url(self):
+        return reverse('extension_workers')
+
+class UpdateExtensionWorkerView(LoginRequiredMixin, generic.UpdateView):
+    model = ExGroupWorkers
+    template_name = 'UpdateExtensionWorker.html'
+    form_class = ExtensionWorkerForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['ex_workers'] = ExGroupWorkers.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('extension_workers')
+
+@login_required(login_url='/profile/login/')
+def delete_extension_worker(request,id):
+    ExGroupWorkers.objects.filter(id=id).delete()
+    messages.success(request, "Extension Worker Deleted.")
+    return HttpResponseRedirect("/farmers/extension_workers/")

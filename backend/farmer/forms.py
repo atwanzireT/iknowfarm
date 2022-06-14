@@ -17,3 +17,8 @@ class FarmerGroupForm(forms.ModelForm):
     class Meta:
         model = FarmerGroup
         fields = ('name', 'group_type', 'male_farmers', 'female_farmers',  'recommender', 'phonenumber',  'village', 'pin')
+
+class ExtensionWorkerForm(forms.ModelForm):
+    class Meta:
+        model = ExGroupWorkers
+        fields = ('group', 'district', 'name', 'gender',  'designation', 'telephone_number',  'operation_area', 'module')
