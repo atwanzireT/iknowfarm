@@ -11,7 +11,7 @@ class FarmerFileForm(forms.ModelForm):
 class FarmerForm(forms.ModelForm):
     class Meta:
         model = Farmer
-        fields = ('name','age', 'expiry', 'status', 'gender',  'recommender', 'phonenumber',  'village', 'pin')
+        fields = ('name','age', 'expiry', 'status', 'gender', 'farmer_type',  'recommender', 'phonenumber',  'village', 'pin')
 
 class FarmerGroupForm(forms.ModelForm):
     class Meta:

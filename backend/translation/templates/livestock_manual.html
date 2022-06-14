@@ -21,6 +21,9 @@
         <!-- Headings -->
         <div class="container-div">
             <div class="card m-2" style="height: auto;">
+                <div class="m-2">
+                    {% include 'man_search_item.html' %}
+                </div>
                 <div class="title-card">
                     <div class="card m-2">
                         <div>
@@ -35,15 +38,13 @@
                 </div>
 
                 <div class="card m-2">
+                    {% for rs in livestock %}
                     <div class="p-2">
                         <a href="#" id="tomato_head">
-                            <h5  class="d-head" style="text-align: left;" class="m-2"><i style="color: #198754;" class="fa fa-pagelines"></i><span class="text-success mx-5">Tomato</span></h5>
-                            <!-- <h4>
-                                <i id="drop_icon" class="fas fa-caret-down fa-lg"></i><span><h5 class="m-2 text-success" style="text-align: left;">Tomato</h5></span>
-                            </h4> -->
+                            <h5  class="d-head" style="text-align: left;" class="m-2"><i style="color: #198754;" class="fa fa-paw"></i><span class="text-success mx-5">{{rs.livestockid}}</span></h5>
                         </a>
                         <div id="tomato_body">
-                            {% for rs in tomato %}
+                            
                             <div class="card card-body m-2">
                                 <p>
                                     <a class="btn btn-light">
@@ -60,15 +61,14 @@
                                             <a href = "/translation/lugbara_manual/{{rs.id}}" class="text-success" href="#">View Lughara Version</a>
                                         </div>
                                         <div class="col">
-                                            <a href = "/translation/arabic_manual/{{rs.id}}" class="text-success" href="#">View English Version</a>
+                                            <a href = "/translation/arabic_manual/{{rs.id}}" class="text-success" href="#">View Arabic Version</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
                         </div>
-        
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

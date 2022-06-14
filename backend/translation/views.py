@@ -4,13 +4,23 @@ from .forms import *
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 
 # Create your views here.
 def crop_manual(request):
-    tomato = Manual.objects.filter(cropid = 1)
+    crop = Manual.objects.filter(type = 'crop' )
+
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        manual = Manual.objects.filter(title__icontains=search)[:30]
+        return render(request, "manual_search.html", {'manual':manual})
+
+    paginator = Paginator(crop, 5)
+    page = request.GET.get('page')
+    crop = paginator.get_page(page)
     dic= {
-        'tomato':tomato,
+        'crop':crop,
     }
     return render(request, 'crop_manual.html', dic)
 
@@ -57,9 +67,14 @@ class UpdateLugbaraManualView(LoginRequiredMixin, generic.UpdateView):
         return reverse('crop_manual')
 
 def livestock_manual(request):
-    cattle = Manual.objects.filter(livestockid = 1)
+    livestock = Manual.objects.filter(type = "livestock")
+
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        manual = Manual.objects.filter(title__icontains=search)[:30]
+        return render(request, "manual_search.html", {'manual':manual})
     dic= {
-        'cattle': cattle,
+        'livestock': livestock,
     }
     return render(request, 'livestock_manual.html', dic)
 

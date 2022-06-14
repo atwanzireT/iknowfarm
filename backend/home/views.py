@@ -62,6 +62,11 @@ def crops(request):
 @login_required(login_url='/profile/login/')
 def livestock(request):
     livestock = Livestock.objects.all()
+
+    paginator = Paginator(livestock, 5)
+    page = request.GET.get('page')
+    livestock = paginator.get_page(page)
+
     dic = {
         'livestock':livestock,
     }

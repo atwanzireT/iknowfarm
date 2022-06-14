@@ -5,16 +5,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .forms import *
 from django.core.paginator import Paginator
-from django.http import FileResponse, HttpResponse
-import io
-from reportlab.pdfgen import canvas
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import A4, landscape
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
-
+import csv
 
 
 
@@ -92,8 +87,22 @@ class AddFarmerView(LoginRequiredMixin, generic.CreateView):
 
 @login_required(login_url='/profile/login/')
 def farmer_csv(request):
-    # return HttpResponse()
-    pass
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="farmers.csv"'
+
+    # Create CSV writer
+    writer = csv.writer(response)
+    farmers = Farmer.objects.all()
+    
+    # Add column headers to csv file
+    writer.writerow(['name','age', 'gender', 'phonenumber', 'status',   'recommender',   'pin', 'expiry', 'farmer_type', 'createdat', 'updatedat', ])
+
+
+    for farmer in farmers:
+        writer.writerow([farmer.name, farmer.age, farmer.gender, farmer.phonenumber, farmer.status,  farmer.recommender,  farmer.pin, farmer.expiry, farmer.createdat, farmer.updatedat])
+       
+    
+    return response
 
 class AddFileView(LoginRequiredMixin, generic.CreateView):
     model = FarmerFile
