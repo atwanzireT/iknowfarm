@@ -20,32 +20,32 @@ import geocoder
 # Create your views here.
 @login_required(login_url='/profile/login/')
 def index(request):
-    if request.method == 'POST':
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    else:
-        form = SearchForm()
-    address = Search.objects.all().last()
-    location = geocoder.osm(address)
-    lat = location.lat
-    lng = location.lng
-    country = location.country
-    print(lat, lng, country)
-    print(address)
-    if lat == None or lng == None:
+    # if request.method == 'POST':
+    #     form = SearchForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('/')
+    # else:
+    #     form = SearchForm()
+    # address = Search.objects.all().last()
+    # location = geocoder.osm(address)
+    # lat = location.lat
+    # lng = location.lng
+    # country = location.country
+    # print(lat, lng, country)
+    # print(address)
+    # if lat == None or lng == None:
         # address.delete()
         # return HttpResponse('You address input is invalid') 
-        return redirect('/') 
+        # return redirect('/') 
 
-    # Create Map Object
-    m = folium.Map(location=[19, -12], zoom_start=2)
+    # # Create Map Object
+    # m = folium.Map(location=[19, -12], zoom_start=2)
 
-    folium.Marker([lat, lng], tooltip='Click for more',
-                  popup=country).add_to(m)
-    # Get HTML Representation of Map Object
-    m = m._repr_html_()
+    # folium.Marker([lat, lng], tooltip='Click for more',
+    #               popup=country).add_to(m)
+    # # Get HTML Representation of Map Object
+    # m = m._repr_html_()
 
     male_farmers = Farmer.objects.filter(gender = 'male').count()
     female_farmers = Farmer.objects.filter(gender = 'female').count()
@@ -68,8 +68,8 @@ def index(request):
         'young_farmers':young_farmers,
         'old_farmers':old_farmers,
         'elder_farmers':elder_farmers,
-        'm': m,
-        'form': form,
+        # 'm': m,
+        # 'form': form,
 
     }
     return render(request, 'index.html', dic)
