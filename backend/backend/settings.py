@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'translation',
     'ckeditor',
     'crispy_forms',
+    'api',
 ]
 
 MIDDLEWARE = [
