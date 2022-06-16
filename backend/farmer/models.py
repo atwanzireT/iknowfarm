@@ -50,6 +50,7 @@ class FarmerGroup(models.Model):
     village = models.ForeignKey(Village, on_delete= models.CASCADE, blank=True, null=True)
     phonenumber = models.CharField(unique=True, max_length=255, blank=True, null=True)
     recommender = models.ForeignKey(Recomender, on_delete=models.CASCADE, blank=True, null=True)
+    limit = models.IntegerField(blank=True, null=True, default=1)
     expiry = models.DateTimeField( blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
@@ -60,8 +61,8 @@ class FarmerGroup(models.Model):
 
 class Farmer(models.Model):
     STATUS_CODE = [
-        ('married', 'married'),
-        ('single', 'single'),
+        (1, 'active'),
+        (0, 'inactive'),
     ]
 
     GENDER_CODE = [
@@ -118,10 +119,3 @@ class ExGroupWorkers(models.Model):
     class Meta:
         managed = False
         db_table = 'ex_group_workers'
-
-class Search(models.Model):
-    address = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.address

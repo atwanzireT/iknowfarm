@@ -1,7 +1,6 @@
-from tokenize import group
 from django.shortcuts import render, redirect
-from .models import Crop, Livestock, UnregistredUser
-from farmer.models import District, Farmer, Village, Search
+from .models import *
+from farmer.models import District, Farmer, FarmerGroup, Village
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -26,11 +25,14 @@ def index(request):
     farmers = Farmer.objects.filter(group__isnull = True).count()
     unregistered_users = UnregistredUser.objects.all().count()
     app_users = User.objects.all().count()
-    app_installations = farmers + unregistered_users + app_users
+    app_installations = farmers + unregistered_users + app_users + FarmerGroup.objects.all().count()
     young_farmers = Farmer.objects.filter(age__lte = 20).count()
     mid_farmers = Farmer.objects.filter(age__gte = 21, age__lte = 35).count()
     old_farmers = Farmer.objects.filter(age__gte = 35, age__lte = 60).count()
     elder_farmers = Farmer.objects.filter(age__gte = 60).count()
+    market = MarketVisits.objects.filter(name = 'Market').count()
+    agroinput = MarketVisits.objects.filter(name = 'Agroinput').count()
+    market_visits = MarketVisits.objects.all().count()
 
 
     dic = {
@@ -44,8 +46,8 @@ def index(request):
         'old_farmers':old_farmers,
         'elder_farmers':elder_farmers,
         'mid_farmers':mid_farmers,
-        # 'm': m,
-        # 'form': form,
+        'market':market,
+        'agroinput':agroinput,
 
     }
     return render(request, 'index.html', dic)
