@@ -1,7 +1,7 @@
 from tokenize import group
 from django.shortcuts import render, redirect
 from .models import Crop, Livestock, UnregistredUser
-from farmer.models import Farmer, Village, Search
+from farmer.models import District, Farmer, Village, Search
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,7 +10,7 @@ from django.urls import reverse, reverse_lazy
 from translation.models import *
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
-from farmer.forms import SearchForm
+from farmer.forms import DistrictForm, VillageForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 # import folium
@@ -100,6 +100,7 @@ def crops(request):
         'crop':crop,
     }
     return render(request, 'crop_list.html', dic)
+
 
 @login_required(login_url='/profile/login/')
 def livestock(request):
@@ -252,3 +253,67 @@ def delete_livestock(request,id):
     Livestock.objects.filter(id=id).delete()
     messages.success(request, "Livestock Deleted.")
     return HttpResponseRedirect("/livestock/")
+
+class UpdateDistrictView(LoginRequiredMixin, generic.UpdateView):
+    model = District
+    template_name = 'editdistrict.html'
+    form_class = DistrictForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['district'] = District.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('district')
+
+class AddDistrictView(LoginRequiredMixin, generic.CreateView):
+    model = District
+    template_name = 'add_district.html'
+    form_class = DistrictForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['district'] = District.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('district')
+
+class AddVillageView(LoginRequiredMixin, generic.CreateView):
+    model = Village
+    template_name = 'addvillage.html'
+    form_class = VillageForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['village'] = Village.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('district')
+
+class UpdateVillageView(LoginRequiredMixin, generic.UpdateView):
+    model = Village
+    template_name = 'editvillage.html'
+    form_class = VillageForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['village'] = Village.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('district')
