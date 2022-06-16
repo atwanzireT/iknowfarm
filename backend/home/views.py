@@ -53,7 +53,8 @@ def index(request):
     unregistered_users = UnregistredUser.objects.all().count()
     app_users = User.objects.all().count()
     app_installations = farmers + unregistered_users + app_users
-    young_farmers = Farmer.objects.filter(age__lte = 35).count()
+    young_farmers = Farmer.objects.filter(age__lte = 20).count()
+    mid_farmers = Farmer.objects.filter(age__gte = 21, age__lte = 35).count()
     old_farmers = Farmer.objects.filter(age__gte = 35, age__lte = 60).count()
     elder_farmers = Farmer.objects.filter(age__gte = 60).count()
 
@@ -68,6 +69,7 @@ def index(request):
         'young_farmers':young_farmers,
         'old_farmers':old_farmers,
         'elder_farmers':elder_farmers,
+        'mid_farmers':mid_farmers,
         # 'm': m,
         # 'form': form,
 

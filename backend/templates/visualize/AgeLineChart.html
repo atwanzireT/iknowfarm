@@ -1,13 +1,13 @@
-<canvas id="myChart3" width="300" height="300"></canvas>
+<canvas id="myChart3" width="500" height="300"></canvas>
 <script>
     var ctx = document.getElementById('myChart3').getContext('2d');
     var myChart3 = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['Below 35', '35-60', 'Above 60'],
+            labels: ['0 - 20', '21 - 34', '35-60', 'Above 60', 'male', 'female'],
             datasets: [{
-                label: 'GENDER STATISTICS',
-                data: [{{young_farmers}}, {{old_farmers}}, {{elder_farmers}}],
+                label: 'AGE STATISTICS',
+                data: [{{young_farmers}}, {{mid_farmers}},  {{old_farmers}}, {{elder_farmers}}, {{male_farmers}}, {{female_farmers}}],
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',

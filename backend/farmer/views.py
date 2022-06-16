@@ -18,6 +18,11 @@ import csv
 def farmer_groups(request):
     farmer_groups = FarmerGroup.objects.all()
 
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        farmer_groups = FarmerGroup.objects.filter(name__icontains=search)[:20]
+        return render(request, "search.html", {'farmer_groups':farmer_groups})
+
     paginator = Paginator(farmer_groups, 5)
     page = request.GET.get('page')
     farmer_groups = paginator.get_page(page)
