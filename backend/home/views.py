@@ -20,33 +20,6 @@ from django.contrib import messages
 # Create your views here.
 @login_required(login_url='/profile/login/')
 def index(request):
-    # if request.method == 'POST':
-    #     form = SearchForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('/')
-    # else:
-    #     form = SearchForm()
-    # address = Search.objects.all().last()
-    # location = geocoder.osm(address)
-    # lat = location.lat
-    # lng = location.lng
-    # country = location.country
-    # print(lat, lng, country)
-    # print(address)
-    # if lat == None or lng == None:
-        # address.delete()
-        # return HttpResponse('You address input is invalid') 
-        # return redirect('/') 
-
-    # # Create Map Object
-    # m = folium.Map(location=[19, -12], zoom_start=2)
-
-    # folium.Marker([lat, lng], tooltip='Click for more',
-    #               popup=country).add_to(m)
-    # # Get HTML Representation of Map Object
-    # m = m._repr_html_()
-
     male_farmers = Farmer.objects.filter(gender = 'male').count()
     female_farmers = Farmer.objects.filter(gender = 'female').count()
     farmers = Farmer.objects.filter(group__isnull = True).count()
@@ -80,6 +53,11 @@ def index(request):
 def districts(request):
     districts = Village.objects.all()
 
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        districts = District.objects.filter(name__icontains=search)[:20]
+        return render(request, "searchedDistricts.html", {'districts':districts})
+
     paginator = Paginator(districts, 20)
     page = request.GET.get('page')
     districts = paginator.get_page(page)
@@ -92,6 +70,11 @@ def districts(request):
 @login_required(login_url='/profile/login/')
 def crops(request):
     crop = Crop.objects.all()
+
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        crop = Crop.objects.filter(name__icontains=search)[:20]
+        return render(request, "searchedCrops.html", {'crop':crop})
 
     # crop Pagnition
     paginator = Paginator(crop, 5)
@@ -107,6 +90,11 @@ def crops(request):
 @login_required(login_url='/profile/login/')
 def livestock(request):
     livestock = Livestock.objects.all()
+
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        livestock = Livestock.objects.filter(name__icontains=search)[:20]
+        return render(request, "searchedLivestock.html", {'livestock':livestock})
 
     paginator = Paginator(livestock, 5)
     page = request.GET.get('page')
@@ -189,6 +177,11 @@ class AddLiveStockView(LoginRequiredMixin, generic.CreateView):
 def cropTranslation(request):
     crops = Crop.objects.all()
 
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        crop = Crop.objects.filter(name__icontains=search)[:20]
+        return render(request, "searchedCropsTrans.html", {'crop':crop})
+
     # crop Pagnition
     paginator = Paginator(crops, 5)
     page = request.GET.get('page')
@@ -201,6 +194,11 @@ def cropTranslation(request):
 @login_required(login_url='/profile/login/')
 def livestockTranslation(request):
     livestock = Livestock.objects.all()
+
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        livestock = Livestock.objects.filter(name__icontains=search)[:20]
+        return render(request, "searchedLiveTranslations.html", {'livestock':livestock})
 
     # crop Pagnition
     paginator = Paginator(livestock, 5)

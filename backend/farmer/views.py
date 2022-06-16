@@ -21,7 +21,7 @@ def farmer_groups(request):
     search = request.GET.get("search")
     if search != "" and search is not None:
         farmer_groups = FarmerGroup.objects.filter(name__icontains=search)[:20]
-        return render(request, "search.html", {'farmer_groups':farmer_groups})
+        return render(request, "searchedFarmer.html", {'farmer_groups':farmer_groups})
 
     paginator = Paginator(farmer_groups, 5)
     page = request.GET.get('page')
