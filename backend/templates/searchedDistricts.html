@@ -11,35 +11,38 @@
 {% block content %}
 
 {% include 'leftbar.html' %}
-<div class="container crop-container" style="margin: auto;" id="main">
-    {% include 'searchTool.html' %}
+<div class="container crop-container" style="margin: auto;">
     <div>
-        <div class="top_bar">
-            <div class="row mt-5">
-                <div class="col">
-                    <h6>All Crops</h6>
-                </div>
-                <div class="col float-end">
-                    <a href="/addcrop/" style="font-size: 14px;" class="btn btn-small btn-success">Add Crop</a>
-                </div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6>Searched Farmer Query</h6>
+            </div>
+            <div class="col-5"></div>
+            <div class="col">
+                <a href="/farmers/pdf/" class="btn btn-small btn-outline-success">Print CSV</a>
+            </div>
+            <div class="col">
+                <a href="/farmers/addfarmer/" class="btn btn-small btn-success">Add Farmer</a>
             </div>
         </div>
         <!-- Headings -->
         <div class="container-div">
+
             <div class="card m-2" style="height: auto;">
+            {% include 'searchTool.html' %}
                 <div class="title-card">
                     <div class="row mt-5">
                         <div class="col">
                             <h6>Name</h6>
                         </div>
                         <div class="col">
-                            <h6>Arabic</h6>
+                            <h6>Age</h6>
                         </div>
                         <div class="col">
-                            <h6>Lugbar</h6>
+                            <h6>Phone Number</h6>
                         </div>
                         <div class="col">
-                            <h6>Image</h6>
+                            <h6>Village</h6>
                         </div>
                         <div class="col">
                             <h6>Action (Edit / Delete) </h6>
@@ -47,26 +50,38 @@
                     </div>
                 </div>
                 <hr style="width: 90%; margin: auto;">
-                {% include 'crop_items.html' %}
+                {% for rs in villages %}
+                <div class="title-card">
+                    <div class="row mt-3" style="margin-left: 10px;">
+                        <div class="col-md-1">
+                            <h6>rs.village.districtid</h6>
+                        </div>
+                        <div class="col-sm-1">
+                            <h6>rs.village</h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
                 <div class="row">
                     <div class="col-md-3 offset-md-4">
                         <ul class="pagination justify-content-center">
-                            {% if crop.has_previous %}
+                            {% if farmers.has_previous %}
                             <li class="page-item">
                                 <br>
                                 <a class="btn btn-outline-success mx-1"
-                                    href="?page={{crop.previous_page_number}}">Previous</a>
+                                    href="?page={{farmers.previous_page_number}}">Previous</a>
                             </li>
                             {% endif %}
                             <li class="page-item active">
                                 <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{crop.number}}">Current</a>
+                                <a class="btn btn-outline-success mx-1" href="?page={{farmers.number}}">Current</a>
                             </li>
 
-                            {% if crop.has_next %}
+                            {% if farmers.has_next %}
                             <li class="page-item">
                                 <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{crop.next_page_number}}">Next</a>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{farmers.next_page_number}}">Next</a>
                             </li>
                             {% endif %}
 
