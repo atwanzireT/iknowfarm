@@ -12,14 +12,14 @@
 
 {% include 'leftbar.html' %}
 <div class="container crop-container" style="margin: auto;" id="main">
-    {% include 'searchTool.html' %}
     <div>
-        <div class="top_bar">
+        <div>
             <div class="row mt-5">
                 <div class="col">
                     <h6>All Crops</h6>
                 </div>
-                <div class="col float-end">
+                <div class="col-6"></div>
+                <div class="col">
                     <a href="/addcrop/" style="font-size: 14px;" class="btn btn-small btn-success">Add Crop</a>
                 </div>
             </div>
@@ -27,6 +27,7 @@
         <!-- Headings -->
         <div class="container-div">
             <div class="card m-2" style="height: auto;">
+            {% include 'searchTool.html' %}
                 <div class="title-card">
                     <div class="row mt-5">
                         <div class="col">

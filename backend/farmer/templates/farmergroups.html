@@ -12,22 +12,24 @@
 
 {% include 'leftbar.html' %}
 <div class="container crop-container" style="margin: auto;">
-    {% include 'searchTool.html' %}
     <div>
         <div class="row mt-5">
             <div class="col">
-                <h6>All Farmers</h6>
+                <h6>All Farmers Groups</h6>
             </div>
             <div class="col-5"></div>
             <div class="col">
-                <a href="/farmers/addfarmer/" class="btn btn-small btn-success">Add Farmer</a>
+                <a href="/farmers/csvgroup/" class="btn btn-small btn-outline-success mx-2 d-inline">Print CSV</a>
+                <a href="/farmers/addfarmer_group/" class="btn btn-small btn-success mx-2 d-inline">Add Farmer Group</a>
             </div>
         </div>
         <!-- Headings -->
         <div class="card m-2" style="height: auto;">
             <div class="title-card">
-                <div class="row mt-5" style="margin-left: 10px;">
-                    <div class="col-2" style="text-align: left;">
+                {% include 'searchTool.html' %}
+
+                <div class="row mt-5" style="margin-left: 35px;">
+                    <div class="col-1" style="text-align: left;">
                         <h6>Name</h6>
                     </div>
                     <div class="col-sm-1" style="text-align: left;">
@@ -37,25 +39,28 @@
                         <h6>Male Farmers</h6>
                     </div>
                     <div class="col-1" style="text-align: left;">
-                        <h6>Phone Number</h6>
+                        <h6 style="font-size: 14px;">Phone Number</h6>
                     </div>
-                    <div class="col-1" style="text-align: left;">
+                    <div class="col-sm-1" style="text-align: left;">
                         <h6>Village</h6>
                     </div>
-                    <div class="col-1" style="text-align: left;">
+                    <div class="col-sm-1" style="text-align: left;">
                         <h6>District</h6>
                     </div>
                     <div class="col-1" style="text-align: left;">
                         <h6>Group Type</h6>
                     </div>
                     <div class="col-1" style="text-align: left; ">
-                        <h6 style="font-size: 15px;">Registered</h6>
+                        <h6 style="font-size: 14px;">Registered</h6>
                     </div>
                     <div class="col-1" style="text-align: left;">
                         <h6>Expiry</h6>
                     </div>
                     <div class="col-1" style="text-align: left;">
-                        <h6>Recommender</h6>
+                        <h6 style="font-size: 14px;">Recommender</h6>
+                    </div>
+                    <div class="col-1">
+                        <h6>Action</h6>
                     </div>
                 </div>
             </div>
@@ -68,21 +73,24 @@
                             {% if farmer_groups.has_previous %}
                             <li class="page-item">
                                 <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{farmer_groups.previous_page_number}}">Previous</a>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{farmer_groups.previous_page_number}}">Previous</a>
                             </li>
                             {% endif %}
                             <li class="page-item active">
                                 <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{farmer_groups.number}}">Current</a>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{farmer_groups.number}}">Current</a>
                             </li>
-    
+
                             {% if farmer_groups.has_next %}
                             <li class="page-item">
                                 <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{farmer_groups.next_page_number}}">Next</a>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{farmer_groups.next_page_number}}">Next</a>
                             </li>
                             {% endif %}
-    
+
                         </ul>
                     </div>
                 </div>

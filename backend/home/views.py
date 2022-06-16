@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from farmer.forms import DistrictForm, VillageForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
+from django.db.models import Q
 # import folium
 # import geocoder
 
@@ -73,7 +74,7 @@ def crops(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        crop = Crop.objects.filter(name__icontains=search)[:20]
+        crop = Crop.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
         return render(request, "searchedCrops.html", {'crop':crop})
 
     # crop Pagnition
@@ -93,7 +94,7 @@ def livestock(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        livestock = Livestock.objects.filter(name__icontains=search)[:20]
+        livestock = Livestock.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
         return render(request, "searchedLivestock.html", {'livestock':livestock})
 
     paginator = Paginator(livestock, 5)
@@ -179,8 +180,8 @@ def cropTranslation(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        crop = Crop.objects.filter(name__icontains=search)[:20]
-        return render(request, "searchedCropsTrans.html", {'crop':crop})
+        crops = Crop.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
+        return render(request, "searchedCropsTrans.html", {'crops':crops})
 
     # crop Pagnition
     paginator = Paginator(crops, 5)
@@ -197,8 +198,8 @@ def livestockTranslation(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        livestock = Livestock.objects.filter(name__icontains=search)[:20]
-        return render(request, "searchedLiveTranslations.html", {'livestock':livestock})
+        livestock = Livestock.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
+        return render(request, "searchedLiveTrans.html", {'livestock':livestock})
 
     # crop Pagnition
     paginator = Paginator(livestock, 5)

@@ -1,6 +1,6 @@
 {% for rs in ex_workers %}
 <div class="title-card">
-    <div class="row mt-5" style="margin-left: 15px;">
+    <div class="row mt-1 mx-5" style="margin-left: 15px;">
         <div class="col-3" style="text-align: left;">
             <p class="text-success">{{rs.name}}</p>
             <p>{{rs.gender}}</p>
@@ -13,10 +13,10 @@
             <p>District: {{rs.operation_area}}</p>
         </div>
         <div class="col-1" style="text-align: left;">
-            <h6>{{rs.module}}</h6>
+            <p>{{rs.module}}</p>
         </div>
         <div class="col-2" style="text-align: left;">
-            <h6>{{rs.group}}</h6>
+            <p>{{rs.group}}</p>
         </div>
         <div class="col-2">
             <div class="col">
