@@ -13,8 +13,8 @@ from django.contrib.auth.models import User
 from farmer.forms import SearchForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-import folium
-import geocoder
+# import folium
+# import geocoder
 
 
 # Create your views here.
