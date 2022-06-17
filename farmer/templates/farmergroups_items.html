@@ -1,0 +1,83 @@
+<style>
+    #edit_link {
+        color: #198754;
+        font-size: 14px;
+    }
+
+    #manuel_link {
+        color: cornflowerblue;
+        font-size: 14px;
+    }
+</style>
+
+{% for rs in farmer_groups %}
+<div class="title-card">
+    <div class="row mt-5" style="margin-left: 35px;">
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.name}}</p>
+            </div>
+        </div>
+        <div class="col-sm-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.female_farmers}}</p>
+            </div>
+        </div>
+        <div class="col-sm-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.male_farmers}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.phonenumber}}</p>
+            </div>
+        </div>
+        <div class="col-sm-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.village}}</p>
+            </div>
+        </div>
+        <div class="col-sm-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.village.districtid}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px">{{rs.group_type}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.createdat}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            <div >
+                <p style="text-align: left; font-size: 14px;">{{rs.expiry}}</p>
+            </div>
+        </div>
+        <div class="col-1" >
+            {% if rs.status == "1" %}
+                <p>Active</p>
+            {% else %}
+                <p>Inactive</p>
+            {% endif %}    
+        </div>
+        <div class="col-1">
+            <div class="col">
+                <div class="row">
+                    <div class="col-auto">
+                        <a id="edit_link"  href="/farmers/deletefarmer_group/{{rs.id}}">Edit</a>
+                    </div>
+                    <div class="col-auto">
+                        <a id="manuel_link" class="text-danger" href="/farmers/deletefarmer_group/{{rs.id}}/">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr style="width: 90%; margin: auto;">
+{% endfor %}

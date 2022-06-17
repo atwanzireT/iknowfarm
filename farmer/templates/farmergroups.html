@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock header %}
+
+
+{% block content %}
+
+{% include 'leftbar.html' %}
+<div class="container crop-container" style="margin: auto;">
+    <div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6>All Farmers Groups</h6>
+            </div>
+            <div class="col-5"></div>
+            <div class="col">
+                <a href="/farmers/csvgroup/" class="btn btn-small btn-outline-success mx-2 d-inline">Print CSV</a>
+                <a href="/farmers/addfarmer_group/" class="btn btn-small btn-success mx-2 d-inline"><i
+                        class="fa fa-file-text" style="font-size: 20px; margin-top: 5px; margin-bottom: -5px;"></i> Add
+                    Group</a>
+            </div>
+        </div>
+        <!-- Headings -->
+        <div class="card m-2" style="height: auto;">
+            <div class="title-card">
+                {% include 'searchTool.html' %}
+
+                <div class="row mt-5" style="margin-left: 35px;">
+                    <div class="col-1" style="text-align: left;">
+                        <h6>Name</h6>
+                    </div>
+                    <div class="col-sm-1" style="text-align: left;">
+                        <h6>Female Farmers</h6>
+                    </div>
+                    <div class="col-sm-1" style="text-align: left;">
+                        <h6>Male Farmers</h6>
+                    </div>
+                    <div class="col-1" style="text-align: left;">
+                        <h6 style="font-size: 14px;">Phone Number</h6>
+                    </div>
+                    <div class="col-sm-1" style="text-align: left;">
+                        <h6>Village</h6>
+                    </div>
+                    <div class="col-sm-1" style="text-align: left;">
+                        <h6>District</h6>
+                    </div>
+                    <div class="col-1" style="text-align: left;">
+                        <h6>Group Type</h6>
+                    </div>
+                    <div class="col-1" style="text-align: left; ">
+                        <h6 style="font-size: 14px;">Registered</h6>
+                    </div>
+                    <div class="col-1" style="text-align: left;">
+                        <h6>Expiry</h6>
+                    </div>
+                    <div class="col-1" style="text-align: left;">
+                        <h6 style="font-size: 14px;">Status</h6>
+                    </div>
+                    <div class="col-1">
+                        <h6>Action</h6>
+                    </div>
+                </div>
+            </div>
+            <hr style="width: 90%; margin: auto;">
+            {% include 'farmergroups_items.html' %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 offset-md-4">
+                        <ul class="pagination justify-content-center">
+                            {% if farmer_groups.has_previous %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{farmer_groups.previous_page_number}}">Previous</a>
+                            </li>
+                            {% endif %}
+                            <li class="page-item active">
+                                <br>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{farmer_groups.number}}">Current</a>
+                            </li>
+
+                            {% if farmer_groups.has_next %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{farmer_groups.next_page_number}}">Next</a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
