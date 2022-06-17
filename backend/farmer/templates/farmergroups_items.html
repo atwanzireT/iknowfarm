@@ -59,9 +59,11 @@
             </div>
         </div>
         <div class="col-1" >
-            <div >
-                <p style="text-align: left; font-size: 14px;">{{rs.recommender}}</p>
-            </div>
+            {% if rs.status == "1" %}
+                <p>Active</p>
+            {% else %}
+                <p>Inactive</p>
+            {% endif %}    
         </div>
         <div class="col-1">
             <div class="col">

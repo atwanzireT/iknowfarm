@@ -1,7 +1,6 @@
 input[type=text],
 input[type=number],
-select,
-textarea {
+select{
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -9,6 +8,16 @@ textarea {
     resize: vertical;
     display: block;
     height: 40px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    display: block;
+    height: 150px;
 }
 
 label {

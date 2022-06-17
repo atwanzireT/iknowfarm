@@ -9,6 +9,7 @@ urlpatterns = [
     path("csv/", farmer_csv, name = "farmers_csv"),
     path("csvgroup/", farmerGroup_csv, name = "farmersgroup_csv"),
     path("groups/", farmer_groups, name = "farmer_groups"),
+    path("acc_mgt/", account_management, name = "acc_mgt"),
     # path("districts/", district, name = "district"),
     path('updatefarmer/<int:pk>/', UpdateFarmerView.as_view(), name="updateFarmer"),
     path('addfarmer/', AddFarmerView.as_view(), name="addFarmer"),
@@ -20,5 +21,7 @@ urlpatterns = [
     path('deletefarmer_group/<int:id>/', delete_farmer_group, name="DeleteFarmerGroup"),
     path('updatefarmer_group/<int:pk>/', UpdateFarmerGroupView.as_view(), name="updateFarmerGroup"),
     path('addfarmer_group/', AddFarmerGroupView.as_view(), name="addFarmerGroup"),
+    path('managefarmer_group/<int:pk>/', ManageFarmerGroupView.as_view(), name="manageFarmerGroup"),
+    path('managefarmer/<int:pk>/', ManageFarmerView.as_view(), name="manageFarmer"),
 
 ]

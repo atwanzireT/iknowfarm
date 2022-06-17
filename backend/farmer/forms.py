@@ -29,6 +29,16 @@ class DistrictForm(forms.ModelForm):
         model = District
         fields = ('name',)
 
+class ManageFarmerForm(forms.ModelForm):
+    class Meta:
+        model = Farmer
+        fields = ('status', 'expiry',)
+
+class ManageGroupForm(forms.ModelForm):
+    class Meta:
+        model = FarmerGroup
+        fields = ('status', 'expiry', )
+
 
 class VillageForm(forms.ModelForm):
     class Meta:

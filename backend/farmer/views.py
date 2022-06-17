@@ -220,3 +220,54 @@ def delete_extension_worker(request,id):
     ExGroupWorkers.objects.filter(id=id).delete()
     messages.success(request, "Extension Worker Deleted.")
     return HttpResponseRedirect("/farmers/extension_workers/")
+
+# Account management
+def account_management(request):
+    farmers = Farmer.objects.all()[:10]
+    farmer_group = FarmerGroup.objects.all()[:10]
+
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        farmers = Farmer.objects.filter(name__icontains=search)[:20]
+        farmer_group = FarmerGroup.objects.filter(name__icontains=search)[:20]
+        return render(request, "searchedmgt.html", {'farmers':farmers, 'farmer_group': farmer_group})
+
+    dic = {
+        'farmers':farmers,
+        'farmer_group':farmer_group,
+    }
+    return render(request, "accountmanagemnent.html", dic)
+
+class ManageFarmerGroupView(LoginRequiredMixin, generic.UpdateView):
+    model = FarmerGroup
+    template_name = 'ManageFarmer.html'
+    form_class = ManageGroupForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['farmer_groups'] = FarmerGroup.objects.all().order_by('?')[:10]
+        context['farmers'] = Farmer.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse('acc_mgt')
+
+class ManageFarmerView(LoginRequiredMixin, generic.UpdateView):
+    model = Farmer
+    template_name = 'ManageFarmer.html'
+    form_class = ManageFarmerForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['farmer_groups'] = FarmerGroup.objects.all().order_by('?')[:10]
+        context['farmers'] = Farmer.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse('acc_mgt')

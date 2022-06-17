@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+import uuid
 
 # Create your models here.
 
@@ -42,6 +43,11 @@ class Recomender(models.Model):
         return self.name
 
 class FarmerGroup(models.Model):
+    STATUS_CODE = [
+        (1, 'activate'),
+        (0, 'deactivate'),
+    ]
+
     name = models.CharField(max_length=255)
     pin = models.CharField(max_length=10)
     group_type = models.CharField(max_length=20)
@@ -51,6 +57,7 @@ class FarmerGroup(models.Model):
     phonenumber = models.CharField(unique=True, max_length=255, blank=True, null=True)
     recommender = models.ForeignKey(Recomender, on_delete=models.CASCADE, blank=True, null=True)
     limit = models.IntegerField(blank=True, null=True, default=1)
+    status = models.CharField(max_length=20, choices=STATUS_CODE, blank=True, null=True)
     expiry = models.DateTimeField( blank=True, null=True)
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
@@ -61,8 +68,8 @@ class FarmerGroup(models.Model):
 
 class Farmer(models.Model):
     STATUS_CODE = [
-        (1, 'active'),
-        (0, 'inactive'),
+        (1, 'activate'),
+        (0, 'deactivate'),
     ]
 
     GENDER_CODE = [
@@ -119,3 +126,17 @@ class ExGroupWorkers(models.Model):
     class Meta:
         managed = False
         db_table = 'ex_group_workers'
+
+class Sent_Code_farmer(models.Model):
+    farmer = models.ForeignKey(Farmer, on_delete=models.CASCADE)
+    code = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
+
+    def __str__(self) -> str:
+        return self.farmer
+
+class Sent_Code_farmerGroup(models.Model):
+    farmer = models.ForeignKey(FarmerGroup, on_delete=models.CASCADE)
+    code = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
+
+    def __str__(self) -> str:
+        return self.farmer

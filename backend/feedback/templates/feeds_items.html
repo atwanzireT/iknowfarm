@@ -18,7 +18,7 @@
             <p>{{rs.createdby.phonenumber}}}</p>
             <p>Located: {{rs.createdby.district}} | {{rs.createdby.village}}</p>
         </div>
-        <div class="col-4 mx-1">
+        <div class="col-6 mx-2">
             <p>Rating: {{rs.rating}}</p>
             <p>Comment: {{rs.comment}}</p>
             <p>Created: {{rs.DateTImeField}}</p>
@@ -27,7 +27,6 @@
             <h6 class="text-secondary">Pending</h6>
         </div>
         <div class="col">
-            <!-- <button class="btn btn-danger">Reply</button> -->
             <a href="/feedback/reply_feedback/{{rs.id}}" class="btn btn-danger">Reply</a>
         </div>
     </div>
