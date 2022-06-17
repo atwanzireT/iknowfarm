@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock header %}
+
+<style>
+    .d-head:hover {
+        background: #f5f5f5;
+        cursor: pointer;
+    }
+</style>
+{% block content %}
+{% include 'leftbar.html' %}
+<div class="container crop-container mt-5" style="margin: auto;" id="main">
+    <div>
+
+        <!-- Headings -->
+        <div class="container-div">
+            <div class="card m-2" style="height: auto;">
+                <div class="m-2">
+                    <div>
+                        <h6>
+                            ALL MANUAL TRANSLATIONS
+                        </h6>
+                        <div>
+                            <h5>Manuel</h5>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card mt-2">
+                    <div class="p-2">
+                        <a href="#" id="tomato_head">
+                            <h5 class="d-head" style="text-align: left;" class="m-2"><i style="color: #198754;"
+                                    class="fa fa-pagelines"></i><span class="text-success mx-5">{{object.title}}</span></h5>
+                            <!-- <h4>
+                        <i id="drop_icon" class="fas fa-caret-down fa-lg"></i><span><h5 class="m-2 text-success" style="text-align: left;">Tomato</h5></span>
+                    </h4> -->
+                        </a>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="p-2">
+                        <a href="/translation/manual_update/{{object.id}}" class="btn btn-outline-success">Update</a>
+                    </div>
+                    <div class="p-2">
+                        {{object.english|safe}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock content %}

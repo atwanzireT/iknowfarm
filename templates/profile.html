@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock header %}
+
+
+{% block content %}
+<style>
+    .profile-container {
+        margin-top: 70px;
+        text-align: left;
+        display: block;
+    }
+
+</style>
+{% include 'leftbar.html' %}
+<div class="profile-container">
+    <div class="container crop-container pt-5 m-5" style="margin: auto;" id="main">
+        <div>
+            <!-- Headings -->
+            <div class="container-div">
+                <div class="card m-2" style="height: auto;">
+                    <div>
+                        <h3>Admin Profile</h3>
+                    </div>
+                    <div>
+                        <div>
+                            <h4>{{user.username}}</h4>
+                        </div>
+                        <div>
+                            <h4>{{user.email}}</h4>
+                        </div>                    <div>
+                            <h4>{{user.first_name}}</h4>
+                        </div>                    <div>
+                            <h4>{{user.last_name}}</h4>
+                        </div>
+                    </div>
+                    <div class="row m-2 p-2">
+                        <div class="col">
+                            <a href="/profile/{{user.id}}/edit_profile" class="btn btn-outline-success m-2">Edit Profile</a>
+                        </div>
+                        <div class="col">
+                            <a href="/profile/password/" class="btn btn-outline-success m-2">Edit Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

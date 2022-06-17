@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock header %}
+
+
+{% block content %}
+
+{% include 'leftbar.html' %}
+<div class="container crop-container" style="margin: auto;">
+    <div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6>Searched Farmer Query</h6>
+            </div>
+            <div class="col-5"></div>
+        </div>
+        <!-- Headings -->
+        <div class="container-div">
+
+            <div class="card m-2" style="height: auto;">
+            {% include 'searchTool.html' %}
+                <div class="title-card">
+                    <div class="row mx-5">
+                        <div class="col">
+                            <h6>Name</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Registration</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Expiry</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Status</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Action</h6>
+                        </div>
+                </div>
+                <hr style="width: 90%; margin: auto;">
+                {% include 'Accountmgt.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

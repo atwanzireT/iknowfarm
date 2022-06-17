@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/form.css' %}">
+{% endblock header %}
+
+
+{% block content %}
+
+{% include 'leftbar.html' %}
+<div class="container-div">
+    <div class="container crop-container" style="margin: auto;">
+        <div>
+            <div class="row mt-5">
+                <div class="col">
+                    <h6>All Crops</h6>
+                </div>
+                <div class="col-5"></div>
+            </div>
+            <!-- Headings -->
+            <div class="row">
+                <div class="col-8">
+                    <div class="card m-2" style="height: auto;">
+                        <div class="row my-2">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-success">District</h6>
+                                </div>
+                                <div class="col">
+                                    <h6  style="text-align: left;" class="text-success">Village</h6>
+                                </div>
+                            </div>
+                        </div <div class="row my-2">
+                        {% for rs in village %}
+                        <div class="row">
+                            <div class="col">
+                                <h6>{{rs.districtid}}</h6>
+                            </div>
+                            <div class="col">
+                                <h6  style="text-align: left;">{{rs.name}}</h6>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="container">
+                            <!-- for pagination -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto" style="width: 30%;">
+                    <div class="card m-2">
+                        <div class="text-center">
+                            <h5>Add Village</h5>
+                        </div>
+                        <form action="" method="post"  enctype="multipart/form-data">
+                            <div style="width: 80%; margin: auto;">
+                                {% csrf_token %}
+                                {{form.media}} {{form.as_p}}
+                                <button class="btn btn-style btn-outline-success m-2">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock content %}

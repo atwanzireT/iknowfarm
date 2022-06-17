@@ -1,0 +1,38 @@
+<style>
+    #edit_link {
+        color: #198754;
+        font-size: 14px;
+    }
+
+</style>
+{% for rs in crop %}
+<div class="title-card">
+    <div class="row mt-5">
+        <div class="col">
+            <p>{{rs.english}}</p>
+        </div>
+        <div class="col">
+            <p>{{rs.arabic}}</p>
+        </div>
+        <div class="col">
+            <p>{{rs.lugbara}}</p>
+        </div>
+        <div class="col ">
+            <img style="width: 100px; margin-top: -40px; margin-bottom: 2px;" src="{{rs.image.url}}" alt="" srcset=""/>
+        </div>
+        <div class="col">
+            <div class="col">
+                <div class="row">
+                    <div class="col-auto">
+                        <a id="edit_link"  href="/updatecrop/{{rs.id}}">Edit</a>
+                    </div>
+                    <div class="col-auto">
+                        <a href ="/deletecrop/{{rs.id}}" class="text-danger" href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr style="width: 90%; margin: auto;">
+{% endfor %}

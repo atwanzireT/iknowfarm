@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock header %}
+
+
+{% block content %}
+
+{% include 'leftbar.html' %}
+<div class="container crop-container" style="margin: auto;">
+    <div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6>Searched District Query</h6>
+            </div>
+            <div class="col-5"></div>
+        </div>
+        <!-- Headings -->
+        <div class="container-div">
+
+            <div class="card m-2" style="height: auto;">
+                {% include 'searchTool.html' %}
+                <div class="row my-2">
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="text-success">District</h6>
+                        </div>
+                        <div class="col">
+                            <h6 style="text-align: left;" class="text-success">Village</h6>
+                        </div>
+                    </div>
+                </div <div class="row my-2">
+                {% for rs in districts %}
+                <div class="row">
+                    <div class="col">
+                        <h6>{{rs.districtid}}</h6>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-auto">
+                                <h6 style="text-align: left;">{{rs.name}}</h6>
+                            </div>
+                            <div class="col-auto">
+                                <a href="/updateVillage/{{rs.id}}/" style="text-align: left;" class="text-success">edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-md-3 offset-md-4">
+                        <ul class="pagination justify-content-center">
+                            {% if districts.has_previous %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{districts.previous_page_number}}">Previous</a>
+                            </li>
+                            {% endif %}
+                            <li class="page-item active">
+                                <br>
+                                <a class="btn btn-outline-success mx-1" href="?page={{districts.number}}">Current</a>
+                            </li>
+
+                            {% if districts.has_next %}
+                            <li class="page-item">
+                                <br>
+                                <a class="btn btn-outline-success mx-1"
+                                    href="?page={{districts.next_page_number}}">Next</a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

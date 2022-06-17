@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock header %}
+
+<style>
+    .d-head:hover {
+        background: #f5f5f5;
+        cursor: pointer;
+    }
+</style>
+{% block content %}
+{% include 'leftbar.html' %}
+<div class="container crop-container mt-5" style="margin: auto;" id="main">
+    <div>
+       
+        <!-- Headings -->
+        <div class="container-div">
+            <div class="card m-2" style="height: auto;">
+                <div class="m-2">
+                    {% include 'man_search_item.html' %}
+                </div>
+                <div class="title-card">
+                    <div class="card m-2">
+                        <div>
+                            <h6>
+                                ALL MANUAL TRANSLATIONS
+                            </h6>
+                            <div>
+                                <h5>Manuel</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card m-2">
+                    {% for rs in manual %}
+                    <div class="p-2">
+                        <a href="#" id="tomato_head">
+                            <h5  class="d-head" style="text-align: left;" class="m-2"><i style="color: #198754;" class="fa fa-pagelines"></i><span class="text-success mx-5">{{rs.cropid}}</span></h5>
+                        </a>
+                        <div id="tomato_body">
+                            
+                            <div class="card card-body m-2">
+                                <p>
+                                    <a class="btn btn-light">
+                                        {{rs.title}}
+                                    </a>
+                                </p>
+                                <div>
+        
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href = "/translation/manual/{{rs.id}}" class="text-success" href="#">View English Version</a>
+                                        </div>
+                                        <div class="col">
+                                            <a href = "/translation/lugbara_manual/{{rs.id}}" class="text-success" href="#">View Lughara Version</a>
+                                        </div>
+                                        <div class="col">
+                                            <a href = "/translation/arabic_manual/{{rs.id}}" class="text-success" href="#">View English Version</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
