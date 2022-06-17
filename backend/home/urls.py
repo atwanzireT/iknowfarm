@@ -17,5 +17,8 @@ urlpatterns = [
     path('updatelivestockTrans/<int:pk>/', UpdateLiveStockTranslationView.as_view(), name="updateLivestockTrans"),
     path('deletecrop/<int:id>/', delete_crop, name="delete_crop"),
     path('deletelivestock/<int:id>/', delete_livestock, name="delete_livestock"),
+    path('add_village/', AddVillageView.as_view(), name="add_village"),
+    path('add_districts/', AddDistrictView.as_view(), name="add_districts"),
+    path('updateVillage/<int:pk>/', UpdateVillageView.as_view(), name="updateVillage"),
 
 ]
