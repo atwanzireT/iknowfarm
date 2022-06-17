@@ -224,6 +224,16 @@ class FarmerRecomender(models.Model):
         db_table = 'farmer_recomender'
 
 
+class FarmerSearch(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    address = models.CharField(max_length=200, blank=True, null=True)
+    date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'farmer_search'
+
+
 class FarmerVillage(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -283,7 +293,7 @@ class HomeCrop(models.Model):
     english = models.CharField(max_length=255, blank=True, null=True)
     arabic = models.CharField(max_length=255, blank=True, null=True)
     lugbara = models.CharField(max_length=255, blank=True, null=True)
-    image = models.CharField(max_length=100, blank=True, null=True)
+    image = models.CharField(max_length=100)
     createdat = models.DateTimeField()
     updatedat = models.DateTimeField()
 
@@ -297,7 +307,7 @@ class HomeLivestock(models.Model):
     english = models.CharField(max_length=255, blank=True, null=True)
     arabic = models.CharField(max_length=255, blank=True, null=True)
     lugbara = models.CharField(max_length=255, blank=True, null=True)
-    image = models.CharField(max_length=100, blank=True, null=True)
+    image = models.CharField(max_length=100)
     createdat = models.DateTimeField()
     updatedat = models.DateTimeField()
 
@@ -315,6 +325,50 @@ class HomeUnregistreduser(models.Model):
     class Meta:
         managed = False
         db_table = 'home_unregistreduser'
+
+
+class MarketPrices(models.Model):
+    commodity = models.CharField(max_length=255, blank=True, null=True)
+    variety = models.CharField(max_length=255, blank=True, null=True)
+    unit = models.CharField(max_length=255, blank=True, null=True)
+    retailprice = models.CharField(max_length=255, blank=True, null=True)
+    wholesaleprice = models.CharField(max_length=255, blank=True, null=True)
+    market = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'market_prices'
+
+
+class MarketVisits(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    deviceid = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'market_visits'
+
+
+class ProductSale(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    variety = models.CharField(max_length=255, blank=True, null=True)
+    quantity = models.CharField(max_length=255, blank=True, null=True)
+    unit = models.CharField(max_length=255, blank=True, null=True)
+    unitprice = models.CharField(max_length=255, blank=True, null=True)
+    picture = models.CharField(max_length=255, blank=True, null=True)
+    status = models.CharField(max_length=255, blank=True, null=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
+    farmerid = models.ForeignKey(Farmers, models.DO_NOTHING, db_column='farmerId', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'product_sale'
 
 
 class TranslationManual(models.Model):

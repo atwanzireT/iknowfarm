@@ -1,32 +1,31 @@
 {% for rs in ex_workers %}
 <div class="title-card">
-    <div class="row mt-5" style="margin-left: 15px;">
+    <div class="row mt-1 mx-5" style="margin-left: 15px;">
         <div class="col-3" style="text-align: left;">
             <p class="text-success">{{rs.name}}</p>
             <p>{{rs.gender}}</p>
             <p>Tel: {{rs.telephone_number}}</p>
         </div>
-        <div class="col-2" style="text-align: left;">
+        <div class="col-2" style="text-align: center;">
             <p>{{rs.designation}}</p>
         </div>
-        <div class="col-2" style="text-align: left;">
+        <div class="col-sm-2" style="text-align: left;">
             <p>District: {{rs.operation_area}}</p>
         </div>
-        <div class="col-1" style="text-align: left;">
-            <h6>{{rs.module}}</h6>
+        <div class="col-sm-1" style="text-align: left;">
+            <p>{{rs.module}}</p>
         </div>
-        <div class="col-2" style="text-align: left;">
-            <h6>{{rs.group}}</h6>
+        <div class="col-sm-2" style="text-align: left;">
+            <p>{{rs.group}}</p>
         </div>
         <div class="col-2">
-            <div class="col">
-                <div class="row">
-                    <div class="col-auto">
-                        <a id="edit_link"  href="/farmers/update_extension_worker/{{rs.id}}/">Edit</a>
-                    </div>
-                    <div class="col-auto">
-                        <a id="manuel_link" class="text-danger" href="/farmers/delete_extension_worker/{{rs.id}}/">Delete</a>
-                    </div>
+            <div class="row">
+                <div class="col-auto">
+                    <a id="edit_link" href="/farmers/update_extension_worker/{{rs.id}}/">Edit</a>
+                </div>
+                <div class="col-auto">
+                    <a id="manuel_link" class="text-danger"
+                        href="/farmers/delete_extension_worker/{{rs.id}}/">Delete</a>
                 </div>
             </div>
         </div>

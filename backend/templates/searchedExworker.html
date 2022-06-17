@@ -15,7 +15,7 @@
     <div>
         <div class="row mt-5">
             <div class="col">
-                <h6>Searched Crop Query</h6>
+                <h6>Searched Extension worker Query</h6>
             </div>
             <div class="col-5"></div>
         </div>
@@ -25,47 +25,49 @@
             <div class="card m-2" style="height: auto;">
             {% include 'searchTool.html' %}
                 <div class="title-card">
-                    <div class="row mt-5">
-                        <div class="row mt-5">
-                            <div class="col-2">
-                                <h6>#</h6>
-                            </div>
-                            <div class="col">
-                                <h6>Name</h6>
-                            </div>
-                            <div class="col">
-                                <h6>Arabic</h6>
-                            </div>
-                            <div class="col">
-                                <h6>Lugbar</h6>
-                            </div>
-                            <div class="col">
-                                <h6>Action </h6>
-                            </div>
+                    <div class="row m-5">
+                        <div class="col-3" style="text-align: left;">
+                            <h6>Extension Worker</h6>
+                        </div>
+                        <div class="col-2" style="text-align: left;">
+                            <h6>Designation</h6>
+                        </div>
+                        <div class="col-2" style="text-align: left;">
+                            <h6>Operation Area</h6>
+                        </div>
+                        <div class="col-1" style="text-align: left;">
+                            <h6>Focus</h6>
+                        </div>
+                        <div class="col-2" style="text-align: left;">
+                            <h6>Extension Group</h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>Action</h6>
+                        </div>
                     </div>
                 </div>
                 <hr style="width: 90%; margin: auto;">
-                {% include 'cropTrans_items.html' %}
+                {% include 'extension_worker.html' %}
                 <div class="row">
                     <div class="col-md-3 offset-md-4">
                         <ul class="pagination justify-content-center">
-                            {% if crops.has_previous %}
+                            {% if ex_workers.has_previous %}
                             <li class="page-item">
                                 <br>
                                 <a class="btn btn-outline-success mx-1"
-                                    href="?page={{crops.previous_page_number}}">Previous</a>
+                                    href="?page={{ex_workers.previous_page_number}}">Previous</a>
                             </li>
                             {% endif %}
                             <li class="page-item active">
                                 <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{crops.number}}">Current</a>
+                                <a class="btn btn-outline-success mx-1" href="?page={{ex_workers.number}}">Current</a>
                             </li>
 
-                            {% if crops.has_next %}
+                            {% if ex_workers.has_next %}
                             <li class="page-item">
                                 <br>
                                 <a class="btn btn-outline-success mx-1"
-                                    href="?page={{crops.next_page_number}}">Next</a>
+                                    href="?page={{ex_workers.next_page_number}}">Next</a>
                             </li>
                             {% endif %}
 

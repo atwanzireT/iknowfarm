@@ -13,15 +13,15 @@
 
 {% include 'leftbar.html' %}
 <div class="container crop-container" style="margin: auto;">
-    {% include 'topbar.html' %}
     <div>
         <div class="row mt-5">
             <div class="col">
-                <h6>All LiveStock</h6>
+                <h6>All Farmers Groups</h6>
             </div>
             <div class="col-5"></div>
             <div class="col">
-                <a href="/addlivestock/" class="btn btn-small btn-success"><i class="fa fa-file-text" style="font-size: 20px; margin-top: 5px; margin-bottom: -5px;"></i> Add LiveStock</a>
+                <a href="/farmers/csvgroup/" class="btn btn-small btn-outline-success mx-2 d-inline">Print CSV</a>
+                <a href="/farmers/addfarmer_group/" class="btn btn-small btn-success mx-2 d-inline"><i class="fa fa-file-text" style="font-size: 20px; margin-top: 5px; margin-bottom: -5px;"></i> Add Farmer Group</a>
             </div>
         </div>
         <!-- Headings -->
@@ -31,19 +31,16 @@
                     <div class="title-card">
                         <div class="row mt-5">
                             <div class="col-2">
-                                <h6>#</h6>
-                            </div>
-                            <div class="col">
                                 <h6>Name</h6>
                             </div>
                             <div class="col">
-                                <h6>Arabic</h6>
+                                <h6>Phone Number</h6>
                             </div>
                             <div class="col">
-                                <h6>Lugbar</h6>
+                                <h6>Village</h6>
                             </div>
                             <div class="col">
-                                <h6>Image</h6>
+                                <h6>District</h6>
                             </div>
                             <div class="col">
                                 <h6>Action (Edit / Delete) </h6>
@@ -51,13 +48,13 @@
                         </div>
                     </div>
                     <hr style="width: 90%; margin: auto;">
-                    {% include 'livestock_items.html' %}
+                    {% include 'farmergroups2_items.html' %}
                 </div>
             </div>
             <div class="col-auto" style="width: 30%;">
                 <div class="card m-2">
                     <div class="text-center">
-                        <h5>Add LiveStock</h5>
+                        <h5>Add Farmer Group</h5>
                     </div>
                     <form action="" method="post"  enctype="multipart/form-data">
                         <div style="width: 80%; margin: auto;">

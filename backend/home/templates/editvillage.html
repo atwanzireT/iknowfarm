@@ -17,47 +17,43 @@
         <div>
             <div class="row mt-5">
                 <div class="col">
-                    <h6>All LiveStock</h6>
+                    <h6>All Crops</h6>
                 </div>
                 <div class="col-5"></div>
-                <div class="col">
-                    <a href="/addlivestock/" class="btn btn-small btn-success">Add LiveStock</a>
-                </div>
             </div>
             <!-- Headings -->
             <div class="row">
                 <div class="col-8">
                     <div class="card m-2" style="height: auto;">
-                        <div class="title-card">
-                            <div class="row mt-5">
-                                <div class="col-2">
-                                    <h6>#</h6>
+                        <div class="row my-2">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-success">District</h6>
                                 </div>
                                 <div class="col">
-                                    <h6>Name</h6>
-                                </div>
-                                <div class="col">
-                                    <h6>Arabic</h6>
-                                </div>
-                                <div class="col">
-                                    <h6>Lugbar</h6>
-                                </div>
-                                <div class="col">
-                                    <h6>Action </h6>
+                                    <h6  style="text-align: left;" class="text-success">Village</h6>
                                 </div>
                             </div>
+                        </div <div class="row my-2">
+                        {% for rs in village %}
+                        <div class="row">
+                            <div class="col">
+                                <h6>{{rs.districtid}}</h6>
+                            </div>
+                            <div class="col">
+                                <h6  style="text-align: left;">{{rs.name}}</h6>
+                            </div>
                         </div>
-                        <hr style="width: 90%; margin: auto;">
-                        {% include 'livestockTrans_items.html' %}
+                        {% endfor %}
                         <div class="container">
-                           <!-- Pagination -->
+                            <!-- for pagination -->
                         </div>
                     </div>
                 </div>
                 <div class="col-auto" style="width: 30%;">
                     <div class="card m-2">
                         <div class="text-center">
-                            <h5>Edit Translation</h5>
+                            <h5>Edit Village</h5>
                         </div>
                         <form action="" method="post"  enctype="multipart/form-data">
                             <div style="width: 80%; margin: auto;">

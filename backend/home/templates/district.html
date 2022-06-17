@@ -27,6 +27,15 @@
 
 
         <div class="card mt-2">
+            <div class="float-end">
+                <div class="d-inline">
+                    <a href="/add_districts/" class="btn btn-small btn-success m-1">Add District</a>
+                </div>
+                <div class="d-inline">
+                    <a href="/add_village/" class="btn btn-small btn-success m-1">Add Village</a>
+                </div>
+            </div>
+            {% include 'searchTool.html' %}
             <div class="p-2">
                 <div class="row my-2">
                     <div class="row">
@@ -34,7 +43,7 @@
                             <h6 class="text-success">District</h6>
                         </div>
                         <div class="col">
-                            <h6  style="text-align: left;" class="text-success">Village</h6>
+                            <h6 style="text-align: left;" class="text-success">Village</h6>
                         </div>
                     </div>
                 </div <div class="row my-2">
@@ -44,7 +53,14 @@
                         <h6>{{rs.districtid}}</h6>
                     </div>
                     <div class="col">
-                        <h6  style="text-align: left;">{{rs.name}}</h6>
+                        <div class="row">
+                            <div class="col-auto">
+                                <h6 style="text-align: left;">{{rs.name}}</h6>
+                            </div>
+                            <div class="col-auto">
+                                <a href="/updateVillage/{{rs.id}}/" style="text-align: left;" class="text-success">edit</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -55,7 +71,8 @@
                         {% if districts.has_previous %}
                         <li class="page-item">
                             <br>
-                            <a class="btn btn-outline-success mx-1" href="?page={{districts.previous_page_number}}">Previous</a>
+                            <a class="btn btn-outline-success mx-1"
+                                href="?page={{districts.previous_page_number}}">Previous</a>
                         </li>
                         {% endif %}
                         <li class="page-item active">
@@ -74,8 +91,8 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 </div>
 </div>
 {% endblock content %}

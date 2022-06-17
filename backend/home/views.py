@@ -1,7 +1,6 @@
-from tokenize import group
 from django.shortcuts import render, redirect
-from .models import Crop, Livestock, UnregistredUser
-from farmer.models import District, Farmer, Village, Search
+from .models import *
+from farmer.models import District, Farmer, FarmerGroup, Village
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,6 +12,7 @@ from django.contrib.auth.models import User
 from farmer.forms import DistrictForm, VillageForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
+from django.db.models import Q
 # import folium
 # import geocoder
 
@@ -25,11 +25,14 @@ def index(request):
     farmers = Farmer.objects.filter(group__isnull = True).count()
     unregistered_users = UnregistredUser.objects.all().count()
     app_users = User.objects.all().count()
-    app_installations = farmers + unregistered_users + app_users
+    app_installations = farmers + unregistered_users + app_users + FarmerGroup.objects.all().count()
     young_farmers = Farmer.objects.filter(age__lte = 20).count()
     mid_farmers = Farmer.objects.filter(age__gte = 21, age__lte = 35).count()
     old_farmers = Farmer.objects.filter(age__gte = 35, age__lte = 60).count()
     elder_farmers = Farmer.objects.filter(age__gte = 60).count()
+    market = MarketVisits.objects.filter(name = 'Market').count()
+    agroinput = MarketVisits.objects.filter(name = 'Agroinput').count()
+    market_visits = MarketVisits.objects.all().count()
 
 
     dic = {
@@ -43,8 +46,8 @@ def index(request):
         'old_farmers':old_farmers,
         'elder_farmers':elder_farmers,
         'mid_farmers':mid_farmers,
-        # 'm': m,
-        # 'form': form,
+        'market':market,
+        'agroinput':agroinput,
 
     }
     return render(request, 'index.html', dic)
@@ -55,7 +58,7 @@ def districts(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        districts = District.objects.filter(name__icontains=search)[:20]
+        districts = Village.objects.filter(Q(name__icontains=search))
         return render(request, "searchedDistricts.html", {'districts':districts})
 
     paginator = Paginator(districts, 20)
@@ -73,7 +76,7 @@ def crops(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        crop = Crop.objects.filter(name__icontains=search)[:20]
+        crop = Crop.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
         return render(request, "searchedCrops.html", {'crop':crop})
 
     # crop Pagnition
@@ -93,7 +96,7 @@ def livestock(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        livestock = Livestock.objects.filter(name__icontains=search)[:20]
+        livestock = Livestock.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
         return render(request, "searchedLivestock.html", {'livestock':livestock})
 
     paginator = Paginator(livestock, 5)
@@ -179,8 +182,8 @@ def cropTranslation(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        crop = Crop.objects.filter(name__icontains=search)[:20]
-        return render(request, "searchedCropsTrans.html", {'crop':crop})
+        crops = Crop.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
+        return render(request, "searchedCropsTrans.html", {'crops':crops})
 
     # crop Pagnition
     paginator = Paginator(crops, 5)
@@ -197,8 +200,8 @@ def livestockTranslation(request):
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        livestock = Livestock.objects.filter(name__icontains=search)[:20]
-        return render(request, "searchedLiveTranslations.html", {'livestock':livestock})
+        livestock = Livestock.objects.filter(Q(english__icontains=search) | Q(arabic__icontains = search) | Q(lugbara__icontains = search))
+        return render(request, "searchedLiveTrans.html", {'livestock':livestock})
 
     # crop Pagnition
     paginator = Paginator(livestock, 5)
@@ -256,7 +259,7 @@ def delete_livestock(request,id):
 
 class UpdateDistrictView(LoginRequiredMixin, generic.UpdateView):
     model = District
-    template_name = 'editdistrict.html'
+    template_name = 'EditDistrict.html'
     form_class = DistrictForm
     login_url = '/profile/login/'
 
@@ -264,7 +267,7 @@ class UpdateDistrictView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['district'] = District.objects.all().order_by('?')[:10]
+        context['districts'] = Village.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
@@ -272,7 +275,7 @@ class UpdateDistrictView(LoginRequiredMixin, generic.UpdateView):
 
 class AddDistrictView(LoginRequiredMixin, generic.CreateView):
     model = District
-    template_name = 'add_district.html'
+    template_name = 'AddDistrict.html'
     form_class = DistrictForm
     login_url = '/profile/login/'
 
@@ -280,7 +283,7 @@ class AddDistrictView(LoginRequiredMixin, generic.CreateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['district'] = District.objects.all().order_by('?')[:10]
+        context['districts'] = Village.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):

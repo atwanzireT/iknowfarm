@@ -15,15 +15,9 @@
     <div>
         <div class="row mt-5">
             <div class="col">
-                <h6>Searched Farmer Query</h6>
+                <h6>Searched Livestock Query</h6>
             </div>
             <div class="col-5"></div>
-            <div class="col">
-                <a href="/farmers/pdf/" class="btn btn-small btn-outline-success">Print CSV</a>
-            </div>
-            <div class="col">
-                <a href="/farmers/addfarmer/" class="btn btn-small btn-success">Add Farmer</a>
-            </div>
         </div>
         <!-- Headings -->
         <div class="container-div">
@@ -50,27 +44,27 @@
                     </div>
                 </div>
                 <hr style="width: 90%; margin: auto;">
-                {% include 'livestock_items.html' %}
+                {% include 'livestockTrans_items.html' %}
                 <div class="row">
                     <div class="col-md-3 offset-md-4">
                         <ul class="pagination justify-content-center">
-                            {% if farmers.has_previous %}
+                            {% if livestock.has_previous %}
                             <li class="page-item">
                                 <br>
                                 <a class="btn btn-outline-success mx-1"
-                                    href="?page={{farmers.previous_page_number}}">Previous</a>
+                                    href="?page={{livestock.previous_page_number}}">Previous</a>
                             </li>
                             {% endif %}
                             <li class="page-item active">
                                 <br>
-                                <a class="btn btn-outline-success mx-1" href="?page={{farmers.number}}">Current</a>
+                                <a class="btn btn-outline-success mx-1" href="?page={{livestock.number}}">Current</a>
                             </li>
 
-                            {% if farmers.has_next %}
+                            {% if livestock.has_next %}
                             <li class="page-item">
                                 <br>
                                 <a class="btn btn-outline-success mx-1"
-                                    href="?page={{farmers.next_page_number}}">Next</a>
+                                    href="?page={{livestock.next_page_number}}">Next</a>
                             </li>
                             {% endif %}
 

@@ -60,11 +60,44 @@ class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['farmers'] = Farmer.objects.all().order_by('?')[:10]
+        context['farmer_groups'] = FarmerGroup.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
         return reverse('/farmers')
+
+
+class AddFarmerGroupView(LoginRequiredMixin, generic.CreateView):
+    model = FarmerGroup
+    template_name = 'addFarmerGroup.html'
+    form_class = FarmerGroupForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['farmer_groups'] = FarmerGroup.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse('farmer_groups')
+
+class UpdateFarmerGroupView(LoginRequiredMixin, generic.UpdateView):
+    model = FarmerGroup
+    template_name = 'editFarmerGroup.html'
+    form_class = FarmerGroupForm
+    login_url = '/profile/login/'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['farmer_groups'] = FarmerGroup.objects.all().order_by('?')[:10]
+        return context
+
+    def get_success_url(self):
+        return reverse('farmer_groups')
 
 class AddFarmerView(LoginRequiredMixin, generic.CreateView):
     model = Farmer
@@ -100,6 +133,24 @@ def farmer_csv(request):
     
     return response
 
+@login_required(login_url='/profile/login/')
+def farmerGroup_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="farmerGroup.csv"'
+
+    # Create CSV writer
+    writer = csv.writer(response)
+    farmers = FarmerGroup.objects.all()
+    
+    # Add column headers to csv file
+    writer.writerow(['name', 'group_type', 'male_farmers', 'female_farmers',  'recommender', 'phonenumber',  'village', 'createdat', 'updatedat', ])
+
+    for farmer in farmers:
+        writer.writerow([farmer.name, farmer.group_type, farmer.male_farmers, farmer.female_farmers, farmer.recommender,  farmer.phonenumber,  farmer.pin, farmer.createdat, farmer.updatedat])
+       
+    
+    return response
+
 class AddFileView(LoginRequiredMixin, generic.CreateView):
     model = FarmerFile
     template_name = 'addfile.html'
@@ -125,6 +176,11 @@ def delete_farmer_group(request,id):
 @login_required(login_url='/profile/login/')
 def exension_workers(request):
     ex_workers = ExGroupWorkers.objects.all().order_by('name')
+
+    search = request.GET.get("search")
+    if search != "" and search is not None:
+        ex_workers = ExGroupWorkers.objects.filter(name__icontains=search)[:20]
+        return render(request, "searchedExworker.html", {'ex_workers':ex_workers})
 
     paginator = Paginator(ex_workers, 5)
     page = request.GET.get('page')

@@ -12,8 +12,8 @@
 
 {% for rs in farmer_groups %}
 <div class="title-card">
-    <div class="row mt-5" style="margin-left: 10px;">
-        <div class="col-2" >
+    <div class="row mt-5" style="margin-left: 35px;">
+        <div class="col-1" >
             <div >
                 <p style="text-align: left; font-size: 14px;">{{rs.name}}</p>
             </div>
@@ -33,19 +33,19 @@
                 <p style="text-align: left; font-size: 14px;">{{rs.phonenumber}}</p>
             </div>
         </div>
-        <div class="col-1" >
+        <div class="col-sm-1" >
             <div >
                 <p style="text-align: left; font-size: 14px;">{{rs.village}}</p>
             </div>
         </div>
-        <div class="col-1" >
+        <div class="col-sm-1" >
             <div >
                 <p style="text-align: left; font-size: 14px;">{{rs.village.districtid}}</p>
             </div>
         </div>
         <div class="col-1" >
             <div >
-                <p style="text-align: left;">{{rs.group_type}}</p>
+                <p style="text-align: left; font-size: 14px">{{rs.group_type}}</p>
             </div>
         </div>
         <div class="col-1" >
@@ -61,6 +61,18 @@
         <div class="col-1" >
             <div >
                 <p style="text-align: left; font-size: 14px;">{{rs.recommender}}</p>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="col">
+                <div class="row">
+                    <div class="col-auto">
+                        <a id="edit_link"  href="/farmers/deletefarmer_group/{{rs.id}}">Edit</a>
+                    </div>
+                    <div class="col-auto">
+                        <a id="manuel_link" class="text-danger" href="/farmers/deletefarmer_group/{{rs.id}}/">Delete</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
