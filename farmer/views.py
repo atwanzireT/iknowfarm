@@ -7,11 +7,14 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from farmer.serializers import *
-
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import generics
 import csv
 
 
@@ -274,3 +277,22 @@ class ManageFarmerView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('acc_mgt')
+
+
+"""
+    Creating Serializer Views
+"""
+
+class FarmerList(generics.ListCreateAPIView):
+    """
+        Allows viewing all Farmers
+    """
+    queryset = Farmer.objects.all()
+    serializer_class = FarmerSerializer
+
+class FarmerGroupList(generics.ListCreateAPIView):
+    """
+        Allows viewing and creating Farmer Groups
+    """
+    queryset = FarmerGroup.objects.all()
+    serializer_class = FarmerGroupSerializers
