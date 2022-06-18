@@ -26,6 +26,6 @@ urlpatterns = [
     path('managefarmer/<int:pk>/', ManageFarmerView.as_view(), name="manageFarmer"),
 
     # Django rest framework routes
-    path("api/", FarmerList, name="farmer_api"),
+    path("api/", FarmerList.as_view(), name="farmer_api"),
 
 ]

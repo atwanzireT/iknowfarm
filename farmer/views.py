@@ -8,12 +8,12 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http404
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
+# from django.views.decorators.csrf import csrf_exempt
+# from rest_framework.parsers import JSONParser
 from farmer.serializers import *
-from rest_framework import status
-from rest_framework.views import APIView
-from rest_framework.response import Response
+# from rest_framework import status
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
 from rest_framework import generics
 import csv
 
