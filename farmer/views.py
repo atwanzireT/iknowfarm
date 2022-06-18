@@ -1,4 +1,3 @@
-import imp
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -8,7 +7,11 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from farmer.serializers import *
+
 import csv
 
 
