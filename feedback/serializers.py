@@ -12,9 +12,11 @@ from rest_framework import serializers
     # updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
 
 class CreateFeedbackSerializers(serializers.ModelSerializer):
-    model = Feedback
-    fields = ("rating", "ratingtitle", "comment", "audiofile")
+    class Meta:
+        model = Feedback
+        fields = ("rating", "ratingtitle", "comment", "audiofile")
 
 class ReplyFeedbackSerializer(serializers.ModelSerializer):
-    models = Feedback
-    fields = ("reply",)
+    class Meta:
+        models = Feedback
+        fields = ("reply",)
