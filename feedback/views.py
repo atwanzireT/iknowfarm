@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
+from rest_framework import generics
+from .serializers import *
 
   
 # Create your views here.
@@ -37,3 +39,22 @@ class ReplyView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('feedback')
+
+"""
+    Feedback Apis
+"""
+
+class CreateFeedbackList(generics.ListCreateAPIView):
+    """
+    Allows user to create a new feedback.
+    Does not contain the reply field
+    """
+    model = Feedback
+    serializer_class = CreateFeedbackSerializers
+
+class ReplyFeedbackList(generics.ListCreateAPIView):
+    """
+    Sends 
+    """
+    model = Feedback
+    serializer_class = ReplyFeedbackSerializer

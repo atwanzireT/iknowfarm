@@ -1,6 +1,7 @@
 from farmer.views import *
 from .models import *
 from django.urls import path
+from rest_framework import routers
 
 
 urlpatterns = [
@@ -23,5 +24,8 @@ urlpatterns = [
     path('addfarmer_group/', AddFarmerGroupView.as_view(), name="addFarmerGroup"),
     path('managefarmer_group/<int:pk>/', ManageFarmerGroupView.as_view(), name="manageFarmerGroup"),
     path('managefarmer/<int:pk>/', ManageFarmerView.as_view(), name="manageFarmer"),
+
+    # Django rest framework routes
+    path("api/", FarmerList.as_view(), name="farmer_api"),
 
 ]

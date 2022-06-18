@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'crispy_forms',
     'api',
+    'rest_framework',
     # 'rest_framework',
 ]
 
@@ -102,6 +103,14 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     }
+}
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
 
 
