@@ -9,9 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from rest_framework import generics
 from .serializers import *
+from rest_framework import mixins
 
-  
+
 # Create your views here.
+# Contains Feedback views for commenting and replying to feedbacks
 def feedback(request):
     feedback = Feedback.objects.all()
 
@@ -35,13 +37,13 @@ class ReplyView(LoginRequiredMixin, generic.UpdateView):
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
         context['feedback'] = Feedback.objects.all().order_by('?')[:10]
-        return context
 
     def get_success_url(self):
         return reverse_lazy('feedback')
 
 """
     Feedback Apis
+
 """
 
 class CreateFeedbackList(generics.ListCreateAPIView):
@@ -49,12 +51,13 @@ class CreateFeedbackList(generics.ListCreateAPIView):
     Allows user to create a new feedback.
     Does not contain the reply field
     """
-    model = Feedback
+    queryset = Feedback.objects.all()
     serializer_class = CreateFeedbackSerializers
 
 class ReplyFeedbackList(generics.ListCreateAPIView):
     """
-    Sends 
+    Sends feedback to users
     """
-    model = Feedback
+    queryset = Feedback.objects.all()
     serializer_class = ReplyFeedbackSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

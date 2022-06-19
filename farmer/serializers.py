@@ -10,5 +10,5 @@ class FarmerSerializer(serializers.ModelSerializer):
 class FarmerGroupSerializers(serializers.ModelSerializer):
     class Meta:
         model = FarmerGroup
-        fields = ("name", "pin", "group_type", "female_farmers", "male_farmers", "village", "phonenumber", "limit", "recommender", "status", "ëxpiry" )
+        fields = ("name", "pin", "group_type", "female_farmers", "male_farmers", "village", "phonenumber", "limit", "recommender", "status", "expiry" )
 

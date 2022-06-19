@@ -14,7 +14,7 @@ from farmer.serializers import *
 # from rest_framework import status
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
-from rest_framework import generics
+from rest_framework import generics, permissions
 import csv
 
 
@@ -289,6 +289,8 @@ class FarmerList(generics.ListCreateAPIView):
     """
     queryset = Farmer.objects.all()
     serializer_class = FarmerSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 class FarmerGroupList(generics.ListCreateAPIView):
     """
@@ -296,3 +298,4 @@ class FarmerGroupList(generics.ListCreateAPIView):
     """
     queryset = FarmerGroup.objects.all()
     serializer_class = FarmerGroupSerializers
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

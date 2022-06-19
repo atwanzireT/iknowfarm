@@ -27,7 +27,7 @@ urlpatterns = [
     path('uploads/', include('upload.urls')),
     path('translation/', include('translation.urls')),
     path('feedback/', include('feedback.urls')),
-    path('api/', include('api.urls')),
+    # path('api/', include('api.urls')),
     # path('api-auth/', include('rest_framework.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
