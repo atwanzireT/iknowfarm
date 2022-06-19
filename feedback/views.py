@@ -53,6 +53,8 @@ class CreateFeedbackList(generics.ListCreateAPIView):
     """
     queryset = Feedback.objects.all()
     serializer_class = CreateFeedbackSerializers
+    permission_classes = [permissions.IsAuthenticated]
+
 
 class ReplyFeedbackList(generics.ListCreateAPIView):
     """

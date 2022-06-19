@@ -11,7 +11,6 @@ class CreateFeedbackSerializers(serializers.ModelSerializer):
 
 class ReplyFeedbackSerializer(serializers.ModelSerializer):
     class Meta:
-        models = Feedback
+        model = Feedback
         fields = ("repliedBy", "reply",)
-        permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
