@@ -15,7 +15,7 @@
         <div class="col-2">
             <h5 class="text-success">{{rs.createdby.name}}</h5>
             <h6>Age: {{rs.createdby.age}} || {{rs.createdby.gender}}</h6>
-            <p>{{rs.createdby.phonenumber}}}</p>
+            <p>{{rs.createdby.phonenumber}}</p>
             <p>Located: {{rs.createdby.district}} | {{rs.createdby.village}}</p>
         </div>
         <div class="col-6 mx-2">
@@ -24,7 +24,13 @@
             <p>Created: {{rs.DateTImeField}}</p>
         </div>
         <div class="col">
-            <h6 class="text-secondary">Pending</h6>
+            <h6 class="text-secondary">
+                {% if rs.reply == "null" %}
+                Pending
+                {% else %}
+                Replied
+                {% endif %}
+            </h6>
         </div>
         <div class="col">
             <a href="/feedback/reply_feedback/{{rs.id}}" class="btn btn-danger">Reply</a>
@@ -32,4 +38,4 @@
     </div>
     <hr style="width: 90%; text-align: center;">
 </div>
-{% endfor %}  
+{% endfor %}

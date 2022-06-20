@@ -8,7 +8,7 @@ from .serializers import *
 urlpatterns = [
     path('feedback/', feedback, name="feedback"),
     # path('', feedback, name="feed"),
-    path('reply_feedback/<int:pk>/', ReplyView.as_view(), name="reply_feedback"),
+    path('reply_feedback/<int:pk>/', ReplyFeedbackView.as_view(), name="reply_feedback"),
 
     # Feedback Apis
     path('feedback/api/', CreateFeedbackList .as_view(), name="feed__api"),

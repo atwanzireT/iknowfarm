@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from rest_framework import generics
 from .serializers import *
-from rest_framework import mixins
+from .forms import *
 
 
 # Create your views here.
@@ -26,9 +26,10 @@ def feedback(request):
     }
     return render(request, 'feeds.html', dic)
 
-class ReplyView(LoginRequiredMixin, generic.UpdateView):
+
+class ReplyFeedbackView(LoginRequiredMixin, generic.UpdateView):
     model = Feedback
-    template_name = 'editfeed.html'
+    template_name = 'replyfeed.html'
     form_class = FeedbackForm
     login_url = '/profile/login/'
 
@@ -37,10 +38,14 @@ class ReplyView(LoginRequiredMixin, generic.UpdateView):
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
         context['feedback'] = Feedback.objects.all().order_by('?')[:10]
+        return context
 
     def get_success_url(self):
-        return reverse_lazy('feedback')
+        return reverse_lazy('crops')
 
+
+#     def get_success_url(self):
+#         return reverse('acc_mgt')
 """
     Feedback Apis
 
