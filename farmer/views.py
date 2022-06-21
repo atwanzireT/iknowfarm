@@ -66,7 +66,7 @@ class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['farmer_groups'] = FarmerGroup.objects.all().order_by('?')[:10]
+        context['farmers'] = Farmer.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):

@@ -66,7 +66,7 @@ class ProductSale(models.Model):
     location = models.CharField(max_length=255, blank=True, null=True)
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
-    farmerid = models.ForeignKey(Farmer, on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
+    farmerid = models.ForeignKey(Farmer, db_column='farmerId', on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False

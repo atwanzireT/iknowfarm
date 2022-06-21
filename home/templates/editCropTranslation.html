@@ -54,23 +54,6 @@
                         <hr style="width: 90%; margin: auto;">
                         {% include 'cropTrans_items.html' %}
                         <div class="container">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination m-3 float-end">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                 </div>
@@ -80,9 +63,11 @@
                             <h5>Edit Translation</h5>
                         </div>
                         <form action="" method="post"  enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{form.media}} {{form.as_p}}
-                            <button class="btn btn-style btn-outline-success mb-2">Submit</button>
+                            <div style="width: 80%; margin: auto;">
+                                {% csrf_token %}
+                                {{form.media}} {{form.as_p}}
+                                <button class="btn btn-style btn-outline-success m-2">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>

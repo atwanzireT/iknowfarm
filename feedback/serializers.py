@@ -12,5 +12,5 @@ class CreateFeedbackSerializers(serializers.ModelSerializer):
 class ReplyFeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
-        fields = ("repliedBy", "reply",)
+        fields = ("createdby", "repliedBy", "reply",)
 
