@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block header %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+{% endblock header %}
+
+{% block content %}
+{% include 'leftbar.html' %}
+<!-- <div class="right-container" style="margin: auto;"> -->
+<div class="home-cards">
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #26c6da, #00acc1);
+box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(0 188 212 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/cloud-computing.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>App Installations</h6>
+                    <p>{{app_installations}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto "
+                    style="background: linear-gradient(60deg, #ab47bc, #8e24aa);
+            box-shadow: 0 12px 20px -10px rgb(156 39 176 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(156 39 176 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/left-arrow.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Unregistered Users</h6>
+                    <p>{{unregistered_users}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #ffa726, #fb8c00);
+            box-shadow: 0 12px 20px -10px rgb(255 152 0 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(255 152 0 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/clock.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>App Users</h6>
+                    <p>{{app_users}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto" style="
+                background: linear-gradient(60deg, #ec407a, #d81b60);
+                box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(233 30 99 / 40%);
+            ">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/standing-up-man-.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Male Farmers</h6>
+                    <p>{{male_farmers}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #ef5350, #e53935);
+            box-shadow: 0 12px 20px -10px rgb(244 67 54 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(244 67 54 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/girl.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Female Farmers</h6>
+                    <p>{{female_farmers}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #66bb6a, #43a047);
+            box-shadow: 0 12px 20px -10px rgb(76 175 80 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(76 175 80 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/farmer.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Total Farmers</h6>
+                    <p>{{farmers}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	 <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #26c6da, #00acc1);
+box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(0 188 212 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/cloud-computing.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Extension Workers</h6>
+                    <p>{{ex_workers}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto "
+                    style="background: linear-gradient(60deg, #ab47bc, #8e24aa);
+            box-shadow: 0 12px 20px -10px rgb(156 39 176 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(156 39 176 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/group.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Farmer Groups</h6>
+                    <p>{{farmer_group}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #ffa726, #fb8c00);
+            box-shadow: 0 12px 20px -10px rgb(255 152 0 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(255 152 0 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/clock.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>FeedBacks</h6>
+                    <p>{{feedback}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div class="chart_card" id="gender_chart">
+    <div class="row ">
+        <div class="col">
+            <div class="chart p-2 card">
+                {% include 'visualize/AgeLineChart.html' %}
+            </div>
+        </div>
+        <!-- <div class="col">
+            <div class="chart p-2 card">
+                {% include 'visualize/genderBarChart.html' %}
+            </div>
+        </div> -->
+        <div class="col">
+            <div class="chart p-2 card">
+                {% include 'visualize/genderPieChart.html' %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card m-5" style="margin: auto;">
+            <div style="margin: auto;" class="m-5">
+                <div class="container card mt-2">
+                    <div class="mt-2">
+                        <div>
+                            {% include 'visualize/marketvisits.html' %}
+                        </div>
+                        <!-- {{ m|safe }} -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card m-5" style="margin: auto;">
+            <div style="margin: auto;" class="m-5">
+                <div class="container card mt-2">
+                    <div class="mt-2">
+                        <div>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8445.196419590395!2d30.905075449385254!3d3.0263408080478382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x176e6265a178c769%3A0xaa1e18867d91929c!2sArua!5e0!3m2!1sen!2sug!4v1655362158072!5m2!1sen!2sug"
+                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <!-- {{ m|safe }} -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- </div> -->
+{% endblock content %}

@@ -22,15 +22,15 @@
             <div class="col-5"></div>
             <div class="col">
                 <a href="/farmers/csv/" class="btn btn-small btn-outline-success mx-2 d-inline">Print CSV</a>
-                <a href="/farmers/addfarmer/" class="btn btn-small btn-success mx-2 d-inline"><i class="fa fa-file-text" style="font-size: 20px; margin-top: 5px; margin-bottom: -5px;"></i> Add Farmer</a>
+                <a href="/farmers/addfarmer/" class="btn btn-small btn-success mx-2 d-inline">Add Farmer</a>
             </div>
         </div>
         <!-- Headings -->
         <div class="row">
             <div class="col-8">
-                <div class="card m-2" style="height: auto;">
+                <div class="card m-2" style="height: auto; margin: 5px;">
                     <div class="title-card">
-                        <div class="row mt-5">
+                        <div class="row mt-2">
                             <div class="col">
                                 <h6>Name</h6>
                             </div>
@@ -44,12 +44,15 @@
                                 <h6>Village</h6>
                             </div>
                             <div class="col">
-                                <h6>Action (Edit / Delete) </h6>
+                                <h6>Status</h6>
+                            </div>
+                            <div class="col">
+                                <h6>Action</h6>
                             </div>
                         </div>
                     </div>
                     <hr style="width: 90%; margin: auto;">
-                    {% include 'farmer_items.html' %}
+                    {% include 'farmer_items2.html' %}
                 </div>
             </div>
             <div class="col-auto" style="width: 30%;">

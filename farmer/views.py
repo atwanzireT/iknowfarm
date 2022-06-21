@@ -14,7 +14,7 @@ from farmer.serializers import *
 # from rest_framework import status
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
-from rest_framework import generics
+from rest_framework import generics, permissions
 import csv
 
 
@@ -66,7 +66,7 @@ class UpdateFarmerView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['farmer_groups'] = FarmerGroup.objects.all().order_by('?')[:10]
+        context['farmers'] = Farmer.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
@@ -289,6 +289,8 @@ class FarmerList(generics.ListCreateAPIView):
     """
     queryset = Farmer.objects.all()
     serializer_class = FarmerSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 class FarmerGroupList(generics.ListCreateAPIView):
     """
@@ -296,3 +298,4 @@ class FarmerGroupList(generics.ListCreateAPIView):
     """
     queryset = FarmerGroup.objects.all()
     serializer_class = FarmerGroupSerializers
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

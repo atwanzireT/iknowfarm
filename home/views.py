@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from farmer.models import District, Farmer, FarmerGroup, Village
+from farmer.models import District, Farmer, FarmerGroup, Village, ExGroupWorkers
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,6 +13,7 @@ from farmer.forms import DistrictForm, VillageForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Q
+from feedback.models import Feedback
 # import folium
 # import geocoder
 
@@ -33,6 +34,9 @@ def index(request):
     market = MarketVisits.objects.filter(name = 'Market').count()
     agroinput = MarketVisits.objects.filter(name = 'Agroinput').count()
     market_visits = MarketVisits.objects.all().count()
+    ex_workers = ExGroupWorkers.objects.all().count()
+    feedback = Feedback.objects.all().count()
+    farmer_group = FarmerGroup.objects.all().count()
 
 
     dic = {
@@ -48,6 +52,10 @@ def index(request):
         'mid_farmers':mid_farmers,
         'market':market,
         'agroinput':agroinput,
+        'ex_workers':ex_workers,
+        'feedback' :feedback,
+        'farmer_group':farmer_group,
+        
 
     }
     return render(request, 'index.html', dic)

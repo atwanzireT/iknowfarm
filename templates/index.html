@@ -13,6 +13,12 @@
 {% include 'leftbar.html' %}
 <!-- <div class="right-container" style="margin: auto;"> -->
 <div class="home-cards">
+    <div class="row m-2">
+        <div class="col-10"></div>
+        <div class="col-auto">
+            <a href="/admin/" class="btn btn-success">Admin Panel</a>
+        </div>
+    </div>
     <div class="right-col">
         <div class="card p-2">
             <div class="row">
@@ -121,6 +127,61 @@ box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 1
             </div>
         </div>
     </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #26c6da, #00acc1);
+box-shadow: 0 12px 20px -10px rgb(0 188 212 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(0 188 212 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/users-group.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Extension Workers</h6>
+                    <p>{{ex_workers}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto "
+                    style="background: linear-gradient(60deg, #ab47bc, #8e24aa);
+            box-shadow: 0 12px 20px -10px rgb(156 39 176 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(156 39 176 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/group.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>Farmer Groups</h6>
+                    <p>{{farmer_group}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="card p-2">
+            <div class="row">
+                <div class="icon-card-div col-auto"
+                    style="background: linear-gradient(60deg, #ffa726, #fb8c00);
+            box-shadow: 0 12px 20px -10px rgb(255 152 0 / 28%), 0 4px 20px 0px rgb(0 0 0 / 12%), 0 7px 8px -5px rgb(255 152 0 / 20%);">
+                    <div class="card-icon">
+                        <img class="icon" src="{% static '/icons/chat.png' %}" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col p-3">
+                    <h6>FeedBacks</h6>
+                    <p>{{feedback}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </div>

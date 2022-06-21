@@ -9,9 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from rest_framework import generics
 from .serializers import *
+from .forms import *
 
-  
+
 # Create your views here.
+# Contains Feedback views for commenting and replying to feedbacks
 def feedback(request):
     feedback = Feedback.objects.all()
 
@@ -24,9 +26,10 @@ def feedback(request):
     }
     return render(request, 'feeds.html', dic)
 
-class ReplyView(LoginRequiredMixin, generic.UpdateView):
+
+class ReplyFeedbackView(LoginRequiredMixin, generic.UpdateView):
     model = Feedback
-    template_name = 'editfeed.html'
+    template_name = 'replyfeed.html'
     form_class = FeedbackForm
     login_url = '/profile/login/'
 
@@ -38,10 +41,14 @@ class ReplyView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('feedback')
+        return reverse_lazy('crops')
 
+
+#     def get_success_url(self):
+#         return reverse('acc_mgt')
 """
     Feedback Apis
+
 """
 
 class CreateFeedbackList(generics.ListCreateAPIView):
@@ -49,12 +56,15 @@ class CreateFeedbackList(generics.ListCreateAPIView):
     Allows user to create a new feedback.
     Does not contain the reply field
     """
-    model = Feedback
+    queryset = Feedback.objects.all()
     serializer_class = CreateFeedbackSerializers
+    permission_classes = [permissions.IsAuthenticated]
+
 
 class ReplyFeedbackList(generics.ListCreateAPIView):
     """
-    Sends 
+    Sends feedback to users
     """
-    model = Feedback
+    queryset = Feedback.objects.all()
     serializer_class = ReplyFeedbackSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
