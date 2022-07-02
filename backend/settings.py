@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
-import dj_database_url
-# from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY',)
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -62,8 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # Simplified static file serving.
@@ -103,15 +99,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-# Development database
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'iknowfarm', # database name
-        'USER': 'root',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME',),
+        'USER': os.environ.get('DB_USER',),
+        'PASSWORD': os.environ.get('DB_PASSWORD',),
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': os.environ.get('DB_PORT',),
     }
 }
 
@@ -170,9 +166,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-SITE_ID = 1
+# SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
@@ -186,6 +181,3 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
