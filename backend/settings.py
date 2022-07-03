@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from distutils.debug import DEBUG
 from pathlib import Path
 import os
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY',)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG')) == '1'
+# DEBUG = str(os.environ.get('DEBUG')) == '1'
+DEBUG = False
 
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
 ALLOWED_HOSTS = ['*']
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'api',
     'rest_framework',
+    'storages',
     # 'rest_framework',
 ]
 
@@ -102,7 +106,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE':  os.environ.get('ENGINE',),
         'NAME': os.environ.get('DB_NAME',),
         'USER': os.environ.get('DB_USER',),
         'PASSWORD': os.environ.get('DB_PASSWORD',),
@@ -182,15 +186,36 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-if not DEBUG:
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, "static"),
-    )
-    # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-    # AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-    # AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN')
-    # AWS_DEFAULT_ACL = 'public-read'
-    # AWS_S3_OBJECT_PARAMETERS = {
-    #     'CacheControl': 'max-age=86400',
-    # }
+# if not DEBUG:
+#     STATICFILES_DIRS = (
+#         os.path.join(BASE_DIR, "static"),
+#     )
+#     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+#     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+#     # AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
+#     AWS_DEFAULT_ACL = 'public-read'
+#     AWS_S3_OBJECT_PARAMETERS = {
+#         'CacheControl': 'max-age=86400',
+#     }
+
+#     AWS_LOCATION = 'static'
+#     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#     # STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+#     AWS_DEFAULT_ACL = None
+
+#     DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE')
+#     # Allow all host hosts/domain names for this site
+#     ALLOWED_HOSTS = ['*']
+
+#     # # # Parse database configuration from $DATABASE_URL
+
+#     DATABASES = {'default': dj_database_url.config()}
+
+#     # # # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# else:
+#     try:
+#         from .local_settings import *
+#     except Exception as e:
+#         pass
