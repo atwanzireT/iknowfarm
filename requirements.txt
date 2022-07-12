@@ -29,3 +29,4 @@ urllib3==1.26.7
 whitenoise==5.3.0
 django-dotenv
 django-storages
+boto3==1.0.0
