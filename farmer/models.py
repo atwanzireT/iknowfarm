@@ -102,17 +102,14 @@ class Farmer(models.Model):
         return self.name
 
 
-class ExGroups(models.Model):
+class ExGroup(models.Model):
     title = models.CharField(max_length=200)
 
     def __str__(self) -> str:
         return self.title
-    class Meta:
-        managed = False
-        db_table = 'ex_groups'
 
-class ExGroupWorkers(models.Model):
-    group = models.ForeignKey(ExGroups, on_delete=models.CASCADE)
+class ExGroupWorker(models.Model):
+    group = models.ForeignKey(ExGroup, on_delete=models.CASCADE)
     district = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     gender = models.CharField(max_length=1)
@@ -123,9 +120,6 @@ class ExGroupWorkers(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    class Meta:
-        managed = False
-        db_table = 'ex_group_workers'
 
 class Sent_Code_farmer(models.Model):
     farmer = models.ForeignKey(Farmer, on_delete=models.CASCADE)

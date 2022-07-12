@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from farmer.models import District, Farmer, FarmerGroup, Village, ExGroupWorkers
+from farmer.models import *
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -31,10 +31,10 @@ def index(request):
     mid_farmers = Farmer.objects.filter(age__gte = 21, age__lte = 35).count()
     old_farmers = Farmer.objects.filter(age__gte = 35, age__lte = 60).count()
     elder_farmers = Farmer.objects.filter(age__gte = 60).count()
-    market = MarketVisits.objects.filter(name = 'Market').count()
-    agroinput = MarketVisits.objects.filter(name = 'Agroinput').count()
-    market_visits = MarketVisits.objects.all().count()
-    ex_workers = ExGroupWorkers.objects.all().count()
+    market = MarketVisit.objects.filter(name = 'Market').count()
+    agroinput = MarketVisit.objects.filter(name = 'Agroinput').count()
+    market_visits = MarketVisit.objects.all().count()
+    ex_workers = ExGroupWorker.objects.all().count()
     feedback = Feedback.objects.all().count()
     farmer_group = FarmerGroup.objects.all().count()
 

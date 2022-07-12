@@ -20,7 +20,7 @@ class FarmerGroupForm(forms.ModelForm):
 
 class ExtensionWorkerForm(forms.ModelForm):
     class Meta:
-        model = ExGroupWorkers
+        model = ExGroupWorker
         fields = ('group', 'district', 'name', 'gender',  'designation', 'telephone_number',  'operation_area', 'module')
 
 

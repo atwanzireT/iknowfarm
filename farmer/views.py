@@ -181,11 +181,11 @@ def delete_farmer_group(request,id):
 # Extension workers views 
 @login_required(login_url='/profile/login/')
 def exension_workers(request):
-    ex_workers = ExGroupWorkers.objects.all().order_by('name')
+    ex_workers = ExGroupWorker.objects.all().order_by('name')
 
     search = request.GET.get("search")
     if search != "" and search is not None:
-        ex_workers = ExGroupWorkers.objects.filter(name__icontains=search)[:20]
+        ex_workers = ExGroupWorker.objects.filter(name__icontains=search)[:20]
         return render(request, "searchedExworker.html", {'ex_workers':ex_workers})
 
     paginator = Paginator(ex_workers, 5)
@@ -197,7 +197,7 @@ def exension_workers(request):
     return render(request, 'ex_workers.html', dic)
 
 class AddExtensionWorkerView(LoginRequiredMixin, generic.CreateView):
-    model = ExGroupWorkers
+    model = ExGroupWorker
     template_name = 'addextensionWorker.html'
     form_class = ExtensionWorkerForm
     login_url = '/profile/login/'
@@ -206,7 +206,7 @@ class AddExtensionWorkerView(LoginRequiredMixin, generic.CreateView):
         return reverse('extension_workers')
 
 class UpdateExtensionWorkerView(LoginRequiredMixin, generic.UpdateView):
-    model = ExGroupWorkers
+    model = ExGroupWorker
     template_name = 'UpdateExtensionWorker.html'
     form_class = ExtensionWorkerForm
     login_url = '/profile/login/'
@@ -215,7 +215,7 @@ class UpdateExtensionWorkerView(LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context['ex_workers'] = ExGroupWorkers.objects.all().order_by('?')[:10]
+        context['ex_workers'] = ExGroupWorker.objects.all().order_by('?')[:10]
         return context
 
     def get_success_url(self):
@@ -223,7 +223,7 @@ class UpdateExtensionWorkerView(LoginRequiredMixin, generic.UpdateView):
 
 @login_required(login_url='/profile/login/')
 def delete_extension_worker(request,id):
-    ExGroupWorkers.objects.filter(id=id).delete()
+    ExGroupWorker.objects.filter(id=id).delete()
     messages.success(request, "Extension Worker Deleted.")
     return HttpResponseRedirect("/farmers/extension_workers/")
 

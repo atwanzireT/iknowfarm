@@ -4,3 +4,7 @@ from .models import *
 # Register your models here.
 admin.site.register(Crop)
 admin.site.register(Livestock)
+admin.site.register(UnregistredUser)
+admin.site.register(MarketPrice)
+admin.site.register(MarketVisit)
+admin.site.register(ProductSale)

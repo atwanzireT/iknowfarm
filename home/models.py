@@ -29,7 +29,7 @@ class UnregistredUser(models.Model):
     createdat = models.DateTimeField(auto_now_add=True)  # Field name made lowercase.
     updatedat = models.DateTimeField(auto_now=True) 
 
-class MarketPrices(models.Model):
+class MarketPrice(models.Model):
     commodity = models.CharField(max_length=255, blank=True, null=True)
     variety = models.CharField(max_length=255, blank=True, null=True)
     unit = models.CharField(max_length=255, blank=True, null=True)
@@ -39,20 +39,20 @@ class MarketPrices(models.Model):
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'market_prices'
+    # class Meta:
+    #     managed = False
+    #     db_table = 'market_prices'
 
 
-class MarketVisits(models.Model):
+class MarketVisit(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     deviceid = models.CharField(max_length=255, blank=True, null=True)
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'market_visits'
+    # class Meta:
+    #     managed = False
+    #     db_table = 'market_visits'
 
 
 class ProductSale(models.Model):
@@ -66,8 +66,8 @@ class ProductSale(models.Model):
     location = models.CharField(max_length=255, blank=True, null=True)
     createdat = models.DateTimeField(db_column='createdAt')  # Field name made lowercase.
     updatedat = models.DateTimeField(db_column='updatedAt')  # Field name made lowercase.
-    farmerid = models.ForeignKey(Farmer, db_column='farmerId', on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
+    farmerid = models.ForeignKey(Farmer,  on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'product_sale'
+    # class Meta:
+    #     managed = False
+    #     db_table = 'product_sale'
