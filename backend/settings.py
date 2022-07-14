@@ -103,15 +103,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE':  os.environ.get('ENGINE',),
+#         'NAME': os.environ.get('DB_NAME',),
+#         'USER': os.environ.get('DB_USER',),
+#         'PASSWORD': os.environ.get('DB_PASSWORD',),
+#         'HOST': 'localhost',
+#         'PORT': os.environ.get('DB_PORT',),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE':  os.environ.get('ENGINE',),
-        'NAME': os.environ.get('DB_NAME',),
-        'USER': os.environ.get('DB_USER',),
-        'PASSWORD': os.environ.get('DB_PASSWORD',),
-        'HOST': 'localhost',
-        'PORT': os.environ.get('DB_PORT',),
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'iknowfarm',
+       'USER': 'postgres',
+       'PASSWORD': 'tibaijuka',
+       'HOST': 'localhost',
+       'PORT': '5432',
+   }
 }
 
 REST_FRAMEWORK = {
