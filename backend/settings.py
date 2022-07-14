@@ -14,6 +14,7 @@ from distutils.debug import DEBUG
 from pathlib import Path
 import os
 import dj_database_url
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # Simplified static file serving.
@@ -197,6 +199,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ]
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Extra places for collectstatic to find static files.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -216,3 +219,6 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
