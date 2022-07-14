@@ -33,7 +33,7 @@ DEBUG = str(os.environ.get('DEBUG')) == '1'
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['iknowfarm.herokuapp.com', '**.herokuapp.com', 'localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['https://iknowfarm.herokuapp.com', '**.herokuapp.com', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
