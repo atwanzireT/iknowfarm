@@ -30,9 +30,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY',)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
-
-# ALLOWED_HOSTS = ['iknowfarm.herokuapp.com', '**.herokuapp.com', 'localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['iknowfarm.herokuapp.com', '**.herokuapp.com', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -184,9 +185,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
-# STATICFILES_DIRS = [
-#     BASE_DIR, 'static'
-# ]
+
 # STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR, 'static'
