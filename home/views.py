@@ -19,7 +19,7 @@ from feedback.models import Feedback
 
 
 # Create your views here.
-# @login_required(login_url='/profile/login/')
+@login_required(login_url='/profile/login/')
 def index(request):
     male_farmers = Farmer.objects.filter(gender = 'male').count()
     female_farmers = Farmer.objects.filter(gender = 'female').count()
