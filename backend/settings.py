@@ -31,8 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY',)
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 
 
-ALLOWED_HOSTS = ['iknowfarm.herokuapp.com', '**.herokuapp.com', 'localhost', '127.0.0.1']
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['iknowfarm.herokuapp.com', '**.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
