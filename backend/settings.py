@@ -54,8 +54,11 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'storages',
+    'crispy_forms',
     # 'rest_framework',
 ]
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -151,6 +154,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+
+USE_I18N = True
 
 USE_TZ = True
 
