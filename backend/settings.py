@@ -14,7 +14,7 @@ from distutils.debug import DEBUG
 from pathlib import Path
 import os
 import dj_database_url
-import django_heroku
+import django_on_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,6 +34,7 @@ if DEBUG:
     ALLOWED_HOSTS = []
 else:
     ALLOWED_HOSTS = ['iknowfarm.herokuapp.com', '**.herokuapp.com', 'localhost', '127.0.0.1']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
     'upload',
     'translation',
     'ckeditor',
-    'crispy_forms',
     'api',
     'rest_framework',
     'storages',
@@ -97,24 +97,24 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # Default value for 'DATABASE_URL' is 'sqlite:///db.sqlite3'
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE':  os.environ.get('ENGINE',),
-        'NAME': os.environ.get('DB_NAME',),
-        'USER': os.environ.get('DB_USER',),
-        'PASSWORD': os.environ.get('DB_PASSWORD',),
-        'HOST': 'localhost',
-        'PORT': os.environ.get('DB_PORT',),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE':  os.environ.get('ENGINE',),
+#         'NAME': os.environ.get('DB_NAME',),
+#         'USER': os.environ.get('DB_USER',),
+#         'PASSWORD': os.environ.get('DB_PASSWORD',),
+#         'HOST': 'localhost',
+#         'PORT': os.environ.get('DB_PORT',),
+#     }
+# }
 
 
 REST_FRAMEWORK = {
@@ -200,8 +200,6 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 # ckeditor
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = 'images/'
@@ -215,4 +213,14 @@ CKEDITOR_CONFIGS = {
 }
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())
+
+# Fixing warnings
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
