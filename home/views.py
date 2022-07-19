@@ -14,8 +14,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Q
 from feedback.models import Feedback
-# import folium
-# import geocoder
 
 
 # Create your views here.

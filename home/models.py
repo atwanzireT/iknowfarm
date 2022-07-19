@@ -1,4 +1,3 @@
-from distutils.command.upload import upload
 from django.db import models
 from farmer.models import *
 # Create your models here.
